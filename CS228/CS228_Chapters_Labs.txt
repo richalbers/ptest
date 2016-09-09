@@ -1,0 +1,29 @@
+Ch 14 - Installing
+
+Ch 4 - Windows Versions, UI, Folders, and Tools
+Ch 15 - Registry, Boot Process, Process and Service Mgt
+
+Ch 16 - NTFS Users and Groups
+Ch 17 - Maintaining and Optimizing Windows
+
+Ch 18 - Command Line
+Ch 19 - Troubleshooting Windows
+
+Ch 22 - LANs
+Ch 23 - Wireless
+
+Midterm
+Ch 24 - Internet
+Ch 26 - Portable Computing
+
+Ch 27 - Mobile devices
+Ch 28 - Printers
+
+Ch 29 - Securing Computers
+Ch 30 - Virtualization
+
+Ch 31 - The right PC for you
+Presentations
+
+Presentations
+Presentations

@@ -1,0 +1,102 @@
+---------------------------------------------------------------------
+Digging deeper - DOM Manipulation and Events
+	Based on Previous presentations you should already
+		Understand the purpose of jQuery and the basic jQuery syntax
+		Be able to use jQuery to make simple page changes after the page is ready 
+	At the end of this presentation you should 
+		Know the kinds of functions available for manipulating the DOM
+		Know what type of events can be handled
+		Be able to use the jQuery documentation to quickly find the details on the function
+			you need to use to accomplish a specific DOM Manipulation task
+			you need to use to handle the event you want to handle
+		Use the details from the documentation to write the code to accomplish your task
+
+---------------------------------------------------------------------
+Overview
+	The jQuery API Documentation provides details and Examples on all jQuery functions
+		It's improbable you'll memorize the details on all of them
+		But to be effective/effecient, is useful to know
+			what can be done
+			how the find the details about how to accomplish what you want to do relatively quickly
+		To achieve that we'll
+			get an overview of many essential (i.e. commonly used) functions
+			learn how to use the documentation to get the needed details
+	The basic categories of jQuery functions that are used all the time are
+		DOM Manipulation - functions to change the web page 
+		Events - functions to handle events
+---------------------------------------------------------------------
+this and chaining
+	And now, a minor diversion....
+	Two commonly-used features of jQuery, that you'll often see in the documentation, are
+		the "this" selector
+		chaining
+	this - a keyword that selects the element for which the event handler was called.
+		For example:
+			[[code]]
+			//make any paragraph that is clicked on red
+			$('p').click( function() {
+				$(this).css("color","red");
+			});
+	Chaining - Once an element has been selected, you can call multiple functions on it
+		for example:
+			[[code]]
+			//chaining demo, call .css() and .html() for an element
+			$("#someID").css("color","red").html("I'm now red!")
+---------------------------------------------------------------------
+DOM Manipulation
+	The right column of the jQuery API Documentation lists general categories, one of which is Manipulation
+	The [[Manipulation!http://api.jquery.com/category/manipulation/]] sub-categories are
+		Class Attribute
+		Copying
+		DOM Insertion, Around
+		DOM Insertion, Inside
+		DOM Insertion, Outside
+		DOM Removal
+		DOM Replacement
+		General Attributes
+		Style Properties
+---------------------------------------------------------------------
+Practice
+	For each DOM Manipulation category
+		Read the short description of what each of the DOM Manipulation Functions does
+		Use jsFiddle or a web page to try out a few of the functions to see how they work
+
+---------------------------------------------------------------------
+Events
+	Common events that are handled (by category) are:
+		Mouse
+			click, dblclick
+			mouseenter, mouseleave
+		Keyboard
+			keypress
+			keydown, keyup
+		Form
+			submit, change, focus, blur
+		Document
+			load, unload
+		Window
+			resize, scroll
+	A Complete list of the the standard events in the DOM can be in the jQuery documentation here:
+		[[http://api.jquery.com/Types/#Event!http://api.jquery.com/Types/#Event]]
+	
+----------------------------------------------------------------------
+JQuery Event functions
+	The right column of the jQuery API Documentation lists general categories, one of which is Events
+	The [[Events!http://api.jquery.com/category/events/]] sub-categories are
+		Browser
+		Document Loading
+		Event Handler Attachment
+		Form Events
+		Keyboard Events
+		Mouse Events
+	You should look over the functions in each category to see what functionality is provided.
+
+---------------------------------------------------------------------
+Practice
+	For each event categories		
+		Read the short description of what each of the DOM Manipulation Functions does
+		Use jsFiddle or a web page to try out some of the mouse and keyboard events
+			At a minium, try out the following
+				a few of the shortcut function (click, mousedown, etc..)
+				on and off
+				

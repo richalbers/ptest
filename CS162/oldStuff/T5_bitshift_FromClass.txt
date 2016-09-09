@@ -1,0 +1,35 @@
+#include <iostream>
+
+using namespace std;
+
+
+
+
+void main() {
+	unsigned char x = 0x80;
+	unsigned char y;
+
+	cout << static_cast<int>(x) << endl;
+
+	//hit shift operator
+	for (int z=1;z<8;z++){
+	x=x >> 1;
+	cout << static_cast<int>(x) << endl;
+	}
+
+	for (int z=1;z<8;z++){
+	x=x << 1;
+	cout << static_cast<int>(x) << endl;
+	}
+
+	//mask operators
+	x=0xef;
+	unsigned char highbits = x >> 4;
+	unsigned char lowbits = x & 0x0f; // and operator
+
+	cout << static_cast<int>(x) << endl;
+	cout << static_cast<int>(highbits) << endl;
+	cout << static_cast<int>(lowbits) << endl;
+
+	cin.get();
+}

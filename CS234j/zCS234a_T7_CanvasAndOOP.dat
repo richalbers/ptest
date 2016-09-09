@@ -1,0 +1,220 @@
+-----------------------------------------------------------
+Using the Canvas and OOP
+	Canvas element
+	Drawing
+		Rectangles
+		Lines
+		Custom shapes
+	Working with images
+	Animation
+	OOP
+	Links
+------------------------------------------
+Canvas Element
+	Provides a "canvas" on which to draw on.
+	Drawing is done via javascript functions
+	Currently only supports 2D drawing
+	Html Example:
+		[[code]]
+		&lt;canvas id="myCanvas" width="400" height="400"&gt;
+		Your craptastic browser doesn't support a canvas!  You really need to upgrade!
+		&lt;/canvas&gt;
+	Text in element is displayed only if browser doesn't support the canvas element.
+-------------------------------------------
+Context
+	All drawing is done via a "context" object
+		This (or something similar with a different name) is pretty standard in computer graphics
+	The javascript needs to get the context object, which is then used for all graphics drawing calls
+	Example
+		[[code]]
+		var elm;
+		var ctx;
+		elem = document.getElementById('myCanvas');
+		if (elem)
+			ctx = elg.getContext('2d');
+		else
+			alert("canvas not found!");
+
+-------------------------------------------
+Drawing Rectangles
+	Before drawing lines, you need to define the color and width to use
+	Color can be specified using
+		'name'
+		'#rgb' or '#rrggbb'
+		'rgb(...)'
+	Example
+		[[code]]
+		ctx.strokeStyle = 'rgb(255,0,0)';
+		ctx.lineWidth = 4;
+		&nbsp;
+		//draw hollow rectangle
+		ctx.strokeRect(50,50,30,40) //left, top, width, height
+		&nbsp;
+	Upper-left of canvas is 0,0
+-----------------------------------------------------------------
+Filling Rectangles
+	Before "filling" a shape, you need to specify the fill color
+		[[code]]
+		//set fill color
+		ctx.fillStyle = 'blue'; //or '#0000ff' or 'rgb(0,0,255)';
+		&nbsp;
+		//draw solid rectangle
+		ctx.fillRect(10,50,30,40) //left, top, width, height	
+
+------------------------------------------------------------------
+Lines
+	A simple line is drawn as follows:
+		[[code]]
+		ctx.strokeStyle = '#f00';
+		ctx.lineWidth   = 4;
+		&nbsp;
+		ctx.beginPath();
+		ctx.moveTo(10, 10); // start at x,y
+		ctx.lineTo(50, 50); // go to x,y
+		ctx.stroke();	    //draw it!
+		ctx.closePath();
+-----------------------------------------------------
+Custom Shapes
+	Mutilple lines can be drawn consecutively to draw custom shapes
+		[[code]]
+		//set drawing properties
+		ctx.strokeStyle = 'red';
+		ctx.lineWidth   = 2;
+		ctx.fillStyle   = '#00f'; //used to fill
+
+		&nbsp;
+		//draw triangle
+		ctx.beginPath();
+		ctx.moveTo(50, 50);   // start at x,y
+		ctx.lineTo(50, 100);  // down
+		ctx.lineTo(100, 100); // over
+		ctx.lineto(50,50);	  // back
+		context.stroke();	  // draw it!
+		context.fill();		  //fill it!
+		ctx.closePath();
+----------------------------------------------------------
+Text
+	Text can also be drawn on the canvas as follows
+		[[code]]
+		ctx.strokeStyle = 'black';
+		ctx.fillStyle    = '#00f';
+		ctx.font         = 'italic 30px sans-serif';
+		ctx.textBaseline = 'top';
+		&nbsp;
+		//draw solid text at 10,10
+		ctx.fillText  ('Hello world!', 10, 10);
+		&nbsp;
+		//draw hollow text at 50,50
+		ctx.font         = 'bold 30px sans-serif';
+		ctx.strokeText('Hello world!', 50, 50);
+------------------------------------------------------------------
+Drawing Images
+	You can "copy and paste" sections of the canvas
+		[[code]]
+		//copy a section of hte canvas to a new image
+		var someImage = ctx.getImageData(270,270,60,60);
+		&nbsp;
+		//draw out new image somewhere else
+		ctx.putImageData(someImage,200,100); //x,y
+		&nbsp
+	You can also draw just part of the image back onto the cavas
+		[[code]]
+		ctx.putImageData(someImage,200,100,x,y,width, height
+------------------------------------------------------------------
+Loading Images from files
+	You can load external images and draw them on the canvas
+		[[code]]
+		var myImg = new Image();
+		myImg.src='something.gif';
+		&nbsp;
+		//sometime later...
+		ctx.putImageData(myImg,200,100); 
+		&nbsp;
+	Note: the loading may take time so it may not be ready to draw immediately
+	Using an event handler to signify when it's ready might be wise
+------------------------------------------------------------------
+Other things you can do
+	Draw images at angles
+		you rotate the canvas, draw, then rotate it back
+	Image pixel manipulation
+	Shadows
+	Gradients
+	See tutorial links for details on these items
+	
+------------------------------------------------------------------
+Animation
+	The canvas is just a bitmap, once items are drawn, they can't be moved
+	To do animation on it, you need to
+		draw things
+		wait a small amount of time
+		possibly erase everything
+		redraw stuff in a new locations
+		repeat...
+	So you really need to keep track of where everything is
+	It's easiest to do that by creating your own objects representing the stuff on the screen
+	The objects can then
+		store info about where they are
+		contain code about how to draw themselves
+	We've looked at how to create objects to store data, so now we just need to add functions
+--------------------------------------------------------------------
+Sprite object
+	In 2d animation, small graphics, such as characters that move around, are known as sprites
+	For each sprite, it makes sense to build an object to store it's data and define what it can do
+	The sprite class could be defined like this:
+		[[code]]
+		function Sprite(imgageSource) {
+			this.img = new Image();
+			this.img.src=imageSource;
+			this.x=0;
+			this.y=0;
+		}
+	
+--------------------------------------------------------------------
+Sprite functions
+	Functions can be added to a class like this
+		[[code]]
+		Sprite.prototype.setXY = function(x,y) {
+			this.x=x;
+			this.y=y;
+		}
+		Sprite.prototype.moveX = function(xOffset) {
+			this.x+=xOffset;
+		}
+		Sprite.prototype.moveY = function(yOffset) {
+			this.y+=yOffset;
+		}
+		Sprite.prototype.draw = function(ctx) {
+			ctx.drawImage(this.img, this.x, this.y);
+		}
+------------------------------------------------------------------
+Using your class
+	You could then create and use Sprite objects like this
+		[[code]]
+		var pig = new Sprite('pig.gif');
+		pig.setXY(10,10);
+		pig.draw(ctx); 
+	To move your pig you'd run the following function every few ms
+		[[code]]
+		pig.moveX(4);
+		pig.draw();
+	Note: that does NOT ease the old pig, which may need to be done
+------------------------------------------------------------------	
+Links
+	[[http://dev.opera.com/articles/view/html-5-canvas-the-basics/!http://dev.opera.com/articles/view/html-5-canvas-the-basics/]]
+		Basics + bit manipulation
+	[[https://developer.mozilla.org/en/Drawing_Graphics_with_Canvas!https://developer.mozilla.org/en/Drawing_Graphics_with_Canvas]]
+		Demonstrates drawinging objects at angles
+		
+	[[http://www.html5canvastutorials.com/tutorials/html5-canvas-image-loader/!http://www.html5canvastutorials.com/tutorials/html5-canvas-image-loader/]]
+		Basics with lots of examples
+-------------------------------------------
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

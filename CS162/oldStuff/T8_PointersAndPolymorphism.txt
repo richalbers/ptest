@@ -1,0 +1,86 @@
+
+
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+
+using namespace std;
+
+class Animal
+{
+protected:
+	int weight;
+public:
+	Animal() {
+		weight=0;
+		cout << "Animal::Animal() called\n";
+	};
+	void setWeight(int w) {
+		weight=w;
+		cout << "Animal::setWeight() called\n";
+	};
+	int getWeight() {
+		return weight;
+		cout << "Animal::getWeight() called\n";
+	}
+	virtual void feed() {
+		cout << "Animal::feed() called\n";
+	}
+};
+
+class Dog : public Animal {
+public:
+	virtual void feed() {
+		cout << "Dog::feed() called\n";
+	}
+};
+
+class Cat : public Animal {
+public:
+	virtual void feed() {
+		cout << "Cat::feed() called\n";
+	}
+};
+//
+// Pointer example
+//  including using new keyword and polymorphism
+//
+
+int main() 
+{
+	Animal x;
+	Cat y;
+	Dog z;
+
+	x.feed();
+	y.feed();
+	z.feed();
+
+	cout << &x << endl;
+	cout << &y << endl;
+	cout << &z << endl;
+
+	//pointer and new keyword.
+	cout << "\nUsing new to create object test.\n\n";
+	Animal* p;
+	p=new Animal;
+	cout << p << endl;
+	p->feed();
+
+	//polymorphism example (function called must be virtual)
+	cout << "\nPolymorphism test.\n\n";
+	Animal* a;
+
+	a = &x;
+	cout << a << endl;
+	a->feed();
+
+	a=&y;
+	cout << a << endl;
+	a->feed();
+
+	//Array example.
+
+
+	cin.get();
+}

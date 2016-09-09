@@ -1,0 +1,319 @@
+-----------------------------------------------------------
+JSON
+	Introduction
+	Javascript Objects
+		Creating Objects and Properties
+		Accessing Property names/values
+		Including arrays in objects
+		Using a constructor to build an object
+		Creating an Array of Objects
+	Javascript Object Notation (JSON)
+		JSON syntax rules
+		Simple example
+		JSON and arrays
+		Parsing JSON text
+	JSON files/Data
+		fetching with AJAX
+		Creating from PHP
+	Class Exercise
+------------------------------------------
+Introduction
+	JSON (JavaScript Object Notation)
+		is a lightweight data interchange format
+		is an alternative to XML
+		is self-describing and easy to understand
+		uses Javascript syntax for describing data objects
+		can be used in many langauges
+	The JSON text format is syntactically identical to the code for creating JavaScript objects
+	Since JSON text builds javascript objects, understanding javascript objects is imperative
+
+-------------------------------------------
+Javascript Objects
+	Javascript allows you to create your own objects
+	Objects can contain both properties and methods
+	We're currently interested in using objects to store data, so we'll only be looking at properties
+	Properties can contain:
+		strings
+		numbers (integer or floating point)
+		boolean values (true or false)
+		arrays
+		other objects
+	Properties are accessed using . notation
+
+-------------------------------------------
+Creating objects and properties
+	Objects and properties can be created and accessed as follows:
+		[[code]]
+		&nbsp;
+		var dog = new Object();
+		&nbsp;
+		dog.name = "Spot";
+		dog.weightLbs = 5;
+		dog.isCool = false;
+		&nbsp;
+		alert(dog.name);
+		alert(dog.weightLbs);
+		alert(dog.isCool);
+	
+---------------------------------------------
+Accessing property name/values
+	Given an object, property names can be accessed using a for in loop
+		[[code]]
+		&nbsp;
+		//put the names and values of the dog object's 
+		//properties into a string
+		for (property in dog) {
+			sValue = property + ":" + dog1[property] + "  ";
+			sValues += sValue;
+		}
+		&nbsp;
+		//show the names/values
+		alert(sValues);
+		
+------------------------------------------------
+Including arrays in objects
+	Objects can contains arrays 
+	[[code]]
+		&nbsp;
+		// JS object with an array
+		var dog1 = new Object();
+		&nbsp;
+		dog1.name = "Spot";
+		dog1.weightLbs = 5;
+		dog1.isCool = false;
+		&nbsp;
+		dog1.toys= new Array;
+		dog1.toys[0] = "ball";
+		dog1.toys[1] = "stick";
+
+------------------------------------------------
+Using a constructor to build an object
+	A function can be used as a constructor to build an object
+	Object members are accessed within the function using "this"
+	[[code]]
+		&nbsp;
+		//Dog constructor
+		function Dog(name, weightLbs, isCool, toy1, toy2) {
+			this.name=name;
+			this.weightLbs=weightLbs;
+			this.isCool=isCool;
+			this.toys=new Array;
+			this.toys[0] = toy1;
+			this.toys[1] = toy2;
+		}
+		&nbsp;
+		//create a Dog and display some properties
+		var dog2 = new Dog("Snoopy", 4.6, true, "Stick", "Ball");
+		&nbsp;
+		alert(dog2.name + " " + dog2.toys[2]);
+------------------------------------------------
+Array of Objects
+	You can use an array to store multiple object instances
+		[[code]]
+		&nbsp;
+		//create an array to hold our dogs
+		var dogs = new Array;
+		&nbsp;
+		//put two dogs in our array
+		//  (dogs are built using our constuctor)
+		dogs[0] = new Dog("Mac", 9.1, true, "Stick", "Ball");
+		dogs[1] = new Dog("Fido", 12, false, "Ball", "Bone");
+		&nbsp;
+	
+-------------------------------------------------------
+JSON Syntax Rules
+	Data is in name/value pairs
+	Name/value pairs are separated by commas
+	Objects are inside curley braces
+	Arrays are inside square brackets
+	[[www.json.org!http://www.json.org]] diagrams it all!
+		(It's probably better to come back to that after looking at a few simple examples)
+------------------------------------------------------------------------
+Javascript Object Notation
+	The following creates an object with 3 properties
+		[[code]]
+		&nbsp;
+		var dog1 = {
+			"name":"Fido",
+			"weightLbs":56.4,
+			"isCool":false
+		};
+		&nbsp;
+		alert(dog1.name + " " + dog1.weightLbs + " " + dog1.isCool);
+-----------------------------------------------------------
+JSON with array
+	[[code]]
+		&nbsp;
+		// JSON - object with array
+		var dog2 = {
+			"name":"Fido",
+			"weightLbs":56.4,
+			"isCool":false,
+			"toys": [ "stick", "ball" ]
+		};
+
+-------------------------------------------------------------------
+JSON array of objects
+	[[code]]
+		&nbsp;
+		// JSON - array of objects
+		var dogs = [
+			{ "name":"Fido", 	"weightLbs":56.4, 	"isCool":false },
+			{ "name":"Spot", 	"weightLbs":20, 	"isCool":false },
+			{ "name":"Snoopy", 	"weightLbs":32, 	"isCool":true }
+		];
+		&nbsp;
+		for (ndx=0; ndx&lt;dogs.length; ndx++) {
+			sMsg="";
+			sMsg+=dogs[ndx].name; sMsg+=" ";
+			sMsg+=dogs[ndx].weightLbs; sMsg+=" ";
+			sMsg+=dogs[ndx].isCool;
+			alert(sMsg);
+		}
+-----------------------------------------------------------------
+Parsing JSON text
+	JSON text can be parsed using
+		eval
+			javascript command that converts given text into javascript code and executes it
+		a JSON parser
+			special purpose command to parse ONLY JSON text
+	Eval
+		is quick and supported on all browsers
+		has security implications
+			it will parse and execute ANY javascript
+		should only be used if data came from known safe site
+	JSON Parsers
+		Are built into the latest browsers
+		Can be downloaded from json.org
+----------------------------------------------------------------
+Parsing examples
+	Using eval
+		[[code]]
+		&nbsp;
+		//put JSON text into variable
+		var jsonData = '{"name":"Pluto", "weightLbs":90, "isCool":false}';
+		&nbsp;
+		//create object by parsing text
+		var dogs = eval("(" + jsonData + ")");
+		&nbsp;
+	Using JSON.parser (built into latest browsers)
+		[[code]]
+		&nbsp;
+		//put JSON text into variable
+		var jsonData2 = '{"name":"Spot", "weightLbs":20, "isCool":true, "toys": [ "mouse", "dish" ]}';
+		&nbsp;
+		//create object by parsing text
+		var dog5 = JSON.parse(jsonData2);
+
+-----------------------------------------------------------------
+Another Parsing Example
+	[[code]]
+		&nbsp;
+		// put JSON text into string variables
+		var jsonData3 = '{'
+			+ '"name":"Spott", '
+			+ '"weightLbs":22, '
+			+ '"isCool":true, '
+			+ '"toys": [ "dish", "mouse" ] '
+			+ '}';
+		var jsonData4 = '['
+			+ '{ "name":"Fido", 	"weightLbs":56.4, 	"isCool":false },'
+			+ '{ "name":"Spot", 	"weightLbs":20, 	"isCool":false },'
+			+ '{ "name":"Snoopy", 	"weightLbs":32, 	"isCool":true }'
+			+ ']';
+		&nbsp;
+		//create object and array of objects from JSON text
+		var dog6 = JSON.parse(jsonData3);
+		var dogs = JSON.parse(jsonData4);
+-----------------------------------------------------------------
+JSON files
+	JSON files end in .json
+	Media type is application/json
+	The contents always begin and end with { }
+	Some examples can be found here:
+		[[en.wikipedia.org/wiki/JSON!http://en.wikipedia.org/wiki/JSON]]
+		[[www.json.org/example.html!http://www.json.org/example.html]]
+		[[www.jquery4u.com/json/10-example-json-files/!http://www.jquery4u.com/json/10-example-json-files]]
+	Typically, you won't have a JSON file, but will be generating JSON data dynamically using PHP
+-----------------------------------------------------------------
+Fetching JSON data via AJAX
+	[[code]]
+		&nbsp;
+		// simple example showing how to get and parse
+		// .json file using ajax (from wikipedia)
+		var my_JSON_object = {};
+		var http_request = new XMLHttpRequest();
+		&nbsp;
+		http_request.open("GET", "somefile.json", true);
+		http_request.onreadystatechange = function () {
+			var done = 4, ok = 200;
+			if (http_request.readyState == done 
+				&& http_request.status == ok) {
+				my_JSON_object = JSON.parse(http_request.responseText);
+			}
+		};
+		&nbsp;
+		http_request.send(null);
+-----------------------------------------------------------------
+PHP and JSON
+	PHP5 has the following functions for working with JSON
+		json_encode() -	converts associate array to JSON text
+			string json_encode(associate_array)
+		json_decode() -	converts JSON text into associative array
+			assoc_array json_decode(string)
+		json_last_error - returns error code (PHP > 5.3)
+			int json_last_error(void)
+	PHP 5.3 added options to deal with special characters and errors
+		unfortunately webdev is only running 5.2.9
+	Details and examples can be found in [[php manual!http://www.php.net/manual/en/ref.json.php]]
+-----------------------------------------------------------------
+PHP DB example
+	[[code]]
+		&lt;?php
+			//connect to database
+			$con = mysql_connect("localhost", "234pstu20", "password");
+			if (!$con) 
+				die('Could not connect: ' . mysql_error());
+			&nbsp;
+			mysql_select_db("world", $con);
+			&nbsp;
+			//fetch desired countries
+			$query = "SELECT Name, Continent FROM country WHERE Name LIKE 'an%'"; 
+			$result = mysql_query("$query");
+			&nbsp;
+			$countries=array();
+			while($row = mysql_fetch_assoc($result))
+			{
+				$countries[] = $row;	//add to array
+			}
+			echo '{"countries":' . json_encode($countries) . '}';
+			&nbsp;
+			//finish up
+			mysql_close($con);
+		?&gt;
+-----------------------------------------------------------------
+Useful Links
+	[[www.w3schools.com/js/js_objects.asp!http://www.w3schools.com/js/js_objects.asp]]
+	[[ww.w3schools.com/json/default.asp!http://www.w3schools.com/json/default.asp]]
+	[[en.wikipedia.org/wiki/JSON!http://en.wikipedia.org/wiki/JSON]]
+	[[www.json.org!http://www.json.org]]
+	[[www.json.org/example.html!http://www.json.org/example.html]]
+	[[www.jquery4u.com/json/10-example-json-files/!http://www.jquery4u.com/json/10-example-json-files]]
+	[[www.php.net/manual/en/ref.json.php!http://www.php.net/manual/en/ref.json.php]]
+-----------------------------------------------------------
+Class Exercise
+
+	
+-----------------------------------------------------------------
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

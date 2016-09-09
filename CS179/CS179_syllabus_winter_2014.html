@@ -1,0 +1,397 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+<head>
+<title>CS179 Syllabus - Winter 2014</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<!-- stylesheet ================================================== -->
+<style type="text/css">
+
+	body {
+		margin: 0px; padding: 0px; border: 0px;
+		font-family: Arial;
+		background-color: rgb(105,127,85);
+	}
+
+	div { margin: 0px; padding: 0px; border: 0px; }
+		
+	h1, h2, h3 { margin: 0px; padding: 0px; border: 0px; }
+		
+	#Heading {
+		position: absolute;
+		left: 0px; right: 0px; top: 10px; 
+		text-align: center;
+		z-index: 2;
+		color: black;
+		min-width: 500px;
+	}
+
+	#Heading h2 { color: white; }
+	#Heading h3 { color: white; }
+  
+	#Menu {
+		position: absolute;
+		left: 10px; top: 130px; 
+		height: 30px;
+		z-index: 2;
+		min-width: 500px;
+	}
+
+
+	.MenuOffset {
+		float: left;
+		padding: 3px 1px;
+		z-index: 0;
+	}
+
+	.MenuItem {
+		float: left;
+		padding: 3px 10px;
+		background-color: #dddddd; /*also in js, constants */
+		border: 1px solid black;   
+		border-bottom: 2px solid black; /*also in js, ShowTab() */
+		border-top-left-radius: 5px;
+		border-top-right-radius: 5px;
+	}
+	
+	.MenuItem a {text-decoration: none; color: black; } 
+
+	.MenuItem a:hover {background-color: #ffffff; }
+
+	.Content {
+		position: absolute;
+		left: 10px; top: 157px;
+		width: 93%;
+		z-index: 1;
+		border: 1px solid black;
+		padding: 10px;
+		visibility: hidden;
+		background-color: white; /*also in js, contants and ShowTab() */
+		min-width: 500px;
+		border-radius: 5px;
+	}
+	
+	#Schedule table {
+		margin-left: 30px;
+	}
+	
+	#Schedule .week, #Schedule .date, .center {
+		text-align: center;
+	}
+	
+	.holiday {
+		color: red;
+	}
+		
+	#PrintButton {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		width: 80px;
+		z-index: 10;
+	}
+	
+@media print {
+	#Heading { position: relative;display: block; }
+	#Menu { display: none; }
+	#PrintButton { display: none; }
+	.Content { position: relative; top: 10px; display: block; visibility: visible; }
+	h2, h3 {color: black; }
+
+}
+</style>
+
+<!-- javascript ================================================== -->
+<script type="text/javascript">
+//<![CDATA[
+
+// Colors (constants)
+var sColorContent="#ffffff";  //white
+var sColorTabs="#dddddd";
+
+//data
+var aContentPageIDs = []; //IDs of content pages (strings)
+var sVisibleTabID="";
+
+
+//--------------------------------------------------------------
+function Initialize()
+{
+	//get IDs of content pages
+	var x=myGetElementsByClass("Content");
+	for (var i=0; i<x.length; i++)
+		aContentPageIDs[i] = x[i].id;
+	//alert(aContentPageIDs);
+	
+	//build cooresponding menu item divs and put them inside the menu div
+	var sMenuItemTemplate = "<div id=\"MenuX\" class=\"MenuItem\" ><a href=\"Javascript: ShowTab('X')\">X<\/a><\/div>"
+	var sMenuItemText = "<div class=\"MenuOffset\">&nbsp;<\/div>"
+	for (var i=0; i<aContentPageIDs.length; i++)
+		sMenuItemText = sMenuItemText + sMenuItemTemplate.replace(/X/g, aContentPageIDs[i]);
+	document.getElementById("Menu").innerHTML=sMenuItemText;
+
+	//show the first tab
+	ShowTab(aContentPageIDs[0]);
+}
+
+//-------------------------------------------------------------
+function myGetElementsByClass(className)
+{
+	var elements = [];
+	var x=document.getElementsByTagName("div");
+	//alert(x.length);
+	for (var j=0, i=0;i<x.length;i++)
+		if (x[i].className == className)
+		{
+			elements[j] = x[i]; j++;
+		}
+	//alert(elements.length);
+	return elements;
+}
+
+//---------------------------------------------------------------
+function ShowTab(sTabToShow)
+{
+	if (sVisibleTabID != "") //only happens first time
+	{
+		//hide current content page
+		document.getElementById(sVisibleTabID).style.visibility="hidden";
+
+		//gray out menu tab and fix bottom line
+		var x = document.getElementById("Menu" + sVisibleTabID)
+		x.style.backgroundColor=sColorTabs;
+		x.style.borderBottomStyle="solid";
+		x.style.borderBottomWidth="2px";
+		x.style.borderBottomColor="black";
+	}
+
+	//show new tab
+	document.getElementById(sTabToShow).style.visibility="visible";
+
+	//update menu tab to reflect shown tab
+	var x = document.getElementById("Menu" + sTabToShow)
+	x.style.backgroundColor=sColorContent;
+	x.style.borderBottomStyle="solid";
+	x.style.borderBottomWidth="4px";
+	x.style.borderBottomColor="white";
+
+	sVisibleTabID=sTabToShow;
+
+}
+
+//---------------------------------------------------------------
+function ShowPrintingInstructions()
+{
+	alert('Papercuts are painful, so I recommend against printing a paper copy.  Consider yourself warned.\n\nFor those brave souls who really must have a paper copy, you need to print it before clicking on any of the tabs. \n\nIf you have already clicked on one of the tabs, you should reload the page before printing.  Otherwise, you will get some blank pages where there should be words.\n\nIf you only want to print one tab, do a print preview (after reloading the page) and select the page containing the tab you want.');
+}
+//---------------------------------------------------------------
+//]]>
+</script>
+</head>
+
+
+<!-- html ===================================================================== -->
+<body id="Body" onload="Initialize()">
+
+<button id="PrintButton" type="button" value="PrintingInstructions" onclick="javascript:ShowPrintingInstructions();">Printing<br />Instructions</button>
+
+<!-- ============ Heading =========== -->
+<div id="Heading">
+<h2>CS 179 - Networking I</h2>
+<h2>Winter 2014 Syllabus</h2>
+<h3>Section 01: MW 10:30-11:50 | Section 02: TuTh 9:00-10:30</h3>
+</div>
+
+<!-- ============ Menu =========== -->
+
+<div id="Menu">
+	<!-- note: this div is filled with MenuItem divs (each representing a "tab") via javascript when page loads -->
+</div>
+
+
+<!-- ============ Course =========== -->
+<div id="Course" class="Content">
+<h2> Course Info</h2>
+
+<p><b>Course Description:</b> Introductory course in Computer Networking. Covers data communication basics, network models, Ethernet, cabling, remote connectivity, wireless networking, and basic TCP/IP operation and configuration.</p>
+
+<p><b>Course Objectives:</b> Upon completion of this course, each student should be able to:</p>
+<ol>
+<li>Explain basic data communication concepts such as channels, bandwidth, parity and checksums, noise, compression, encryption, etc.</li>
+<li>Understand and explain the layers of the OSI and TCP/IP Models</li>
+<li>Distinguish the pros and cons of the major cabling types</li>
+<li>Describe the major networking topologies</li>
+<li>Understand the Ethernet standards</li>
+<li>Describe WAN technologies</li>
+<li>Describe basic TCP/IP properties and operation</li>
+<li>Configure, and troubleshoot basic TCP/IP network connections</li>
+<li>Discuss current wireless standards</li>
+<li>Describe security threats and their remedies (security management, authentication mechanisms, firewall protection, cryptography etc.)</li>
+<li>Discuss the major types of networks and networked applications</li>
+<li>Describe client/server architectures, web standards and peer-to-peer computing</li>
+</ol>
+
+<p><b>Prerequisites:</b> CS-120 or placement in CS-121.  Recommended: MTH-092 or prior exposure to base 2 numbering system concepts.</p>
+
+</div>
+
+<!-- =========== Instructor ============ -->
+<div id="Instructor" class="Content">
+<h2> Instructor Info</h2>
+<p><b>Name: &nbsp;</b>Richard Albers<br />
+<b>Email:&nbsp;</b> richa@clackamas.edu<br />
+<b>Office:</b> Streeter - S126<br />
+<b>Hours:</b>M,W,F 1:30-2:30, Tu,Th 1:00-2:00 or by appointment<br />
+<b>Phone:</b> 503-594-3166  (email is preferred)</p>
+
+<p>I've been involved in the computer industry for numerous years, primarily as a software Developer.  At several of the small companies at which I worked, the software engineers were also responsible for the computer and network management and troubleshooting.  As a result, I've had numerous opportunities to work with various networking software and hardware components. Additionally, I've been teaching networking classes for 10+ years, I'm CompTIA Network+ certified, and I have a Master's degree in Computer Systems Engineering.</p>
+</div>
+
+<!-- =========== Materials ============ -->
+<div id="Materials" class="Content">
+<h2> Materials</h2>
+<p><b>Textbook:</b> Mike Meyers' CompTIA Network+ Guide to Managing and Troubleshooting Networks, Third Edition<br />
+by Mike Meyer &nbsp; ISBN: 978-0-07-178911-0 (book and CD)</p>
+<p>This book is used for both this course (179) and the subsequent networking course (229 - Networking II)</p>
+
+<p><b>Website:</b> We will be using Moodle for announcements, distribution of class materials, quizzes, and exams. 
+</div>
+
+<!-- =========== Grading ============ -->
+<div id="Grading" class="Content">
+<h2> Grading</h2>
+
+<p>This course will use proficiency-based grading, an approach that emphasises a student's ability to demonstrate mastery of the content instead of simply earning points throughout the course.</p>
+
+<p>After a topic is covered, you'll be given the opportunity to take a low-value assessment (review quiz) as many times as necessary until you're confident you know the material well.  You'll then take an slighly-higher value assessment in class (quiz) to demonstrate your proficiency on the topic.  Two exams, a midterm and final, will be used to assess your overall level of understanding at the midpoint and end of the course.  All the questions on the midterm and final will be pulled from the review quizzes and assignments so there will be no surprises. </p>
+
+<p>The graded work will be weighted as follows:</p>
+
+<table zalign="center">
+
+<tr><td colspan=2>Learning Exercises</td> <td></td> <td></td> </tr>	
+<tr><td> &nbsp;  &nbsp;</td><td>Review Quizzes:	</td><td> &nbsp; </td><td>10%</td></tr>
+<tr><td> &nbsp;  &nbsp;</td><td>Assignments:</td><td> &nbsp; </td><td>15%</td></tr>
+<tr><td colspan=2>Assessments</td> <td></td> <td></td> </tr>
+<tr><td> &nbsp; &nbsp;</td><td>Quizzes:	</td><td> &nbsp; </td><td>15%</td></tr>
+<tr><td> &nbsp; &nbsp;</td><td>Midterm:	</td><td> &nbsp; </td><td>20%</td></tr>	
+<tr><td> &nbsp; &nbsp;</td><td>Final:	</td><td> &nbsp; </td><td>40%</td></tr>	
+</table>
+
+<p><b>Review Quizzes:</b> There will be weekly on-line review quizzes over the topics covered that week available on the class website. These quizzes are meant as learning exercises and may be taken as many times as you'd like (it's recommended you take each numerous times, ideally, until you get a 10 several times in a row).  In most cases, each time you take a review quiz, you'll get a random selection of questions over that weeks content. The highest grade you receive on the quiz will be the grade recorded for that quiz. (e.g. if you take a quiz 3 times, and score an 8, 10, and 6, the 10 is recorded). </p>
+
+<p><b>Assignments:</b>There will be several assignments given during the course, which will be networking-related exercises that we don't have time for during the class.  You'll need to do these outside of class, and you may seek assistance from other class members or the instructor if necessary to gain an understanding of how to do the tasks.  These will need to be submitted on time. Late assignments are 20% off per calendar day but assignments must be turned in before they are returned and discussed, which may be as soon as the next class day</p>
+
+<p><b>Quizzes:</b> There will be a weekly quiz over the topics covered the previous week which will assess how well you learned that content.  These quizzes will be given in class and consist of questions either exactly like, or very similar to, the questions available on the review quizzes and assignments. (if you take the review quiz a sufficient number of times, you will have seen all these questions previously). If you must miss class, you need to notify the instructor in advance (preferably via email) in order to be allowed to make up a quiz which was taken in class, and make-up quizzes will need to be taken outside of class before the following week's class.</p>
+
+<p><b>Exam:</b> 2 exams will be given, a midterm and a final.  Exam questions will be like or similar to those on the review quizzes and assignments.</p>
+
+<p>Grading scale: 90%-100% = A, 80%-89.9% = B, 70%-79.9% = C, 60%-69.9% = D, &lt; 60% = F</p>
+</div>
+
+<!-- =========== Misc ============ -->
+<div id="Misc" class="Content">
+<h2> Misc</h2>
+<p><b>Attendance:</b> Regular attendance is essential to your success in this course. Students are responsible for everything that takes place during class, whether covered in written materials or not.  Additionally, some of each class day will be devoted to hand-on activities, and if a class must be missed, there will not be time to make up those activities in the future.</p>
+
+<p><b>Professionalism:</b> All participants in the class will are required to conduct themselves in a courteous, professional manner at all times. This includes communications in person, via phone, via e-mail or through an online chat or discussion.</p>
+
+<p><b>Ethics: </b>Plagiarism or cheating of any variety will be dealt with in accordance with the policies expressed in the student handbook. Possible consequences for academic dishonesty are: receiving no credit for the assignment in question, failing the course, and/or appearing before the college disciplinary board.</p>
+
+<p><b>Food / Drink Policy:</b> Eating is not allowed while class is in session.  Drinking beverages is acceptable provided the beverage is in a sealable container and you aren't interfering with the learning environment of the class.</p>
+
+<p><b>Cell Phones:</b> Cell phones should not interfere with the learning environment of the class.  Each time your cell phone rings during class, &frac12; % will be deducted from your grade.  That's &frac12; % per ring, not per call, and if you phone plays music instead of ringing, every 3 seconds of music will be considered one ring.  If you believe you must have your phone on during class, please discuss this with the instructor before class begins to see if an exception will be allowed.  If the instructor's phone rings, everyone gets &frac12; %.</p>
+
+<p><b>Special Needs:</b> If you are a student with a disability and you believe that your opportunities to be successful in this class are affected by that disability, please contact the Clackamas CC Disability Resource Center.  Their website is <a href="http://www.clackamas.edu/DisabilityResourceCenter/" target="_blank">http://www.clackamas.edu/DisabilityResourceCenter/</a>.</p>
+
+<p><b>Incomplete Grades:</b>  An incomplete grade can be given at the discretion of the instructor if you have satisfactorily (C or better) completed at least 75% of the class work. Arrangements must be made with the instructor before finals week in order to be considered for an incomplete.</p>
+
+<p><b>Emergency Procedures:</b>  When a fire alarm sounds, all students are expected to exit the building immediately.  The security of items left behind is not guaranteed, however, so students should gather all personal belongings before proceeding to the nearest exit.</p>
+
+</div>
+
+
+<!-- =========== Schedule ============ -->
+<div id="Schedule" class="Content">
+<h2> Schedule</h2>
+<p>The outline below is tentative and subject to change as circumstances warrant</p>
+<blockquote>
+<table border="1" cellspacing="0" cellpadding="2">
+<tr>
+	<td class="Week">&nbsp; Week &nbsp;</td>
+	<td> Topic </td>
+	<td> Reading </td>
+</tr>
+
+<tr>
+	<td class="Week">1</td>
+	<td>Course Intro <br />Datacomm Basics</td>
+	<td>Web / Chapter 1</td>
+</tr>
+
+<tr>
+	<td class="Week">2</td>
+	<td>Network Models(OSI &amp; TCP/IP)</td>
+	<td>Chapter 2</td>
+</tr>
+
+<tr>
+	<td class="Week">3</td>
+	<td><span class="Holiday">Monday, 2/20 - MLKJ Holiday - no class</span><br>Cabling and Topology</td>
+	<td>Chapter 3</td>
+</tr>
+
+<tr>
+	<td class="Week">4</td>
+	<td>Ethernet</td>
+	<td>Chapters 4 &amp; 5</td>
+</tr>
+
+<tr>
+	<td class="Week">5</td>
+	<td>Review & Midterm Exam</td>
+	<td>&nbsp;</td>
+</tr>
+
+<tr>
+	<td class="Week">6</td>
+	<td>TCP/IP Basics</td>
+	<td>Chapter 7</td>
+</tr>
+
+<tr>
+	<td class="Week">7</td>
+	<td>TCP/IP continued...</td>
+	<td>Chapter 9 (partial)</td>
+</tr>
+
+<tr>
+	<td class="Week">8</td>
+	<td>Remote Connectivity<br><span class="Holiday">Thursday, 2/28 - Skills Contest - no class</span></td>
+	<td>Chapter 14</td>
+</tr>
+
+<tr>
+	<td class="Week">9</td>
+	<td>Wireless Networking</td>
+	<td>Chapter 15</td>
+</tr>
+
+<tr>
+	<td class="Week">10</td>
+	<td>Security</td>
+	<td>Chapter 16</td>
+</tr>
+
+<tr>
+	<td class="Week">Finals</td>
+	<td>Final Exam</td>
+	<td></td>
+</tr>
+
+</table>
+</blockquote>
+</div>
+
+
+</body>
+</html>

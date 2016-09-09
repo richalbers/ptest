@@ -1,0 +1,139 @@
+------------------------------------------
+Ch 15 - Registry, Boot Process, Misc
+	Registry
+	System and Boot Partitions and Files
+	XP Boot Process
+		boot.ini file details
+		ARC Naming Convention
+	Vista/7 Boot process
+	Task Manager
+	Performance Monitor
+
+------------------------------------------
+Registry
+	Database of System Information
+		Device Drivers
+		Services
+		Installed Applications
+		OS Components
+		User Preferences
+	Stored in files called hives
+	Hives are located in \Windows\System32		
+
+-------------------------------------------
+Viewing & Editing Registry
+	Manually viewed or edited using regedit/regedt32 
+	Registry Editor displayes: [[img http://2.bp.blogspot.com/_SeWKZN00zoE/TIR6KAFLSAI/AAAAAAAAAzw/OKenQ5603Bc/s1600/RegistryIntroduction2.jpg]]
+		keys & subkeys (appear as folders/subfolders)
+		values & data
+	Keys
+		HKEY_CLASSES_ROOT
+		HKEY_USERS 	
+		HKEY_CURRENT_USER
+		HKEY_LOCAL_MACHINE
+		HKEY_CURRENT_CONFIG 
+
+------------------------------------------
+System & Boot Partitions
+	Crazy partition naming convention
+		System Partition stores boot Files.
+		Boot Partition stores the rest of the OS 
+	XP Boot files:
+		ntldr
+		boot.ini (text file)
+		ntdetect.com
+		ntbootdd.sys (if using SCSI)
+	Vista/7 Boot files
+		BootMgr (Boot manager)
+		Boot Configuration Data (BCD) file
+		winload.exe (in Windows\System32)
+-------------------------------------------
+XP Boot Process
+	BIOS finds boot disk
+	MBR is loaded/run from boot disk
+	Boot sector program is loaded/run from active partition
+	NTLDR is loaded/run
+	boot.ini is processed/displayed
+	ntdetect is run
+	OS is loaded & run
+
+--------------------------------
+XP Boot.ini file
+	Contains boot info
+	Located in root of system drive
+	Boot Loader section
+		timeout value
+		Default OS location 
+	Operating Systems section
+		One entry for each OS to load
+		NT systems specified by:
+			ARC name (location)
+			Text to dispay on screen
+			Switches to pass to OS
+		DOS/9x sections specfied by drive letter
+
+---------------------------------
+ARC Naming convention
+	Used to specify location of OS to load
+	Paramenters
+		multi/scsi(0-x) - controller
+		disk(0-x) - disk for SCSI
+		rdisk(0-x) - disk for ATA
+		partition(1-x) - Partition
+	Example
+		multi(0)disk(0)rdisk(0)parition(1)\windows
+
+--------------------------------------------
+Vista/7 Boot Process changes
+	BootMGR replaces NTLDR
+	BCD (boot configuration data) replaces boot.ini file
+		Info is no long stored as text
+		BCDEdit must be used to modify it
+	Vista/7 support two firmware boot processes 
+		BIOS (Basic I/O System) - old
+		UEFI (Unified Extensible Firmware Interface) - new
+----------------------------------------------
+Vista/7 Boot Process
+	BIOS based boot Process
+		BIOS finds boot disk
+		MBR is loaded/run from boot disk
+		Boot sector program is loaded/run from active partition
+		BootMGR is loaded/run
+			BCD info is processed
+		if Vista/7 version is selected
+			BootMGR runs winload.exe
+			Winload.exe loads Kernel (ntoskrnl.exe)
+		if NT/NT/2K/XP system is selected
+			ntldr is run... (see XP boot process)
+	UEFI based boot process
+		UEFI loads BootMGR directly
+		The rest is the same as above
+--------------------------------
+Task Manager
+	Provides an overview of the current state of the computer
+	Lists apps, processes, performance overview, etc..
+	Allows termination of apps or processes
+	Run by:
+		cntl-alt-delete
+		Right-click on taskbar, select task manager
+		From control panel
+		and a few others...
+--------------------------------
+Performance Monitor
+	Available on Admin Tools menu
+	Visually displays performance data
+		in realtime
+		or from logs
+	Hundreds of performance counters can be tracked, such as:
+		CPU usage
+		Disk I/O reads/writes
+		Memory Page faults
+
+--------------------------------------------
+Summary
+	System and Boot Partitions
+	XP Boot Process
+	boot.ini file
+	ARC Naming Convention
+	Vista/7 Boot process changes
+--------------------------------------------

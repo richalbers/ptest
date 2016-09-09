@@ -1,0 +1,172 @@
+-----------------------------------------------------------
+JSON - part 1
+	At the end of this presentation you should be able to:
+		Explain what JSON is and what it is used for
+		Explain the JSON formatting rules
+		Create JSON text that defines an object or array of objects
+		Create a javascript object or array by parsing JSON text
+		Extract values from that object and/or array of objects
+
+-----------------------------------------------------------
+JSON Overview
+	JSON stands for JavaScript Object Notation
+	It is a lightweight data interchange format
+		i.e. data sent from the server to the client can be, and often is, formatted as JSON
+	JSON Features
+		It's based on Javascript Object Literal Notation
+		It's self-describing and easy to understand
+		It's an easier-to-process alternative to XML
+		It can be used in many langauges
+-------------------------------------------------------
+How JSON is typically used
+	Your webpage, running on the client, makes an AJAX call to a server for information
+	On the server, a program (oftentimes a PHP script) runs and
+		obtains the requested data from a database
+		formats it as JSON
+		returns it to client
+	The client (your webpage) then
+		converts the returned data into a javascript object
+			(very very easy to do with JSON-formatted text)
+		updates the DOM with data from the object	
+			(displaying information from the object)
+-------------------------------------------------------
+JSON Syntax Rules
+	Just like js object literal notation:
+		Data is in name:value pairs
+		Name:value pairs are separated by commas
+		Objects are inside curley braces
+		Arrays are inside square brackets
+	However unlike js Object Literal Notation:
+		With the name:value pairs, the name must be inside double quotes
+	Full documentation can be found at [[www.json.org!http://www.json.org]] 
+		Probably best to look at a few simple examples first
+-----------------------------------------------------------
+JSON Values
+	The types of values (in name:value pairs) can be:
+		A number (integer or floating point)
+		A string (in double quotes)
+		A Boolean (true or false)
+		An array (in square brackets)
+		An object (in curly brackets)
+		a null
+	This is the same as javascript literal notation
+------------------------------------------------------------------------
+JSON Examples
+	The following defines an object with 3 properties
+		[[code]]
+		{
+			"name": "Fido",
+			"weightLbs": 56.4,
+			"isCool": false
+		}
+	The following defines an object with an array
+		[[code]]
+		{
+			"name": "Fido",
+			"weightLbs": 56.4,
+			"isCool": false,
+			"toys": [ "stick", "ball" ]
+		}
+	Note: the property names are in doublequotes! 
+-------------------------------------------------------------------
+JSON array of objects
+	The following defines an array of objects
+		[[code]]
+		[
+			{ "name":"Fido", 	"weightLbs":56.4, 	"isCool":false },
+			{ "name":"Spot", 	"weightLbs":20, 	"isCool":false },
+			{ "name":"Snoopy", 	"weightLbs":32, 	"isCool":true }
+		]
+-----------------------------------------------------------------
+Parsing JSON text
+	JSON text can be parsed using
+		eval
+			javascript command that converts given text into javascript code and executes it
+		a JSON parser
+			special purpose command to parse ONLY JSON text
+	Eval
+		is quick and supported on all browsers
+		has security implications
+			it will parse and execute ANY javascript
+		should only be used if data came from known safe site
+	JSON Parsers
+		Are built into the latest browsers and strongly preferred over eval
+		Can be downloaded from json.org
+----------------------------------------------------------------
+Parsing examples
+	Using eval (using parse is preferred!)
+		[[code]]
+		// build JSON formatted string to represent data
+		// as it would be returned from the server
+		var jsonData = 
+			'{"name":"Pluto", "weightLbs":90, "isCool":false}';
+		&nbsp;
+		//create object by parsing text
+		var dogs = eval("(" + jsonData + ")");
+		&nbsp;
+	Using JSON.parse (built into latest browsers)
+		[[code]]
+		// build JSON formatted string to represent data
+		// as it would be returned from the server
+		var jsonData2 = 
+			'{	"name":"Spot", "weightLbs":20, "isCool":true, 
+				"toys": [ "mouse", "dish" ]}';
+		&nbsp;
+		//create object by parsing text
+		var dog5 = JSON.parse(jsonData2);
+-----------------------------------------------------------------
+Parsing Example 3
+	[[code]]
+		// build JSON formatted string to represent data
+		// as it would be returned from the server
+		var dataFromServer = '{'
+			+ '"name":"Spott", '
+			+ '"weightLbs":22, '
+			+ '"isCool":true, '
+			+ '"toys": [ "dish", "mouse" ] '
+			+ '}';
+		&nbsp;
+		//create object from JSON text
+		var dog6 = JSON.parse(dataFromServer);
+-----------------------------------------------------------------
+Parsing Example 4
+	[[code]]
+		&nbsp;
+		// build JSON formatted string to represent data
+		// as it would be returned from the server
+		var dataFromServer = '{ "dogs": ['
+			+ '{ "name":"Fido", 	"weightLbs":56.4, 	"isCool":false },'
+			+ '{ "name":"Spot", 	"weightLbs":20, 	"isCool":false },'
+			+ '{ "name":"Snoopy", 	"weightLbs":32, 	"isCool":true }'
+			+ ']'
+			+ '}';
+		&nbsp;
+		//create object (containing an array of objects) from JSON text
+		var data = JSON.parse(dataFromServer);
+-----------------------------------------------------------------
+Practice
+	Use jsFiddle to 
+		create a JSON formatted text string representing a book (title, author, isbn, inPrint)
+		Use parse to create an object from that text string
+		Display the book information in a div
+	Use jsFiddle to 
+		create a JSON formatted text string representing an array of books
+			for each book, define the title and author
+		Use parse to create an object from that text string
+		Display the book information for the 2nd book in a div
+-----------------------------------------------------------------
+Useful Links
+	[[ww.w3schools.com/json/default.asp!http://www.w3schools.com/json/default.asp]]
+-----------------------------------------------------------
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

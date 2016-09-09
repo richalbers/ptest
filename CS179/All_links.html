@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+<script language="javascript" type="text/javascript">
+function buildLinks() {
+	var sShowSlidesLink="https://dl.dropboxusercontent.com/u/56405057/MoodleDataStore/Presentations/ShowSlides.html";
+	var sClass="CS179";
+	var aPages=new Array(
+		"Ch00_DataComm",
+		"Ch02_NetworkModels",
+		"Ch03_TopologyAndCabling",
+		"Ch04_EthernetBasics",
+		"Ch05_ModernEthernet",
+		"Ch07_TCPIP_Basics",
+		"Ch14_RemoteConnectivity",
+		"Ch15_Wireless",
+		"Ch16_Security"
+	);
+	
+	var sLinks = "";
+	for (x=0; x<aPages.length; x++) {
+		var sLink = sShowSlidesLink + "?file=" + sClass + "/" + sClass + "_" + aPages[x] + ".dat";
+		var sATag = '<a href="' + sLink + '" target="_blank">' + aPages[x] + '</a>';
+		var sLine = "<li>" + sATag + "</li>";
+		sLinks+=sLine;
+	}
+	
+	document.getElementById("links").innerHTML=sLinks;
+}
+</script>
+</head>
+
+<body onload="buildLinks()">
+	<h1>CS 179 Presentation Links</h1>
+	<ul id="links"></ul>
+</body>
+</html>

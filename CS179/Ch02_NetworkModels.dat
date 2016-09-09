@@ -1,0 +1,81 @@
+--------------------------------
+Network Models
+	This presentation covers
+		Why have have layered networking models
+		OSI and TCP/IP model details
+		How the TCP/IP model (reality) works
+		IP and MAC address overview
+		Common protocols 
+
+--------------------------------------------
+Why layered models?
+	Networking is complicated. It addresses a large number of issues in both hardware and software.
+		What message format will be used between a browser a server?
+		How will garbled messages be handled?
+		How will addressing be handled?
+		How will I avoid sending two messages on the network cable at the same time?
+		What will the digital signals on the wire look like?
+	Complex problems are best solved by dividing them into many simpler problems
+	So we use Layers
+		Each layer handles it's particular responsibilities
+		Each layer communicates with the same layer at the other end of the connection
+		Each layer provides services to the layer above and utilizes services from the layer below
+
+--------------------------------
+OSI and TCP/IP models
+	OSI Model [[img images/NetworkModels.png]]
+		"Academic" model, not actually implemented
+		Appears in many network courses (textbooks) and on many certification exams (Network+, Cisco, etc.)
+		Contains 7 layers
+	TCP/IP Model
+		Used in real world
+		Has many similarities to OSI Model
+		Contains 4 layers (5 if you include the physical layer)
+			The different textbook/author's models can be viewed [[at this link!http://en.wikipedia.org/wiki/Internet_protocol_suite#Layer_names_and_number_of_layers_in_the_literature]]
+			The differences are academic, and aren't that significant.  Do not be alarmed.
+------------------------------------------
+How it works
+	Message originates at application layer [[img images/NetworkEncapsulation.png]]
+	Header and Footer (maybe) are added
+	Entire message (including header and footer) are passed down to next layer [[img http://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/IP_stack_connections.svg/500px-IP_stack_connections.svg.png]]
+	Message from upper layer (including header and footer) becomes the data for current layer
+	Process repeats at each layer until we get to physical layer 
+	Message is transmitted across the medium
+	Message is received by recipient and passed back up the stack, unpacked as we go up
+
+-------------------------------------------
+Addresses
+	There are two addresses we're concerned with
+		The final destination
+		The next stop along the way
+	The network layer packet header contains the final destination address 
+		It's an IP Address. For IPv4:
+			It's 4 bytes, each usually written in base 10, . delimited 
+			Each number can be 0-255
+			e.g. 10.23.123.56
+	The Link Layer frame header contains the address of the next stop along the way
+		It's a Physical address.  For Ethernet:
+			It's 6 bytes, written in hex, : or - delimited
+			e.g. 00:50:56:C0:00:01 or 00-50-56-C0-00-01
+			First three bytes specify vender
+
+------------------------------------------
+Protocols
+	Protocols (i.e. standards) are rules which govern the exchange of messages between computers
+	Each layer has protocols that specify how things look and work at that layer
+	Some Common Protocols
+		Application Layer
+			HTTP, HTTPS, SMTP, FTP
+		Transport Layer
+			TCP, UDP
+		Network Layer
+			IP
+--------------------------------
+Summary
+		Why have have layered networking models
+		OSI and TCP/IP model details
+		How the TCP/IP model (reality) works
+		IP and MAC address overview
+		Common protocols 
+
+--------------------------------

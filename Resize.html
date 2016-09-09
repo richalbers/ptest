@@ -1,0 +1,34 @@
+<html>
+<head>
+<title>Set Screen Size</title>
+
+<script>
+var myWindow=null;
+
+function openWin()
+{
+	myWindow = window.open("","","width=100,height=100"); // Opens a new window
+}
+
+function resizeWin(width, height)
+{
+	if(myWindow == null)
+		openWin();
+	myWindow.resizeTo(width,height);   // Resizes the new window
+	myWindow.document.write(width + "x" + height + "<br>");
+	myWindow.focus();                  // Assures that the new window gets focus -->
+}
+</script>
+</head>
+<body>
+<h3>4:3 aspect ratio</h3>
+<button onclick="resizeWin(800,600)">800x600</button> VGA <br>
+<button onclick="resizeWin(1024,768)">1024x768</button> 15", iPad <br>
+<button onclick="resizeWin(1280,1024)">1280x1024</button> 17, 19" <br>
+<h3>Widescreen (16:9 or 16:10)</h3>
+<button onclick="resizeWin(1440,900)">1440x900</button>
+<button onclick="resizeWin(1920,1080)">1920x1080</button>
+<button onclick="resizeWin(1920,1200)">1920x1200</button>
+<iframe></iframe>
+</body>
+</html>

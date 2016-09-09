@@ -1,0 +1,90 @@
+------------------------------------------
+XML Basics
+	At the end of this presentation you should be able to:
+		Explain what XML is and what it is used for
+		Explain the XML formatting rules
+		Create a properly formatted XML file to describe a given dataset
+		Use jQuery to fetch an XML file and access it's individual elements and thier attributes
+-----------------------------------------------------------
+Introduction
+	XML
+		stands for eXtensible Markup Language
+		is a markup langauge to encode data
+		has no pre-defined tags
+		is designed to be self-descriptive
+		is both human and machine readable
+		is the X in AJAX
+	Data sent from one computer to another can be formatted as XML
+------------------------------------------------------------
+XML Format
+	XML uses tags to define the data
+		Opening and closing tags go around the data
+		Tags can have attributes
+	An example:
+	[[code]]
+		&lt;?xml version="1.0"?&gt;
+		&lt;states&gt;
+			&lt;state&gt;
+				&lt;name big="no"&gt;Oregon&lt;/name&gt;
+				&lt;capital&gt;Salem&lt;/capital&gt;
+			&lt;/state&gt;
+			&lt;state&gt;
+				&lt;name big="yes"&gt;California&lt;/name&gt;
+				&lt;capital&gt;Sacremento&lt;/capital&gt;
+			&lt;/state&gt;
+		&lt;/states&gt;
+-----------------------------------------------------------------
+XML Rules
+	The XML Syntax Rules are as follows:
+		All XML elements must have a closing tag.
+		XML tags are case sensitive (ideally all lower-case)
+		All XML elements must be properly nested.
+		All XML documents must have a root element.
+		Attribute values must always be quoted.
+	An XML document that adheres to those rules is considered "[[well formed!http://en.wikipedia.org/wiki/Well-formed_document]]"
+	[[http://www.w3schools.com/xml/xml_syntax.asp!http://www.w3schools.com/xml/xml_syntax.asp]] provides examples of XML that follows the rules
+-----------------------------------------------------------------
+Practice
+	Create a XML file containing book info for a single book
+		File should be named book.xml
+		Information should consist of title, author, ISBN, and if the book is in print
+	Create a XML file containing book info for several books
+		File should be named books.xml
+		Information for each book should consist of title, author, ISBN, and if the book is in print
+-----------------------------------------------------------
+Parsing XML
+	jQuery can parse XML-formatted data into a object similar to the DOM, and then process it using jQuery functions typically used to process the DOM.
+		.parseXML() is a jQuery function that parses XML text and creates a valid XML document.
+		When the AJAX functions are used to fetch an XML file, they automatically parse the returned data just as .parseXML() would have done.	
+	Be aware the XML-parsed object is not like the JSON-parsed object, it's more like the DOM
+	w3schools has a [[diagram of the resulting tree!http://www.w3schools.com/Dom/]]
+-----------------------------------------------------------------
+Working with XML using jQuery
+	The following example
+		fetches an XML file
+		automatically parses it into a jQuery object 
+		uses find() to get specific nodes
+		uses text() and attr() to get data and attributes from nodes
+	Example that processes an XML file formatted as shown on the XML Format slide 
+		[[code]]
+		$.get( "states.xml", function( xmlData ) {	[[desc Fetches an xml file named states.xml<br>Parses the xml text into a jQuery document object which can be traversed (and manipulated) much like the DOM]]
+			$(xmlData).find("state").each( function() { [[desc find returns an array of state elements (there are several)<br>each() calls a function for each item in the array]]
+				alert("state found!");
+				alert( $(this).find("name").text() );	[[desc Finds the name element that is a child of this state element<br>The text of the element is the state name]]
+				alert( $(this).find("name").attr("big") ); [[desc Finds the name element's big attribute ]]
+			}); //each
+		}); //get
+	Note: mouseover each line to get a more detailed description of the line
+--------------------------------------------------------------------
+Practice
+	Create a web page that fetches and parses the XML file of book information you created in the previous practice
+--------------------------------------------------------------------
+	
+	
+	
+	
+	
+	
+	
+	
+	

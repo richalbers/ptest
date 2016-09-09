@@ -1,0 +1,69 @@
+
+Array basics
+
+Declaring
+
+	int list[5];
+	int list[5] = {0};
+	int list[] = {1,2,3,4,5};
+
+	first and last index
+	bounds checks
+
+Passing to Function
+
+	void printArray(const int list[])
+	{
+		....
+	}
+
+	....
+	
+	printArray(list);
+
+	pass by reference, use of const in parameter list
+	
+------------------------------------------------------------
+cstrings
+
+declaring
+
+	char name[10] = {'R', 'i', 'c', 'h', '\0'};
+	char name[10] = {"Rich"};
+	char name[] = {"Rich"};
+
+copying and comparing
+	can't use = to assign one to another
+
+	strcpy(dest,source);      //copy, can't use =
+	strcmp(string1, string2); //compare, can't use ==
+
+
+inputting
+	cin >> name	//accepts characters up until whitespace character
+
+	cin.get(str, n+1) //reads n chars or until eol
+
+--------------------------------------------------------------
+Two dimensional arrays
+
+declaring
+	
+	int list[2][4];
+	
+passing to function
+
+	void printArray(const int list[][2])
+	{
+		....
+	}
+
+	....
+	
+	printArray(list);
+
+
+c-string array (two diminsional array of chars)
+
+declaring
+	char weekNames[7][] = "

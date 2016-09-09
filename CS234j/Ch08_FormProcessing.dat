@@ -1,0 +1,278 @@
+---------------------------------------------------------------------
+Form Processing
+	At the end of this presentation you should be able to
+		Interact with form fields (select/get/set)
+		Explain the differnet methods of validating form data, and the pros and cons of each
+		Validate the fields on a form before it's submitted
+
+
+---------------------------------------------------------------------
+Forms
+	Forms are elements that allow you to gather data from the user and send it to a server
+	Common elements contained within a form can be
+		text input
+		radio buttons
+		checkboxes
+		and many more (especially with html5)
+	A complete list can be found on [[w3schools!http://www.w3schools.com/html/html_form_input_types.asp]]
+
+---------------------------------------------------------------------
+Example
+	The following example shows some basic form elements
+	[[code]]
+		<form>
+		Name: <input type="text"><br>
+		Hungry? <input type="checkbox"><br>
+		Favorite color: 
+		  <input type="radio" name="color" value="red" checked>Red
+		  <input type="radio" name="color" value="green">Green
+		  <input type="radio" name="color" value="blue">Blue
+		  <br>
+		  <button id="test">Test</button>
+		</form>
+	Note: We'll add a submit button later
+---------------------------------------------------------------------
+Practice
+	Copy the previous example code into [[jsFiddle!http://http://jsfiddle.net/]] to see what the fields look like
+	
+---------------------------------------------------------------------
+Selectors
+	There are selectors that work with form fields
+	Some examples are
+		:input
+		:text
+		:radio
+		:checkbox
+		:button
+	However, to select a specific field, it's best to give it an ID and select that (as there may be multiple of each type)
+---------------------------------------------------------------------
+Functions
+	There are numerous functions that work with form fields
+		.val() gets the value in a fields
+		[[code]]
+			var name = $('#name').val();
+			var color = $('input[name=color]:radio:checked').val();
+			//note: One of the radio buttons MUST be selected
+		.prop() get's a property (such as "checked")
+		[[code]]
+			var Hungry = $(':checkbox').prop('checked);
+		Note: see [[jQuery documentation for prop()!http://api.jquery.com/prop/]] for details on what is a property and what is an attribute
+---------------------------------------------------------------------
+Practice
+	Using your previous fiddle
+	Write an event handler so when the test button is clicked, the following values are displayed:
+		the value of the text field
+		the value of the selected radio button
+		wether the hungry checkbox is checked (checked property)
+
+---------------------------------------------------------------------
+Special Buttons
+	There are two special buttons that work with forms
+		submit - sends form data to the server
+		reset - resets input fields back to default values
+	The submit button requires the form element to specify 
+		an action (typically the web page to send the data to)
+		a method (how data will be delivered: either get or post)
+			get - adds data to URL
+			post - sends data "in the background"
+	Example:
+	[[code]]
+		<form 
+		 action="http://webdev.clackamas.edu/clackamas/richa/ShowGetPost.php" 
+		 method="get"
+		>
+			...
+			<button type="submit">Submit</button>
+			<button type="reset">Reset</button>
+		</form>
+---------------------------------------------------------------------
+Practice
+	Using your previous fiddle
+		Add the form attributes from the previous example
+		Replace the test button with the buttons from the previous example
+	Test it out.  Unfortunately, you'll find the submit button doesn't work in jsfiddle
+	Create a simple web page with the same form and try it again.  You should get a message from the server showing the data that was sent.  And how it was sent (either get or post)
+	Try both the get and post methods.  Notice you can see the data added to the URL with get, but not with post
+----------------------------------------------------------------------
+- - - - - - - - - - 
+	This page is intentionally left blank.
+	Please move along.
+-----------------------------------------------------------
+Data Validation
+	Data validation is the process of ensuring that a program operates on clean, correct and useful data
+	All data coming from the user must be validated
+	Why?
+		Operation typically depends on data
+			Bad data can result in unexpected operation
+		Making sure data is valid up-front makes for easier coding when dealing with the data (less error handling code needed througout program)
+		Putting bad data into a database can have lots of unintended consequences later on
+			ALWAYS VALIDATE DATA GOING INTO A DATABASE
+
+-----------------------------------------------------------
+When/Where/How
+	When?
+		Two possibilities
+			When user leaves field
+			When submit is pressed
+	Where?
+		Client side
+			faster response time
+			less network traffic
+		Server side
+			Can't be bypassed
+		I'd recommend both for data going into database
+	How? (on client)
+		HTML5
+		Custom Javascript
+		Using a JQuery plugin
+
+-----------------------------------------------------------
+HTML5
+	HTML5 provides built in validation
+	Implemented using [[new input field types/attributes!http://www.w3schools.com/html/html5_form_input_types.asp]]
+	Pros
+		Very simple to implement
+		Covers common things
+	Cons
+		Not universally supported 
+		Can't validate based on data from server
+		Difficult to combine with custom validation and achieve same look and feel
+----------------------------------------------------------------------
+- - - - - - - - - - -
+	This page is intentionally left blank.
+	Please move along.	
+-----------------------------------------------------------
+Custom Javascript
+	You can write javascript to validate
+		fields when you leave them
+			onblur event (.blur() in JQuery)
+		or the entire form when you push submit 
+			$('form').submit()
+				if it returns false, action is NOT done
+				if it returns true, action is done
+	Pros
+		Is entirely under your control
+		All things are possible
+	Cons
+		Requires a fair amount of code (relative to the other solutions)
+			You need to write validation routines
+			You need to create way to display/clear error messages
+----------------------------------------------------------------------
+Practice
+	Add an event handler to do data validaion on the form when the submit button is pressed
+		If the name < 2 characters
+			insert an error message after the name
+			set the focus on the name (.focus())
+			return false
+		If the hungry checkbox isn't checked, confirm that (using confirm() and check if if they changed their mind.
+----------------------------------------------------------------------
+Misc
+	Additional Event Handlers
+		.blur() - event that is triggered when focus leaves a field
+		.change() - triggered when menu selection is made
+	Enabling/disabling form elements	
+		.prop('disabled', true);
+		.prop('disabled', false);
+	Hiding/showing elements
+		.hide()
+		.show()
+----------------------------------------------------------------------
+- - - - - - - - - - -
+	This page is intentionally left blank.
+	Please move along.
+----------------------------------------------------------------------
+.validate plugin
+	The jQuery valiation plug-in is a popular and easy way to do form field validation
+		Plugin is named jquery.validate.min.js
+		Plugin can be downloaded from http://jqueryvalidation.org
+			Note: download contains a lot of extra stuff you don't need
+			Just pull out jquery.validate.min.js
+	To use it (in it's simplest form)
+		Include the script jquery.validate.min.js after including jQuery
+		Give your form an ID
+		Specify the "validation rules" to apply to elements by adding them to appropriate class(es) 
+			These classes are described on the next page
+		In $(document).ready, call $(your_form_id).validate();
+
+----------------------------------------------------------------------
+Rule classes
+	Basic validation can be done by adding elements to one or more of the following classes (then calling validate)
+		required - make field required
+		date - verifies it's a validly formatted date
+		url - verifies it's a validly formatted URL
+		email - verifies it's formatted as an email address
+		number - must be numeric digits (including -, and .)
+		digits - must include only numeric digits 
+		creditcard - must be validy formatted credit card#
+----------------------------------------------------------------------
+Error Messages
+	You can add a custom error message by includeing a title attribute on the element being validated
+	[[code]]
+		<input name=name" type="text" class="required" 
+		       title="Please enter your full name (first last).">
+----------------------------------------------------------------------	
+Advanced Rules
+	You can pass the .validate() function an object that specifies the rules to apply to each field
+	[[code]]
+		$('#myFormId').validate( {
+			rules: {
+				name : 'required',
+				email : {
+					required : true,
+					email : true
+					},
+				birthdate : {
+					date : true,
+					required : true
+					},
+				password: {
+					required : true
+					rangelength:[8,16]
+					}
+				confirm: {
+					equalTo : '#passwd'
+					}
+			}
+		});
+----------------------------------------------------------------------
+Rules
+	The rules can be any of the following
+		minlength : 5
+		maxlength : 10
+		rangelength:[5,10]
+		min : 10
+		max : 1000
+		range: [10, 1000]
+		equalTo : '#id_of_field_to_match'
+-----------------------------------------------------------------------
+Custom Messages	
+	You can add custom messages by specifying a message property in the object sent to validate
+	[[code]]
+		$('#myFormId').validate( {
+			rules: {
+				name : 'required',
+				email : {
+					required : true,
+					rangelength : [8,10]
+				},
+			},
+			messages: {
+				email : {
+					required : "You must enter an email address",
+					rangelength : "Password must be between 8 and 10 characters"
+				}
+			}
+		});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		

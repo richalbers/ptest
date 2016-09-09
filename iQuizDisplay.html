@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<!-- 
+	HTML presentation of interactive quiz 
+	Quiz questions are passed in via args  
+	Should be called as follows:
+		iQuizDisplay.html?QuizID=SomeID&Questions=Some_long_properly_formatted_set_of_questions
+	Data file must be formatted properly
+-->
+<html> 
+<head>
+  <link rel="stylesheet" type="text/css" href="PresentationResources/Presentation.css" />
+  <script type="text/javascript" src="PresentationResources/jquery-1.8.2.min.js"></script>
+  <script type="text/javascript" src="PresentationResources/PageStyle.js"></script>
+  <script type="text/javascript" src="PresentationResources/iQuizDisplay.js"></script>
+<style>
+body {
+	text-align:center;
+	font-size: 30px;
+}
+	
+#Content {
+	width:800px;			/*if changed, also change margin-left*/
+	height: 600px;
+	position: absolute;		/*so we can position controls at the bottom*/
+	top: 50px;
+	left: 50%;				/*centers horizontally*/
+	margin-left: -400px;	/*centers horizontally - half the width*/
+	padding: 10px;
+	border:1px dashed white;
+	zbackground-color:#eee;
+}	
+
+section { 
+	zborder: 1px solid red;
+	margin: 0px;
+	padding: 0px;
+	padding: 15px;
+}
+
+#question {
+	text-align: left;
+	margin-left: 35px;   /*puts question number to left of paragraph text*/
+	text-indent: -35px;  /*puts question number to left of paragraph text*/
+}
+
+#answers {
+	text-align: left;
+}
+
+#controls {
+	text-align: center;
+}
+
+#controls {
+	height: 80px;
+	width: 100%;			
+	position: absolute;
+	bottom: 10px;
+}
+
+#controls {
+	display: table;
+	padding: 10px;
+	font-size: 24px;
+}
+
+#ccenter {
+	display: table-cell;
+	padding-left: 10px; 
+	padding-right: 10px;
+}
+
+#cleft, #cright {
+	display: table-cell;
+	width: 40px;
+}
+
+#buttonClose {
+	position: absolute;
+	top: -15px;
+	right: -15px;
+	font-size: 25px;
+	font-weight: bold;
+	background-color: red;
+	color: white;
+	border-radius: 15px;
+}
+
+#buttonClose:hover {
+	font-size: 30px;
+	top: -20px;
+	right: -20
+	px;
+}
+
+.responseIndicator {
+	background-color: aqua;
+	color: black;
+	padding: 4px;
+	border-radius: 4px;
+}
+</style>
+ </head>
+
+<body>
+	<div id="Content">
+		<button id="buttonClose">X</button>
+		
+		<section id="question">
+			Javascript puts current question here
+		</section>
+		
+		<section id="answers">
+			Javascript puts current answers here
+		</section>
+		
+		<section id="controls">
+			<div id="cleft">
+				<button id="buttonResponses">Show Responses</button>
+			</div>
+			<div id="ccenter">
+				Javascript puts student response grid here<br>
+				Each indicator should be in the class "responseIndicator"
+			</div>
+			<div id="cright">
+				<button id="buttonPrevious">Previous Question</button>
+				<button id="buttonNext">Next Question</button>
+			</div>
+		</section>
+
+	</div>
+</body>
+</html>

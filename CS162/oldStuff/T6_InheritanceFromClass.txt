@@ -1,0 +1,50 @@
+//might not be perfect
+
+#include <iostream>
+
+using namespace std;
+class Animal {
+private:
+	int mWeightLbs;
+	int mNumLegs;
+public:
+	Animal () {
+ mWeightLbs = 0; mNumLegs = 0;
+ cout << "Animal constructor called \n";
+	}
+	Animal(int weightLbs, int numLegs) {
+ mWeightLbs=weightLbs;
+ mNumLegs=numLegs;
+ cout << "animal constructor 2 called\n";
+	}
+	void feed() {mWeightLbs++; };
+
+};
+
+//derive a new class from Animal.
+class Bird : public Animal {
+private:
+	bool mItCanFly;
+public:
+	Bird() { 
+ mItCanFly=true;
+ cout << "Bird constructor called\n";
+	}
+	Bird(int weightLbs, int numLegs, bool CanItFly) 
+ : Animal(weightLbs, numLegs)
+	{
+ mItCanFly = CanItFly;
+ cout << "Bird constructor 2 called \n";
+	}
+};
+
+
+
+void main() {
+	Bird tweety(1,2,true);
+	tweety.feed();
+
+
+	cin.get();
+
+}

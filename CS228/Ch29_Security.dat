@@ -1,0 +1,131 @@
+-------------------------------------------
+Ch29 - Security
+	Security Issues
+	Access Control
+	Common Security Policies
+	Event Logging
+	Malicious Software
+	Virus Recovery
+	Firewalls
+	Encryption
+	Wireless Security Concepts
+
+--------------------------------------------
+Security Issues
+	Unauthorized Access
+		Information
+		Computers
+		Networks
+	Data Destruction
+	Hardware Failures
+	Malware
+
+--------------------------------------------
+Access Control
+	Destroy Information 
+		Prevents damage via dumpster diving
+	Train Users to recognise Social Engineering
+		Telephone Scams
+		Phishing
+	Secure Physical Access to prevent infiltration
+		Lock Doors
+			Train authorized users to avoid being tailgated
+		Lock Computer Systems
+			Unattended systems should have screen lock, requiring password to get access
+		
+--------------------------------------------
+Access Control (continued)
+	Authentication
+		Password Policy
+		Smart cards
+		Biometric Devices
+	File System Access
+		Use NTFS (not FAT32)
+		File Encryption
+	Security Policies
+		Local Security Policy
+		Group Policy (domain)
+
+--------------------------------------------
+Common Security Policies
+	Prevent Registry Edits
+	Prevent access to the Command Prompt
+	Log on Locally
+	Shut System Down
+	Minimum Password Length
+	Account Lockout Threshold
+	Disable Windows Installer
+	Printer Browsing
+--------------------------------------------
+Event Logging
+	Many security-related events get logged
+		On Windows, the event viewer allows viewing the security logs
+		Admins should review the logs periodically to check for security-related violations
+	Auditing can be set up to log info about
+		logons (valid and invalid) & Logoffs
+		file accesses (attempted or successful)
+	Incident reporting is part of an overall system that allows all security info to be gathered in one place
+
+--------------------------------------------
+Malicious Software
+	Types
+		Grayware
+			Pop-ups
+		Spyware - logs your activity
+		Spam - unwanted email
+		Virus - replicates/activates
+		Worms - replicates over networks
+		Macro - Run within apps that support macros
+		Trojan Horses - Pretends to be something it's not
+		Rootkit - conceals itself using low-level code
+	Anti-virus Software
+		Identify most malicious software by it's "signature"
+		Must keep signature list current
+--------------------------------------------
+Virus Recovery
+	Recognize
+		Notice you have a problem
+	Quarantine
+		Keep it from spreading
+	Search and Destroy
+		Use anti-virus software to remove infection
+	Remediate
+		Repair any damage done
+	Educate
+		Instruct users on how to avoid installing malicious software
+	
+--------------------------------------------
+Firewalls
+	Firewalls block traffic based on ports/services  [[img http://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Firewall.png/300px-Firewall.png]] 
+	Firewalls can be on individual computers or routers
+		Use of both is recommended
+	Windows 7 configures firewall and network services based on network type
+		Home / Work
+		Public Location
+--------------------------------------------
+Encryption
+	Encryption is used anytime sensitive data needs to be sent across a possibly insecure network
+	Kerberos is used when logging into a network (Windows Domain) 
+	SSL / HTTPS are used for secure browsing
+		This is based on Public/Private key encryption 
+		Public key is delivered in digital certificate, which is signed b a trusted authority
+	Wireless networking can be encrypted using WEP, WPA, or WPA2
+--------------------------------------------
+Wireless Security Concepts
+	SSID broadcast
+	Encryption
+		WPA or WPA2
+	Mac Address Filtering
+	WAP Username and Password
+--------------------------------------------
+Summary
+	Security Issues
+	Access Control
+	Common Security Policies
+	Event Logging
+	Malicious Software
+	Virus Recovery
+	Firewalls
+	Encryption
+	Wireless Security Concepts
+--------------------------------------------

@@ -1,0 +1,141 @@
+------------------------------------------
+AJAX Basics
+	Introduction
+	XMLHttpRequest object
+		properties
+		methods
+		event handlers
+	Example code
+		Synchronous
+		Asynchronous
+	Class Exercise
+------------------------------------------
+Introduction
+	AJAX stands for
+		Asynchronous
+		Javascript
+		and
+		XML
+	AJAX allows your javascript to fetch data from a web server and update the existing page
+		URL used is subject to "same origin policy"
+	Data returned can be in any format
+		text, html, XML, JSON
+	AJAX functionality is encapsulated in the XMLHttpRequest object
+------------------------------------------
+XMLHttpRequest object
+	This object allows javascript to fetch web pages
+	It can make both synchronous and asynchronous fetches
+		Syncronous calls "block" and are not recommended
+	It's implemention varies slightly between browsers
+	Object instantiation is as follows:
+		[[code]]
+		&nbsp;
+		var xmlhttp;
+		if (window.XMLHttpRequest)  // decent browser
+			xmlhttp=new XMLHttpRequest();
+		else // IE6, IE5
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+
+---------------------------------------------
+XMLHttpRequest Properties	
+	readyState
+		0=uninitiaized, 1=loading, 2=loaded, 3=interactive, 4=complete
+	status		- status code 
+		200=OK, 404=page not found, etc..
+	statusText	- status code as text 
+		"OK", "Not Found", etc..
+	responseText - response as string
+	responseXML  - response as XML document
+	other ie8 specific ones...
+
+---------------------------------------------	
+XMLHttpRequest Methods
+	Necessary ones
+		open(method, filename, [async],[username],[password[)
+		send(data)
+	Others
+		abort()
+		getResponseHeader(header)
+		getAllResponseHeaders()
+		setRequestHeader(header, value)
+	
+---------------------------------------------
+XMLHttpRequest	Event Handlers
+	onreadystatechange()
+		This is called when an asynchronous call returns data
+
+	other browser specific ones...
+	details at: [[http://www.javascriptkit.com/jsref/ajax.shtml!http://www.javascriptkit.com/jsref/ajax.shtml]]
+
+-----------------------------------------------
+Simple synchronous example (not recommended)
+	[[code]]
+		&nbsp;
+		var sPageName="somefile.txt";
+		var xmlhttp;
+		&nbsp;
+		//create and initialize html request object
+		if (window.XMLHttpRequest)  // decent browser
+			xmlhttp=new XMLHttpRequest();
+		else  				// IE6, IE5
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		&nbsp;
+		//send request  and get result 
+		xmlhttp.open("GET", sPageName, false);	 //false = sync
+		xmlhttp.send(); 	//blocks...
+		document.getElementById("divId").innerHTML=
+													xmlhttp.responseText;
+	
+-----------------------------------------------
+Simple asynchronous example 
+	[[code]]
+		var sPageName="somefile.txt";
+		var xmlhttp;
+		
+		&nbsp;
+		//create and initilaze html request object
+		if (window.XMLHttpRequest)  // decent browsers
+			xmlhttp=new XMLHttpRequest();
+		else  						// IE6, IE5
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		
+		&nbsp;
+		//set up callback
+		xmlhttp.onreadystatechange=function() {
+			if (xmlhttp.readyState==4 && xmlhttp.status==200)
+				document.getElementById("divId").innerHTML=
+														xmlhttp.responseText;
+		}
+
+		&nbsp;
+		//send request
+		xmlhttp.open("GET", sPageName, true);	 //true=async
+		xmlhttp.send();
+	
+-----------------------------------------------
+Class Exercise
+	Create Example Page to see operation in action
+	html contains:
+		textbox for filename
+		button to do sync request
+		button to do async request
+		button to do async request with all results
+		div for results
+	javascript contains
+		routine that does sync request for filename, puts final results in div
+		routine that does async request for filename, puts final results in div
+		routine that does async request for filename, puts results of every onreadystatechange in div
+		Use timer to show "progress bar"
+------------------------------------------
+Summary
+	Introduction
+	XMLHttpRequest object
+		properties
+		methods
+		event handlers
+	Example code
+		Synchronous
+		Asynchronous
+	Class Exercise
+
+------------------------------------------

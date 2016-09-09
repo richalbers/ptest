@@ -1,0 +1,151 @@
+--------------------------------
+TCP/IP Basics
+	This presentation covers the following topics
+		Why We Need Layer 3 Addresses and Protocols
+		History
+		TCP/IP Properties
+		IP classes (Classful)
+		Private IPs
+		Classful Addressing Problems
+		CIDR
+		Static vs Dynamic Addresses
+		Application Layer Protocols
+		Other Layer Protocols
+		Commands
+--------------------------------
+Why We Need Layer 3 Addresses and Protocols
+	Issues
+		There were (are) several different physical layers
+			Ethernet, Token Ring, etc..
+		A computer's LAN (i.e. location) can't be identified by it's physical layer address (makes routing impossible)
+		The physical layer depends on broadcasts to find each other.  This won't work with huge numbers of computers over long distances
+	Layer 3 & 4 facilitates different computers on different LANS with different data link/physical layers to communicate
+
+---------------------------------
+History
+	There were once 4 common layer 3/4 suites
+		TCP/IP (Unix)
+		NetBeui (Microsoft)
+		IPX/SPX (Novell)
+		Appletalk (Apple)
+	Key internet services (Email, then the Web) run on TCP/IP, and everyone wants/needs those services, so companies all dropped their suite in favor of TCP/IP
+
+--------------------------------
+Basic TCP/IP Properties
+	IP Address
+		provides unique address for each computer on network
+		v4 addresses are a 4 byte "dotted quad" 
+		for example: 145.62.1.36
+	Subnet Mask
+		Specifies which part of IP address is the network portion and which part is the host portion
+		In classful addressing, 255's followed by 0's
+	Gateway
+		IP address of the router that packets destined for computers not on the LAN (local network) are sent
+	All these properties are configured by the network admin
+----------------------------------
+Additional Properties
+	DNS Server
+		IP address of a computer that can determine the IP address of a computer given it's host name
+		A computer typically has several DNS server addresses listed in case one is down..
+---------------------------------
+IP classes (Classful)
+	Class A 
+		IP: 1-126.h.h.h
+		SN: 255.0.0.0
+		126 networks, 16M+ H/N
+	Class B
+		128-191.n.h.h
+		SN: 255.255.0.0
+		16K Networks, 65K H/N
+	Class C
+		192-223.n.n.h
+		SN: 255.255.255.0
+		2M Networks, 256 H/N
+
+--------------------------------
+Private IPs
+	Private IPs NEVER appear on the internet
+	They're used only on private networks
+	Computers using them MUST use NAT to connect to the internet
+	Class A
+		10.0.0.0-10.255.255.255
+	Class B
+		172.16.0.0-172.31.255.255
+	Class C
+		192.168.0.0-192.168.255.255
+--------------------------------
+Classful Addressing Problems
+	Classes weren't flexible enough
+		There were too few Class A and B networks
+		Class A and B networks provided too many hosts
+		Class C didn't allow enough hosts
+	Solutions
+		CIDR (Classless InterDomain Routing) 
+		NAT (Network Address Translation)
+		IPv6 (IP, version 6)
+--------------------------------
+CIDR 	
+	Allows the break between Network and Host to occur somewhere other than a .
+	Resulting subnet masks (when written in Base 10), don't have just 255s and 0s.
+	Notation
+		IP Address/bits in subnet mask
+		For Example:
+			12.34.0.0/16
+			190.24.56.0/24
+	CIDR and Subnetting are covered in more detail in CS229
+
+--------------------------------
+Static Vs Dynamic Addresses
+	Static
+		Addresses that don't change
+		Used by Servers, Printers, etc..
+	Dynamic
+		Addresses that can change
+		Used by client machines
+		Typically assigned via DHCP Server
+		Or, more rarely, by APIPA (Automatic Private IP Addressing) process
+			Assigns 169.254.x.x address
+
+--------------------------------
+Application Layer Protocols
+	The following are common application layer protocols
+		SMTP - Simple Mail Transport Protocol 
+		POP - Post Office Protocol
+		FTP - File Transport Protocol
+		HTTP - HyperText Transfer Protocol
+		HTTPS - Hypertext Transfer Protocol Secure
+		SNMP - Simple Network Management Protocol
+	There are many many more...
+
+--------------------------------
+Other Layer Protocols
+	Transport
+		TCP - Transmission Control Protocol
+		UDP - User Datagram Protocol
+	Network
+		IP - Internet Protocol
+	Network/Datalink
+		ARP - Address Resolution Protocol
+
+--------------------------------
+Commands
+	IPConfig
+	Ping
+	TraceRt (trace route)
+	arp
+
+--------------------------------
+Summary
+	Why We Need Layer 3 Addresses and Protocols
+	History
+	TCP/IP Properties
+	IP classes (Classful)
+	Private IPs
+	Classful Addressing Problems
+	CIDR
+	Static vs Dynamic Addresses
+	Application Layer Protocols
+	Other Layer Protocols
+	Commands
+
+--------------------------------

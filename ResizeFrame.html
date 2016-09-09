@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>Set Screen Size</title>
+
+<script>
+var myWindow=null;
+
+function resizeFrame(width, height)
+{
+	f=document.getElementById("pageFrame");
+	f.width = width;   // Resizes the new window
+	f.height = height;
+}
+</script>
+</head>
+<body style="background-color: gray">
+4:3 aspect ratio:
+<button onclick="resizeFrame(1024,768)">1024x768  (iPad2) </button>
+<button onclick="resizeFrame(1280,1024)">1280x1024 (17-19")</button>  
+ | 
+Widescreen (16:9 or 16:10)
+<button onclick="resizeFrame(1440,900)">1440x900</button>
+<button onclick="resizeFrame(1920,1080)">1920x1080</button>
+<button onclick="resizeFrame(1920,1200)">1920x1200</button> 
+<br>
+<iframe id="pageFrame" src="http://www.nbcnews.com"></iframe>
+</body>
+</html>

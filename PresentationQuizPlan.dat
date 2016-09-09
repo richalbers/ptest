@@ -1,0 +1,89 @@
+--------------------------------
+Ch 6 - CPUs
+	Core Components
+	Items Affecting Performance
+	CPU Sockets
+	Intel Desktop CPUs
+	AMD Desktop CPUs
+	Other CPUs
+	Cooling
+	Misc Terms
+	Additional Reading
+-----------------------------------
+Core Components
+	Registers
+	ALU (Arithmetic Logic Unit)
+	FPU (Floating Point Unit)
+	Address/Data Bus	
+	Cache (L1, L2, L3)
+
+-----------------------------------
+iQuiz
+Q: How many legs does a dog have?
+	Unknown
+	57
+	32 
+	5
+Q: Which of the following is 4?
+	1
+	2
+	3
+	4
+Q: This statement is true
+	true
+	false
+	
+--------------------------------------
+
+When quiz page is to be displayed
+	Generate QuizID (see below)
+	Pack up questions in var=val list
+	if instructor computer
+		Create frame with iQuizDisplay.html loaded (from quiz_server), passing it QuizID and questions
+	if student computer
+		create frame with iQuizAnswerPad.html, passing it QuizID 
+
+quizID comes from quiz data file so students and instructor both have it.  (Page title + some hash)
+StudentID - generated on user machine to be unique (quizID + large random number?)
+
+iQuizDisplay - returns html page
+	Javascript 
+		reads quiz questions from arg list
+		displays answer pad config instructions
+		Calls iQuizController  quizID=someUID	action=initialize
+			Creates appropriate DB records (with quizID)
+			Erases Answers (DB)
+
+When instructor clicks next 
+	javascript
+		displays next question
+		calls iQuizController.php    quizID=someID		action=erase
+			Erases Answers(DB)
+			returns OK
+	
+When instructor clicks ShowAnswers
+	javascript
+		calls iQuizController.php	quizID=someID		action=GetStudentAnswers
+			returns student answers
+		updates page with student selections
+		
+iQuizAnswerPad.html	returns AnswerPad page 
+	javascript - generates UserID
+		
+When students select an answer:
+	Javascript
+		calls iQuizController.php	quizID=someID
+			Answer is saved to database (overwriting any previous answer?)
+		
+----------------------------------------
+Summary 
+	Core Components
+	Items Affecting Performance
+	CPU Sockets
+	Intel Desktop CPUs
+	AMD Desktop CPUs
+	Other CPUs
+	Cooling
+	Misc 
+	Additional Reading
+--------------------------------

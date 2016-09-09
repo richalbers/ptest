@@ -1,0 +1,137 @@
+------------------------------------------
+Ch 19 - Troubleshooting Boot and App Problems
+	Hardware Boot issues
+	XP pre-GUI Boot Issues
+	Win 7 pre-GUI Boot Issues
+	Windows Repair Environment (WinRE)
+	Boot Configuration Data
+	Advanced Startup Options
+	Fixing the Registry
+	GUI Troubleshooting tools
+	Application Problems
+
+------------------------------------------
+Hardware Boot Issues
+	Nothing on screen?
+		Hardware issues
+			check simple things first (connections/switches/etc.)
+			Then try replacing components
+	"No boot device detected" message
+		Booting off wrong disk?  
+			Check if CD/thumb drive's present
+			Check CMOS boot drive order
+
+-------------------------------------------
+XP Pre-GUI Boot Issues
+	Boot Errors
+		"NTLDR Bad or Missing" [[img http://bcrawfordjr.files.wordpress.com/2009/03/r.png]]
+		or "Invalid Boot.ini"
+	Solutions
+		Boot to recovery console off XP Media (provides a command line interface)
+		Run following commands [[img http://4.bp.blogspot.com/-QvnlbRV1gqA/T0iIegOHUNI/AAAAAAAAAOA/_E0zgXjwv-E/s1600/rc_login.jpg]]
+			fixmbr	(fixes MBR)
+			fixboot (fixes boot sector)
+			copy d:\i386\ntldr c:\
+			copy d:\i386\ntdetect.com c:\
+			bootcfg /rebuild  (fixes boot.ini)
+		If that all fails, use ASR (hah!)
+		Start reinstall, choose repair option
+--------------------------------------------
+Vista/7 Pre-GUI boot Issues
+	bootmgr and BCD are the critical boot files that may get corrupt
+	WinRE (Recovery Environment) allows you to fix boot issues [[img http://www.leinss.com/images/winre3.jpg]]
+		It replaces XP's Recovery Console
+		It includes several utilities to diagnose and fix boot issues
+	WinRE runs within WinPE (preinstallation environment)
+---------------------------------------------
+WinRE continued...
+	WinRE can be loaded 
+		From the "Advanced Boot Options Menu"  [[img images/Win7_ABO.jpg]]
+			if you have boot isssues, you might not get to that screen
+		By booting off the Win 7 DVD and choosing repair (preferred)
+		From a previously created system repair disk
+			Control Panel | System and Security | Backp and Restore | Create Repair Disk
+------------------------------------------
+WinRE - Startup Repair
+	Repairs Registry (using backup copy stored on disk)
+	Restores critical system and driver files
+	Runs equivalent of XP's fixboot and fixmbr
+	Rolls back non-working drivers
+	Uninstallls any incompatible service packs and patches
+	Runs chkdsk
+	Runs memory test
+------------------------------------------
+WinRE - other options
+	System Restore
+		Restores from restore point
+	System Image Recovery
+		Allows you to restore from a previously created system image (backup created using Backup Tool)
+	Windows Memory Diagnostics
+		Runs memory diagnositic tool
+	Command Prompt (GUI's are for the weak!)
+		Useful Commands
+			bootrec [/fixboot | /fixmbr | /scanos | /rebuildmbr]
+			reg
+------------------------------------------
+Working with BCD
+	Boot Configuration Data consists of boot configuration parameters and how the operating system is started 
+	In XP, this was stored in boot.ini
+		text file
+		editable with notepad
+	In Vista/7 it's stored in BCD file 
+		binary file
+		Edited with bcdEdit
+			Not user friendly, 3rd party tool, EasyBCD, is easier
+--------------------------------------------
+Advanced Startup Options
+	If windows hangs when startup image is displayed (GUI can't be loaded), you need to use advanced startup options [[img http://www.maximumpc.com/files/u21826/W7-RE02.jpg]]
+	Boot system, press F8 after POST 
+
+--------------------------------------------
+Fixing Registry
+	A corrupt registry could keep system from booting
+	XP has a backup copy of the original registry in \windows\repair
+		You could Boot to the recovery console and copy these over corrupt registry files, but since they're old and out of date it's pointless....
+	Vista/7 has a recent backup of the registry in \windows\system32\config\RegBack
+		Boot to WinRE, run reg command, then copy the backup files over the current versions
+
+--------------------------------------------
+Troubleshooting tools in GUI
+	Task Manager (cntrl-alt-del)
+		Lets you kill run-away processes
+	Services (on admin tools menu)
+		Lets you configure service startup and error recovery
+	Event Viewer (on Admin Tools menu)
+		Three error logs
+			Application, Security, System
+		Errors include links to Microsoft.com help
+		New interface in Vista/7
+	System Restore (discussed previously)
+--------------------------------------------
+New 7 tools
+	Action Center (control panel)
+		Displayes significant event messages
+			Security
+			Maintenance
+	Performance Info and Tools (control panel)
+		Rates system performance - shows weak link
+--------------------------------------------
+Application Problems
+	Installing or Uninstalling apps takes admin privilages
+	Some apps depend on certain OS subsystems such as .NET to be installed and up-to-date
+	Some apps are written for prevous versions of Windows and need to be run in compatibilty mode
+		Right-click on app, go to compatibilty tab
+	Many apps are dependent on specific versions of DLLs
+		Use google to find solution/DLL
+--------------------------------------------
+Summary
+	Hardware Boot issues
+	XP pre-GUI Boot Issues
+	Win 7 pre-GUI Boot Issues
+	Windows Repair Environment (WinRE)
+	Boot Configuration Data
+	Advanced Startup Options
+	Fixing the Registry
+	GUI Troubleshooting tools
+	Application Problems
+--------------------------------------------

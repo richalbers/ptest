@@ -1,0 +1,122 @@
+------------------------------------------
+Ch 24 - The Internet
+	Overview
+	Tiers
+	Connecting
+		Dialup
+		ISDN
+		DSL
+		Cable
+		Wireless
+	Services
+------------------------------------------
+Overview
+	Internet is the global network of interconnected computers
+	Utilizes the TCP/IP protocol
+	Large companies provide high-speed backbone
+	Smaller companines provide regional service
+	ISP (Internet Service Provider) provides customers access to the network
+
+------------------------------------------
+Tiers
+	Companines that own/operate the physical links are broken into Tiers
+		[[Tier 1!http://en.wikipedia.org/wiki/Tier_1_network]]
+			The do not pay anyone for connections/traffic
+			They offer "free peering" to each other (they'll carry other Tier 1's traffic for free)
+			Oftentimes considered the backbone of the internet
+		Tier 2 
+			May peer with some other networks
+			Pay for connections to other (Tier 1 or 2) networks
+		Tier 3
+			Pay for all their connections/traffic
+
+------------------------------------------
+Connecting
+	There are numerous ways for customers to connect to the Internet
+		Dialup
+		ISDN
+		DSL (ADSL)
+		Cable
+		Wireless (802.16)
+		Satellite
+
+-------------------------------------------
+Dialup (POTS)
+	Old, s l o w, internet access solution
+	Utilizes a modem and analog signals over voice-grade lines
+	Latest standards: V.90 & V.92
+	Maximum download speed 56Kbps (33.6/48 up)
+	Layer 2 protocols used with modems
+		SLIP - Serial Line Internet Protocol (old)
+		PPP - Point to Point protocol
+
+------------------------------------------
+ISDN
+	Integrated Services Digital Network
+	Uses digital signals over phone lines
+	Utilizes a Terminal Adapter (TA) in place of a modem
+	Two channel types
+		B -carry data and voice (64Kbps)
+		D - carry control signals (16Kbps)
+	BRI - Two B, one D (128Kbps) 
+	PRI - 23 B, one D (uses a T1)
+
+-------------------------------------------
+Digital Subscriber Line (DSL)
+	Allows Phone companies to provide high-speed internet access
+	Uses 1-pair Voice grade lines
+	Data is sent at higher frequencies then voice
+	Flavors: 
+		ADSL - Downloads faster than upload
+		SDSL - upload/download speeds are the same
+	Requires 
+		DSL Modem at customer's premises
+		splitter at each customer phone jack
+		DSL Access Multiplier (DSLAM) at central office
+	1.5 - 3 Mbps download
+
+-------------------------------------------
+Cable
+	Allows cable companies to provide high-speed internet access
+	Trunk Lines run past homes
+	Drop cables (RG-59) run to your house
+	Requires Cable Modem in the home
+	Bandwidth is shared on Trunk Lines
+	1.5 - 6+ Mbps down
+
+-------------------------------------------
+Wireless
+	Cellular 3G 
+		Allows internet access via cell phone
+		2-3 Mbps
+	WiMax (802.16)
+		Sold as "Clear" here in the Portland Area
+		1-4 Mbps
+	Satellite
+		Utilizes small dish and expensive satellite
+		Has small delay (~7/10 sec) known as satellite latency
+		Typically uses phone lines for upstream
+
+-------------------------------------------
+Services
+	Common Internet Services and their application layer protocols
+		WWW (HTTP)
+		email (SMTP & POP) 
+		Newsgroups (NNTP)
+		FTP (FTP)
+		Voice over IP (VOIP)
+	Terminal Emulation
+		telnet (command line)
+		Remote Desktop & Remote Assistance (GUI)
+------------------------------------------
+Summary
+	Overview
+	Tiers
+	Connecting
+		Dialup
+		ISDN
+		ADSL
+		Cable
+		Wireless
+	Services
+--------------------------------------------

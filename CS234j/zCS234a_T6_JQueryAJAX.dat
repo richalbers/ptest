@@ -1,0 +1,114 @@
+-----------------------------------------------------------
+JQuery AJAX
+	JQuery Ajax interface consists of numerous funtions which provide a simpler interface to the XMLHttpRequest object 
+	The functions fall into three categories
+		Low Level Interface
+			provide all the functionality
+			Easier than using XMLHttpRequest directly, but not as easy as can be
+		Shorthand
+			Provide a simpler interface for common usage
+			Work for most requests
+		Global Event Hanlders
+			Respond to all Ajax requests
+
+------------------------------------------
+Functions at a glance
+	Low Level
+		ajaxSetup()
+		ajax()
+	Shorthand
+		get()
+		post()
+		getJSON()
+		getScript()
+		.load()
+	Global Event Handlers
+		ajaxComplete()
+		ajaxError()
+		ajaxSend()
+		ajaxStart()
+		ajaxStop()
+
+-------------------------------------------
+get()
+	Shorthand method to send request using "GET" method
+	Examples
+		Sending request (and ignoring results)
+			[[code]]
+			$.get("test.php");
+			&nbsp;
+		Processing results
+			[[code]]
+			$.get('test.html', function(data) {
+				alert(data);
+			});
+
+-------------------------------------------
+Sending Arguments
+	Get argument string (name=value pairs) can be created from text or object
+	Examples
+		Arguments specified as a string
+			[[code]]
+			$.get("ShowGetPost.php", { name: "Snoopy", cool: "yes" }, function(data) {
+				$("#somediv").html(data);
+			});
+		Arguments specified as an object
+			[[code]]
+			arg=new Object;
+			arg.name="Pluto";
+			arg.cool=false;
+			$.get("ShowGetPost.php", arg2, function(data) {
+				$("#div2").html(data);
+			});
+
+-------------------------------------------------------------------------------------	
+Getting JSON data
+	You can specify the data returned will be JSON
+	Examples
+		Specify the data as JSON via last argument to .get
+			[[code]]
+			$.get("GetSimpleJSON.php", function(data) {
+				$("#div3").html(data.dog.name);
+			}, "json");
+			&nbsp;
+		Or more simply, use the getJSON method
+			[[code]]
+			$.getJSON("GetSimpleJSON.php", function(data) {
+				$("#div3").html(data.dog.weightLbs);
+			});
+
+-------------------------------------------------------------------------------
+Post
+	.post is just like .get, except arguments are sent using POST method
+	Example
+		[[code]]
+		$.post("ShowGetPost.php", { name: "Goofy", cool: "no" }, function(data) {
+			$("#div2").html(data);
+		});
+
+-------------------------------------------------------------------------------	
+Global Event Handlers
+	The following event handlers aren't tied to any specific request
+		.ajaxSend() - an Ajax request is sent
+		.ajaxSuccess() - an Ajax request was successful
+		.ajaxError() - an Ajax request ended in error
+		.ajaxComplete() - an Ajax request was competed
+		.ajaxStart() - the first AJAX request is sent
+		.ajaxStop() - all Ajax requests have completed		
+	Example:
+		[[code]]
+		$('#log').ajaxSend(function() {
+			$(this).append('AJAX Send<br>');
+		});
+-------------------------------------------
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

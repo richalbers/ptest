@@ -1,0 +1,27 @@
+------------------------------------------
+JSONP Basics
+	At the end of this presentation you should be able to:
+		Explain what the "same origin policy" is
+		Explain how JSONP circumvents that policy
+		Use JQuery to make JSONP requests
+-----------------------------------------------------------
+Introduction
+	AJAX requests are subject to a "same origin policy".
+	For security reasons AJAX requests can only be made to the same server that the page making the AJAX request was downloaded from.
+	
+	
+If the URL includes the string "callback=?" (or similar, as defined by the server-side API), the request is treated as JSONP instead. 
+------------------------------------------------------------
+How it works
+
+-----------------------------------------------------------------
+Example
+-----------------------------------------------------------------
+	
+	
+	
+	
+	
+	
+	
+	

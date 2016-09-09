@@ -1,0 +1,98 @@
+--------------------------------
+Topology and Cabling
+	This presentation covers
+		Topology
+		Cabling
+			Coax
+			Twisted Pair
+			Fiber Optic
+			Serial, Parallel, and Firewire	
+--------------------------------
+Topology
+	The arrangement of the various elements (links, nodes, etc.) of a network
+	Types [[img images/networkTopology.jpg]]
+		Bus
+		Ring
+		Star
+		Mesh (full and partial)
+		Point to Point
+	Hybrid uses one type for Physical and another for Signalling
+		ring-star
+		star-bus
+--------------------------------
+Cabling Overview
+	Issues Affecting Electrical Cabling
+		EMI - Electromagnetic Interference
+		Crosstalk - Signals "bleeding" from one cable to another adjacent cable [[img images/crosstalk.gif]]
+	Types
+		Coax
+		Twisted Pair
+		Fiber-Optic
+---------------------------------
+Coax
+	Signal wire is wrapped in braided shield to protect from EMI [[img images/coax.jpg]]
+	Old LAN versions utilizes BNC Connectors [[img http://www.eeherald.com/images/10base5_bnc_connector_aiu_dix.jpg]]
+	Using cable with correct impedance (measured in ohms) is important
+	RG Ratings (lower the number, bigger the cable)
+		RG-6 (Cable TV, 75ohm)
+		RG-58 (old LANS, 50 ohm)
+		RG-59 (AV connections, 75 ohm)
+	No longer common for LANS
+---------------------------------
+Twisted Pair
+	Wire pairs are twisted to cancel out EMI [[img http://www.networkcablinglosangeles.com/wp-content/themes/networkcablinglosangeles/images/unshielded_cable.jpg]]
+	Shielded (STP) and Unshielded (UTP) are available
+	Connectors
+		RJ11 - Phone [[img http://us.123rf.com/400wm/400/400/ra3rn/ra3rn1106/ra3rn110600012/9866377-cable-network-connection-isolated-on-a-white-background-an-ethernet-rj45-cable.jpg]]
+		RJ45 - Networking [[img http://www.taiko-net.com.tr/TRImage/category%205%20cable-1.gif]]
+	Category Ratings
+		CAT 3 - Phone Grade
+		CAT 5 - 100 Mbps
+		CAT 5e - 1000 Mbps (1Gbps)
+		CAT 6 - 10 Gpbs
+	Fire Ratings
+		pvc 
+		[[Plenum!http://en.wikipedia.org/wiki/Plenum_cable]]
+--------------------------------
+Fiber Optic
+	Uses glass fiber to transmit light [[img http://fineartamerica.com/images-medium/fiber-optic-cable-wayne-pascall.jpg]]
+	Composed of core, cladding, buffer & Jacket
+	Types [[img http://www.l-com.com/lcom_emails/2005/090705/images/fiber_spec.gif]]
+		Single-mode
+			More difficlt to work with
+			Used for long distance runs 
+				10-80+ km
+		Multi-mode
+			Easier to work with
+			Used in LANs 
+				300-400m
+-----------------------------------
+Fiber Optic Connectors
+	There are lots. [[img http://www.rollball.com.cn/images/Fiber%20Optic%20Connector/03.jpg]]
+	Some common ones 
+		ST (round - (stick & twist))
+		SC (square)
+		LC (double)
+
+--------------------------------
+Misc
+	Serial [[img images/CableSerial.jpg]]
+		RS-232
+		9-pin connector
+		50 feet
+	Parallel [[img images/CableParallel.jpg]]
+		IEEE 1284
+		25 pin connector
+		12 feet
+	Firewire [[img images/CableFirewire.jpg]]
+		IEEE 1394
+		4.5 meters (aprox 15 feet)
+--------------------------------
+Summary
+	Topology
+	Cabling Overview
+	Coax
+	Twisted Pair
+	Fiber Optic
+	Misc
+--------------------------------

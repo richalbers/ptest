@@ -1,0 +1,64 @@
+---------------------------------------------------------------------
+Event Handling Basics
+	Based on Previous presentations you should already
+		understand the purpose of jQuery and the basic jQuery syntax
+		be able to use jQuery to make modify the DOM after the page is ready 
+	At the end of this presentation you should 
+		know what type of events can be handled
+		be able to use jQuery to write event handlers for those events
+
+---------------------------------------------------------------------
+Event overview
+	Events are things that happen to or on a web page
+	A Complete list of the the standard events in the DOM can be found in the jQuery documentation here:
+		[[http://api.jquery.com/Types/#Event!http://api.jquery.com/Types/#Event]]
+	The left column of the jQuery API Documentation lists general categories, one of which is Events
+	The [[Events!http://api.jquery.com/category/events/]] sub-categories are
+		Browser
+		Document Loading
+		Event Handler Attachment
+		Form Events
+		Keyboard Events
+		Mouse Events	
+---------------------------------------------
+Attaching event handlers
+	The syntax for attaching event handlers is identical to running other jQuery functions
+	For example, to attache a "click" event handler to a button, you could do this:
+		[[code]]
+		$('#someButton').click( ... );
+	But the click function will need an agument, and that argument will be a function.
+	So we'll replace the ... with the following function:
+	[[code]]
+		function() {
+			alert("Blastoff!!!");
+		}
+	Which will give is this code:
+		[[code]]
+		$('#someButton').click(function(){
+			alert("You clicked the button!");
+		});
+	That may look complex, but it's typical jQuery, and the individual parts are fairly simple
+---------------------------------------------------------------------		
+Events		
+	Common events that are handled (by category) are:
+		[[Mouse!https://api.jquery.com/category/events/mouse-events/]]
+			click, dblclick
+			mouseover, mouseout, mousemove
+			[[and others
+		[[Keyboard!https://api.jquery.com/category/events/keyboard-events/]]
+			keypress
+			keydown, keyup
+		[[Document!https://api.jquery.com/category/events/document-loading/]]
+			load, ready, unload
+		[[Browser Window!https://api.jquery.com/category/events/browser-events/]]
+			resize, scroll 
+		[[Form!https://api.jquery.com/category/events/form-events/]]
+			submit, change, focus, blur
+---------------------------------------------------------------------
+Practice
+	For each event categories		
+		Use jsFiddle or a web page to try out some of the mouse and keyboard events
+			At a minium, try out the following
+				a few of the shortcut function (click, mousedown, etc..)
+				on and off
+				

@@ -1,0 +1,46 @@
+--------------------------------
+Ch 6 - CPUs
+	Core Components
+	Items Affecting Performance
+	CPU Sockets
+	Intel Desktop CPUs
+	AMD Desktop CPUs
+	Other CPUs
+	Cooling
+	Misc Terms
+	Additional Reading
+-----------------------------------
+Core Components
+	Registers
+	[[ALU (Arithmetic Logic Unit)!http://www.cnn.com]]
+	FPU (Floating Point Unit)
+	Address/Data Bus	
+	Cache (L1, L2, L3)
+
+-----------------------------------
+iQuiz
+How many legs does a dog have?
+	2
+	4
+	32 
+	Unknown
+Dogs are better than cats.
+	true
+	false
+Which of the following is 4?
+	1
+	2
+	3
+	4		
+----------------------------------------
+Summary 
+	Core Components
+	Items Affecting Performance
+	CPU Sockets
+	Intel Desktop CPUs
+	AMD Desktop CPUs
+	Other CPUs
+	Cooling
+	Misc 
+	Additional Reading
+--------------------------------

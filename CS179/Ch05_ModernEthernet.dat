@@ -1,0 +1,75 @@
+--------------------------------
+Modern Ethernet
+	This presentation covers the following topics:
+		Fast Ethernet
+		Gigabit Ethernet
+		10 Gig Ethernet
+		Switch Features
+
+--------------------------------
+Fast Ethernet
+	100BaseTX 
+		Cat 5 (or better)
+		100 meters from node to switch
+	100BaseFX
+		MM Fiber
+		2 Km segments
+
+---------------------------------
+Gigabit Ethernet
+	802.3ab
+		1000BaseT 
+			Cat 5e (or better)
+			Uses all 4 pairs
+			100 meters from node to switch
+			[[more than you need to know!http://www.hardwaresecrets.com/article/How-Gigabit-Ethernet-Works/231/1]]
+	802.3z  [[img http://img.tfd.com/cde/TWINAX.GIF]]
+		1000BaseCX (rare) 
+			Twinaxial cable
+		1000BaseSX 
+			MM fiber
+			220-500 meters
+		1000BaseLX
+			SM fiber
+			5Km
+--------------------------------
+10 Gig Ethernet
+	Number of competing copper and fiber standards
+	Copper [[img http://www.jimhayes.com/uncleted/cat6.jpg]]
+		10GBaseT
+			Cat 6, 60 meters
+			Cat 6a, 100 meters
+	Fiber [[img http://www.karishelectro.com/wp-content/uploads/2011/05/fiber-image.jpg]]
+		10GBaseSR MM, 300 meters
+		10GBaseSW MM, 300 meters
+		10GBaseLR SM, 10km
+		10GBaseLW SM, 10km
+		10GBaseER SM, 40km
+		10GBaseEW SM, 40km
+	Hierarchy by distances can be remembered by
+		S = short
+		L = Long 
+		E = Extra long (although it really stands for extended)
+
+---------------------------------
+Switch features
+	Switches operate at the data link layer, making decisions based on MAC addresses
+		That said, there are now devices called "layer-3 switches" that have some router capabilties (making decisions based on IP address) built in 
+	Switch Features
+		[[Auto Speed Negotiation!http://en.wikipedia.org/wiki/Autonegotiation]] (10/100/1000) (all now have)
+		[[Uplink port (old) vs crossover detection (Auto MDIX)!http://en.wikipedia.org/wiki/Medium_Dependent_Interface]] 
+		[[Store and forward!http://en.wikipedia.org/wiki/Store_and_forward]] vs [[Cut Through!http://en.wikipedia.org/wiki/Cut-through_switching]]
+		Managed (configurable)
+		[[Rackmount!http://en.wikipedia.org/wiki/Rack_unit]]
+		[[Stackable!http://en.wikipedia.org/wiki/Stackable_switch]]
+		[[Power Over Ethernet!http://en.wikipedia.org/wiki/Power_over_ethernet]] (PoE)
+		[[switch examples!http://www.newegg.com/Store/SubCategory.aspx?SubCategory=30&Tpk=ethernet%20switch]]
+	This [[wikipedia article!http://en.wikipedia.org/wiki/Network_switch]] discusses most of those features
+--------------------------------
+Summary
+	Fast Ethernet
+	Gigabit Ethernet
+	10 Gig Ethernet
+	Switch Features
+
+--------------------------------

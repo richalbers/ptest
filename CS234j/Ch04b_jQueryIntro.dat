@@ -1,0 +1,182 @@
+-----------------------------------------------------------
+JQuery Introduction
+	At the end of this presentation you should
+		undertand what the Document Object Model is
+		be able to use selectors and filters effectivly
+		understand how automatic loops and chaining work
+		be able to modify element text and attributes
+		be able to insert new elements in the page in the desired location
+		be able to run an anonymous function on each element selected
+		understand and be able to use the "this" keyword
+	
+------------------------------------------
+DOM
+	The Document Object Model is
+		how the browser stores a web page's data in memory.
+		a tree structure
+	The page is rendered (built and displayed) using info from the DOM
+	Javascript can change the information in the DOM, with the results reflected on the page 
+	w3Schools has a decent diagram and list of what javascript can do at
+		[[http://www.w3schools.com/js/js_htmldom.asp!http://www.w3schools.com/js/js_htmldom.asp]]
+-------------------------------------------
+Selectors
+	JQuery selectors can be most CSS selectors + many more! 
+		Basic selectors: element, #id, or .class
+		Element relationships
+			parent > child, parent decendent, element ~ sibling
+		attributes
+			[alt], [id=zoo"], etc
+		filters
+			:first, :first-child, :even, :odd, etc..
+	A concise list is on w3schools
+		[[http://www.w3schools.com/jquery/jquery_ref_selectors.asp!http://www.w3schools.com/jquery/jquery_ref_selectors.asp]]
+	All the details are on JQuery.com
+		[[http://api.jquery.com/category/selectors/!http://api.jquery.com/category/selectors/]]
+
+------------------------------------------------
+Practice
+	Use this selector tester at w3schools and make sure you understand why they all select the items they do
+		[[http://www.w3schools.com/jquery/trysel.asp!http://www.w3schools.com/jquery/trysel.asp]]	
+		Note: The descriptions they give for each selector are accurate, but there are some hidden elements on the page that make a few of the examples appear not to behave as described.  This tester is, however, far better then the one provided with the book (as a download).
+		
+------------------------------------------------
+Misc
+	Storing the selected elements (actually jQuery objects)
+		You can save the selected jQuery object for later use
+		[[code]]
+			var msg = $('#msg');
+			msg.html("Run away!  Run away faster!");
+	Automatic loops
+		If you selection matches multiple elements, the given function is applied to all matched elements
+		[[code]]
+			$('.msg').hide();
+	Chaining
+		You can put run multiple methods on selected elements
+		[[code]]
+			$('#popup').width(300).height(300).fadeIn(1000);
+				  
+			//splitting it up on multiple lines might improve readability
+			$('#popup')			
+				.width(300)
+				.height(300)
+				.fadeIn(1000);
+-------------------------------------------
+ - - - -
+	This page intentionally left blank.
+	There is nothing to see here.  Please move on.
+---------------------------------------------
+Getting/Modifying element text
+	You can get the text from an element with the following methods
+	[[code]]
+		var msg = $('#msg').text();
+		var msg2 = $('#msg').html();		
+	You can change existing elements on the page with the same methods
+	[[code]]
+		$('div').text('new next'); //changes text in tag [[desc text CANNOT contain html code (i.e. other tags)]]
+		$('div').html('<b>new text&lt;/b>'); //changes text in tag [[desc text CAN contain html code, including new elements]]
+---------------------------------------------
+Adding Elements 
+	You can add new elements to the page with the following methods
+	[[code]]			
+		$('div').append('<p>a new paragraph.&lt;/p>'); [[desc adds content to end of element]]
+		$('div').prepend('<p>a new paragraph.&lt;/p>'); [[desc adds content to beginning of element]]
+			
+		$('div').before('<span>added before selected div&lt;/span>');
+		$('div').after('<span>added after selected div&lt;/span>');
+------------------------------------------------
+Removing Elements	
+	You can change and/or remove elements on the page with the following methods
+	[[code]]
+		$('div').remove();
+		$('div').replaceWith('<section>bla bla bla&lt;/section>');
+-------------------------------------------
+Practice
+	Use [[jsFiddle!https://jsfiddle.net/]] to practice modifying, adding, and removing elements as shown in the previous slides
+-------------------------------------------
+ - - - -
+	This page intentionally left blank.
+	There is nothing to see here.  Please move on.
+------------------------------------------------
+Class
+	You can change the class an element is in with the following methods
+	[[code]]
+		$('div').addClass('highlight'); 	//adds the element to the class
+		$('div').removeClass('highlight');	//removes the element from the class
+		$('div').toggleClass('highlight');	//adds or removes the element from the class
+---------------------------------------------
+CSS Properties
+	You can change an element's style property with the following methods
+	[[code]]
+		$('#p1').css('color', 'red');
+	You can chain together multiple .css calls
+	[[code]]
+		$('#p2').css('color', 'white')
+				.css('background-color', 'red')
+				.css('border: 1px solid black');	
+	or pass .css an object containing all the properties 
+	[[code]]
+		$('#p2').css({ [[desc The use of { } and : in this manner creates a java object.<br>In this example the object has three properties: color, background-color, and border.  <br>And each of those properties has the value given to it's right.]]
+			'color': 'white',
+			'background-color': 'red',
+			'border: 1px solid black'
+		});
+
+------------------------------------------------
+Attributes
+	You can change an element's attributes with the following methods
+	[[code]]
+		$('img').attr('src', 'images/censored.png');
+		$('section').removeAttr('background-color');
+------------------------------------------------
+Practice
+	Use [[jsFiddle!https://jsfiddle.net/]] to practice changing an element's class, css properties, and attributes as shown in the previous slides
+-------------------------------------------
+ - - - -
+	This page intentionally left blank.
+	There is nothing to see here.  Please move on.
+------------------------------------------------
+Attributes
+	You can change an element's attributes with the following methods
+	[[code]]
+		$('img').attr('src', 'images/censored.png');
+		$('section').removeAttr('background-color');
+------------------------------------------------
+Practice
+	Use [[jsFiddle!https://jsfiddle.net/]] to practice changing an element's class, css properties, and attributes as shown in the previous slides
+------------------------------------------------
+using each/this
+	You can run your own function on each selected element using each
+	[[code]]
+		$('p').each( ... );	
+	The ... gets replaced by an anonymous function as shown here
+	[[code]]
+		$('p').each( function() {
+			//do something here
+		});	
+	In this example we preface paragraphs with a counter value
+	[[code]]
+		var counter=0;
+		$('p').each( function() {
+			$(this).prepend('#' + counter + ' '); [[desc $(this) refers to the element we're operating on.<br>The first time the function runs, it refers to the first paragraph selected, the 2nd time the 2nd paragraph, and so on.]]
+			counter++;
+		});
+------------------------------------------------
+Practice
+	Use [[jsFiddle!https://jsfiddle.net/]] to 
+		find every element with the attribute data-test
+		get the attribute value and append it to the end of the paragraph text, in ( ).
+-----------------------------------------------------------
+Conclusion
+	You should now
+		undertand what the Document Object Model is
+		be able to use selectors and filters effectivly
+		understand how automatic loops and chaining work
+		be able to modify element text and attributes
+		be able to insert new elements in the page in the desired location
+		be able to run an anonymous function on each element selected
+		understand and be able to use the "this" keyword
+	If not, please review the relevant sections of this presentation and try out examples in jsfiddle.
+	
+	
+	
+	

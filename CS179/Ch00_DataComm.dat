@@ -1,0 +1,120 @@
+------------------------------------------
+Data Communication Fundamentals
+	This presentation gives an overview of data communication concepts which are seen throughout this course, including
+		Common Terms
+		Channels
+		Serial Communication
+		Asynchronous vs Synchronous 
+		Parity and Checksums
+		Compression and Encryption
+		Modulation
+
+------------------------------------------
+DataComm Overview
+	Data Communications involves sending digital messages from one device to another external device
+	As distance increases, accurate transmission becomes more difficult
+	Data comm systems seek to maximize the transmission rate at the lowest power and least noise
+------------------------------------------
+Common Datacomm Terms
+	Analog vs Digital	[[img images/AnalogDigital.gif]]
+	Amplitude, Frequency, and Wavelength [[img images/Wave.gif]]
+	Propagation [[img images/Attenuation.png]]
+	Attenuation
+	Noise
+
+------------------------------------------
+Background
+	Data in computer systems is stored, transmitted, and processed as binary  [[img images/Win7CalcBin.jpg]]
+	Data must be stored and transmitted with 100% accuracy
+	Digital systems allow us to maintain that accuracy
+		Numbers are stored as binary numbers [[img https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/ASCII_Code_Chart-Quick_ref_card.jpg/800px-ASCII_Code_Chart-Quick_ref_card.jpg]]
+		For text, the most common format is UTF-8, which is backwards compatible with [[ASCII!http://en.wikipedia.org/wiki/File:ASCII_Code_Chart-Quick_ref_card.jpg]]), an encoding method that goes back to the 60's.
+		Changing a single bit  
+			Can change a bank balance from $1 to $2,097,153 dollars
+			Can change a name from Tim to Dim
+
+------------------------------------------
+Channels
+	Signal travels from source to destination [[img images/SimplexDuplex.jpg]]
+	Channel is a pathway over which signals travel	
+	Channels have Direction associated with them  [[img images/BasebandBroadband.gif]]
+		Simplex - only one direction
+		Half Duplex - both directions, one at a time
+		Full Duplex - both directions at same time
+	Mediums (wires, fiber, air, etc.) can support one or more channels 
+		Baseband devotes the entire capacity of the medium to one communication channel.
+		Broadband enables two or more communication channels to share the bandwidth of the communications medium.
+	Bandwidth (maxiumum data rate) of channel is measured in bits per second (Kbps, Mbps)
+	
+-------------------------------------------
+Serial Communication
+	A single channel can carry only one bit at a time [[img images/ParallelSerialComm.gif]]
+	To send 8 bits at one time would require 8 channels
+		For short distances this is economically feasible
+			e.g. moving data inside a computer from the CPU to memory 
+		For long distances, it's not
+			e.g. transmitting data across a room/city/country
+	So dataComm systems use serial communication
+    
+--------------------------------------------
+Async vs Sync
+	Both send and receiver need to know when the message progresses from bit to the next
+	Synchronous systems [[img images/commSync.gif]]
+		Require the sender and receiver to use the same clock, so the timing signals must also be sent
+		This usually requires another channel
+	Asynchronous systems [[img images/commAsync.gif]]
+		Both sender and receiver have their own nearly-identical clocks
+		A "start" bit is sent to sync up the clocks and then a short message
+		Clocks need to be re-synced often to assure accuracy
+
+--------------------------------------------
+Parity and Checksums
+	Noise can affect data transmission (flipping bits) [[img images/noise.gif]]
+	Parity and/or Checksums can be used to verify data integrity
+	Parity 				[[img images/parity.jpg]]
+		Adds a bit to each byte
+		Each byte can then be verified for accuracy
+		Types: Odd, Even
+	Checksum 		[[img images/GenerateChecksum.bmp]]
+		Adds a mathematically computed number to the end of the message
+		Entire message can then be verified for accuracy
+	Data found in error can be retransmitted
+
+---------------------------------------
+Practice
+	Assuming we're using odd parity, which of these are in error?
+		100000001
+		100001000
+		101010101
+		110110110
+		000000000
+	Using [[this online checksum generator!http://onlinemd5.com/]]
+		generate a checksum for a file
+		make a minor change to the file (Changing a capital letter to a lowercase letter is a 1-bit change)
+		regenerate the checksum
+		Is it different?
+---------------------------------------
+Compression and Encryption
+	Compression - Mathematically altering the data so fewer bits need to be sent [[img images/compression.gif]]
+		All compression methods used in data comm are lossless. 
+	Encryption - Mathematically altering the data so contents are unintelligible en-route [[img images/encryption.png]]
+
+---------------------------------------------
+Modulation
+	Modifying an analog carrier wave to carry a message [[img images/modulation.jpg]]
+	Types
+		AM - Amplitude Modulation
+		FM - Frequency Modulation
+		PM - Phase Modulation
+
+------------------------------------------
+Summary
+	This presentation covered
+		Common Terms
+		Channels
+		Serial Communication
+		Asynchronous vs Synchronous 
+		Parity and Checksums
+		Compression and Encryption
+		Modulation
+---------------------------------------------

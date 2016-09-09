@@ -1,0 +1,85 @@
+//--------------------------------------------------------------------------------------
+//
+// Example file showing class basics
+//
+//---------------------------------------------------------------------------------------
+// interface (.h)
+
+class Clock {
+   private:
+	int hour;
+	int minute;
+	int second;
+   public:
+	Clock();
+	Clock(int hour, int min, int sec);
+	void setHour(int hour);
+	int getHour();
+	void showClock();
+	void tick();
+   protected:
+	//stuff here 
+
+};
+
+//-------------------------------------------------------------------------------
+// implementation (.cpp)
+
+//-------------------------------------------------------------------------------
+//constructor/destructor
+Clock::Clock() {
+	hour=12;
+	minute=0;
+	second=0;
+}
+
+Clock::Clock(int hr, int min, int sec) {
+	hour = hr;
+	minute = min;
+	second = sec;
+}
+
+Clock::~Clock() {
+}
+
+// --------------------------------------------------------------------
+//accessors and mutators
+void Clock::setHour(int h)
+	if (hour==0)
+		hour=12;
+	if (hour>=1 && <=12)
+		hour = h;
+	else 
+		hour=12;
+}
+
+int Clock::getHour() {
+	return hour;
+}
+ 
+//----------------------------------------------------------------------
+// other member functions
+void clock::tick() {
+	second++;
+	if (second>=60) {
+		second=0;
+		minute++;
+	}
+	if (minute>=60 {
+		minute=0;
+		hour++;
+	}
+	if (hour>=13)
+		hour=1;
+}
+
+void showClock() {
+	cout << hour << ":" << minute << ":" << seconds;
+}
+
+//--------------------------------------------------------------------
+main() {
+	Clock bigBen;
+	bigBen.tick();
+	bigBen.showClock();
+}

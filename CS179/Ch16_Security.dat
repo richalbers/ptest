@@ -1,0 +1,82 @@
+------------------------------------------
+Ch 16 - Protecting your Network
+	Threats
+	Malicious Software
+	More Bad Stuff
+	Controlling User Access
+	External Network Access
+	Good Security Practices
+
+------------------------------------------
+Threats
+	System Crashes
+	Access Control Weaknesses
+	Malware
+	Social Engineering
+	Denial of Service Attacks
+	Physical Intrusion
+	Rogue Access Points
+
+-------------------------------------------
+Malicious Software
+	Malware - Any program designed to do something you don't want to have happen
+	Virus - Attached to something, replicates and takes action
+	Worm - Stand-alone program, replicates on it's own across network
+	Trojan Horse - masquerades as something else
+	Rootkit - Hides itself using low-level OS functions
+	Adware - Displays unwanted ads
+	Spyware - Sends info about your system over network
+
+-------------------------------------------
+More Bad Stuff
+	Social Engineering
+	Phishing
+	Denial of Service Attack (DoS)
+		Distributed DoS
+		Botnets and Zombies
+	Physical Intrusion
+	Rogue Access Points
+
+-------------------------------------------
+Controlling User Access
+	Important Concepts
+		Authentication - Verifying a person is who they say they are
+		Authorization - What operations is a user allowed to do
+	User Accounts - Security starts here
+		User accounts are used to control access to computer/network resources (programs, files, etc..)
+		Use good passwords (or biometric devices)
+		Restrict user rights
+		Restrict file access to only that needed
+			Use NTFS file system
+
+-------------------------------------------
+External Network Access
+	Firewalls (network and personal)
+		Port Filtering
+		IP Filtering
+	Hiding IPs (NAT)
+	DMZ
+	Internet vs Intranet
+
+--------------------------------------------
+Good Security Practices
+	Control access
+		Locks / Good Passwords
+	Limit use of Admin Accounts
+	Use Firewalls
+	Use Antivirus software
+	Keep OS updates current
+	Use browser security features
+	Use encryption
+	Train your users to recognise potential security issues
+
+------------------------------------------
+Summary
+	Threats
+	Malicious Software
+	More Bad Stuff
+	Controlling User Access
+	External Network Access
+	Good Security Practices
+
+------------------------------------------

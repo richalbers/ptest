@@ -1,0 +1,45 @@
+------------------------------------------
+Ch 30 - Virtualization
+	Overview
+	Why Virtualize?
+	Hypervisors / Virtual Machine Managers
+
+------------------------------------------
+Overview
+	Virtualization allows one machine to run multiple OSs simultaneously 
+		Host - machine running OSs [[img http://www.101datasolutions.co.uk/wp-content/uploads/2008/06/vmware_esx_diagram.gif]]
+		Guest - OSs running in virtual environment [[img http://www.ni.com/cms/images/devzone/tut/HostedVirtualizationSmall_20090325191230.PNG]]
+	Virtual environments "mimic" hardware using software
+		Type 1 hypervisor - runs on hardware (used in server world)
+			Book refers to these as simply hypervisors
+		Type 2 hypervisor - runs on another OS (used in client world) 
+			Book refers to these as Virtual Machine Managers
+-------------------------------------------
+Why Virtualize?
+	Reasons to virtualize:
+		VMs make more effecient use of IT resources (less hardware and power required)
+		VMs keep system uptime percentage as high as possible by allowing easy restoration of down systems.
+		VMs allows easy system duplication 
+	Virtualizing servers allows server functions to be isolated on individual "computers" without needing separate hardware for each
+	Virtualizing clients allows techs access to multiple client OSs for testing and troubleshooting without needing separate hardware for each 
+----------------------------------------------
+Hypervisors
+	Type 2 - run on host OS
+		[[VMware Workstation!https://en.wikipedia.org/wiki/VMware_Workstation]]
+			Player - free, create and run VMs
+			Pro - not free, more features: customized networks, snapshots, clones, etc..
+		[[Virtual PC!https://en.wikipedia.org/wiki/Windows_Virtual_PC]] - Microsoft product, run a MS OS on another MS OS (Superseded by HyperV as of Win8)
+		[[Parallels!https://en.wikipedia.org/wiki/Parallels_Desktop_for_Mac]] (Desktop/Server/Workstation) - Run guest OS on Mac OS X
+		[[VirtualBox!http://en.wikipedia.org/wiki/VirtualBox]] - Sun/Oracle product
+		Others...
+	Type 1 - run on hardware
+		[[VMware ESX!https://en.wikipedia.org/wiki/VMware_ESX]] - Market Leader
+			ESXi 6.0 is the latest version and can be used (minus some features) for free 
+		[[Microsoft Hyper V!https://en.wikipedia.org/wiki/Hyper-V]]
+------------------------------------------
+Summary
+	Overview
+	Why Virtualize?
+	Hypervisors / Virtual Machine Managers
+
+--------------------------------------------

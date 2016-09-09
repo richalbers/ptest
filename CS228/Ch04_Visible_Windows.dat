@@ -1,0 +1,110 @@
+------------------------------------------
+Ch 4 - Visible Windows
+	Windows Versions
+	GUI Basics
+	OS Folders
+	Utilities
+	MMC
+	Admin Tools
+		
+--------------------------------------------
+Windows Versions
+	Versions of Windows on A+ exam
+		Windows XP (NT 5.1)
+			Home/Pro/Media Center
+			XP 64 / 64 Pro (NT 5.2)
+		Windows Vista (NT 6)
+			Home / Home Premium
+			Business / Ultimate / Enterprise
+			64 bit versions of each
+		Windows 7 (NT 6.1)
+			Starter (not available in US) / Home Premium
+			Pro / Ultimate / Enterprise
+			64 bit versions of each (except Starter)
+
+--------------------------------------------
+User Interface
+	Login Prompt
+		Login Screen
+		Windows Welcome
+	Task Bar & Start Menu
+	System Tray / Notification area
+	Quick Launch Toolbar (XP/Vista)
+	Windows Explorer
+		My Computer / Computer
+		My Documents / Documents
+		My Network Places / Network
+	Hot Keys
+
+--------------------------------------------
+UI Features which were new in Vista/7
+	Vista (and 7)
+		Aero Interface (i.e. Fancy graphics)
+		Sidebar (with gadgets)
+		Pinned programs (replaces Quick Launch Toolbar)
+	Windows 7
+		Sidebar was deleted, gadgets can now go anywhere on desktop
+		Libraries 
+			As shipped, these are used to provide convenient access to public and private versions of folders
+			Can only contain folders
+			Items put into a library (via drag and drop), are actually stored into one of the folders
+
+--------------------------------------------
+OS Folders
+	The drive and folder into which Windows was installed is knows as SystemRoot
+		it's stored in the environment variable %systemroot%
+		folder name is determined at install time for XP
+		folder name is Windows for Vista/7
+	%SystemRoot%\System32 contains most of the OS
+		On a 64 bit machine this now contains 64 bit software, and the 32bit software has been moved to a folder named sysWOW64
+			WOW stands for Windows on Windows
+	Other folders
+		Program Files - Contains applications
+		Documents and Settings (XP) or Users (7)
+			One folder for each user
+			Typically the only place regular users are allowed to write/modify files
+
+--------------------------------------------
+Utilities
+	Right-Click (context-sensitive menus)
+	Control Panel
+		Repository for many System Configuration Utilities (applets)
+		Category & Classic View (large/small icons)
+	Device Manager
+		Hardware & Driver Configuration
+	System Tools Menu
+		Several Commonly Used System Tools
+		Start->All Programs->Accessories->Sys Tools
+	Command Line
+		Interface to Command Line Utilities
+
+--------------------------------------------
+Microsoft Management Console
+	Allows you to build your own "Toolboxes" containing the tools of your choice
+	Many tools can access remote machines
+	Tools are called snap-ins
+	Toolboxes (Consoles)
+		saved as .msc files
+		can be saved in author or user mode
+		appear on the Admin Tools menu by default
+
+--------------------------------------------
+Administrative Tools
+	Contains numerous useful tools including
+		Computer Management Console
+		Event Viewer
+		Local Security Policy
+		Performance Console
+		Services Console
+	Can be displayed on Start Menu or All Programs Menu
+
+--------------------------------------------
+Summary
+	Windows Versions
+	GUI Basics
+	OS Folders
+	Utilities
+	MMC
+	Admin Tools
+
+--------------------------------------------

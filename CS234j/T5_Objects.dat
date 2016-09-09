@@ -1,0 +1,170 @@
+-----------------------------------------------------------
+Javascript Objects 
+	At the end of this presentation you should be able to
+		Explain what objects are
+		Create objects using the following methods
+			new Object 
+			Constructor function
+			Object Literal Notation
+		Access and manipulate object data
+		Use arrays in objects
+		Use arrays of objects (note: of vs in)
+-------------------------------------------
+Overview
+	Javascript allows you to create your own objects
+	Objects can contain both properties and methods
+		We're currently interested in using objects to store data, so we'll only be looking at properties
+	Properties can contain:
+		strings
+		numbers (integer or floating point)
+		boolean values (true or false)
+		arrays
+		other objects
+	Properties are accessed using dot (.) notation
+
+-------------------------------------------
+Creating objects with "new Object"
+	One method to create objects is to use the "new Object" syntax.
+	After an object is created, properties can be added/accessed using dot (.) notation.
+	For example:
+		[[code]]
+		&nbsp;
+		var dog = new Object();
+		&nbsp;
+		dog.name = "Spot";
+		dog.weightLbs = 5;
+		dog.isCool = false;
+		&nbsp;
+		alert(
+			dog.name + '\n' 
+			+ dog.weightLbs + '\n'
+			+ dog.isCool
+			);
+	
+
+------------------------------------------------
+Including arrays in objects
+	Objects can contains arrays 
+	[[code]]
+		&nbsp;
+		// JS object with an array
+		var dog1 = new Object();
+		&nbsp;
+		dog1.name = "Spot";
+		dog1.weightLbs = 5;
+		dog1.isCool = false;
+		&nbsp;
+		dog1.toys= new Array;
+		dog1.toys[0] = "ball";
+		dog1.toys[1] = "stick";
+
+------------------------------------------------
+Creating Objects Using a Constructor
+	A function can be used as a constructor to build an object
+	Object members are accessed within the function using "this"
+	[[code]]
+		&nbsp;
+		//Dog constructor
+		function Dog(name, weightLbs, isCool, toy1, toy2) {
+			this.name=name;
+			this.weightLbs=weightLbs;
+			this.isCool=isCool;
+			this.toys=new Array;
+			this.toys[0] = toy1;
+			this.toys[1] = toy2;
+		}
+		&nbsp;
+		//create a Dog and display some properties
+		var dog2 = new Dog("Snoopy", 4.6, true, "Stick", "Ball");
+		&nbsp;
+		alert(dog2.name + " " + dog2.toys[2]);
+
+------------------------------------------------
+Array of Objects
+	Using our previous constructor, we can create an array of objects as follows:
+		[[code]]
+		&nbsp;
+		//create an array to hold our dogs
+		var dogs = new Array;
+		&nbsp;
+		//put two dogs in our array
+		//  (dogs are built using our constuctor)
+		dogs[0] = new Dog("Mac", 9.1, true, "Stick", "Ball");
+		dogs[1] = new Dog("Fido", 12, false, "Ball", "Bone");
+		&nbsp;
+
+------------------------------------------
+Creating Objects with Object Literal Notation
+	Objects can also be created and initialized using object literal notation
+	Object Literal Notation rules:
+		Objects are specfied using curley braces
+		Properties are specified using name:value pairs 
+		Properties are comma delimited
+		Arrays are specified using square brackets
+	For Example:
+	[[code]]
+		var dog3 = {
+			name: "Goofy",
+			weightLbs: 20,
+			isCool:	false,
+			toys: [ "ball", "xBox" ]
+		}
+	Accessing object values after it's created is done using dot(.) notation, just as before
+------------------------------------------------
+Object Literal Notation Arrays
+	You can also create an array of objects using Object Literal Notation
+	For example:
+	[[code]]
+		var dogs = [
+			{ name: "Snoopy", weightLbs: 10, isCool: true },
+			{ name: "Goofy", weightLbs: 80, isCool: false },		
+			{ name: "Fido", weightLbs: 20, isCool: true }
+		]
+	Accessing object values after the object is created is done using dot(.) notation, just as before
+------------------------------------------
+OLN continued
+	To put arrays inside the objects in the array &#9786; you'd do this:
+	[[code]]
+		var dogsWithToys = [
+			{ name: "Snoopy", toys: ["stick", "ball"] },
+			{ name: "Goofy",  toys: ["stick", "ball"] },		
+			{ name: "Fido", toys: ["stick", "ball"] }
+		];
+	To display Goofy's info:
+	[[code]]
+		alert(dogsWithToys[1].name);
+		alert(dogsWithToys[1].toys[0]);
+		alert(dogsWithToys[1].toys[1]);
+------------------------------------------
+Practice
+	For practice, we're going to create objects representing planets.
+	For each planet we'll store it's name and number of moons
+	Using jsFiddle:
+		create an instance named planet1 using "new Object" syntax
+		create an instance named planet2 using a constructor
+		create an instance named planet3 using Object Literal Notation
+		Create an array of 3 of them (planets) using Object Literal Notation
+---------------------------------------------
+Finding property name/values
+	Given an object, property names can be accessed using a "for in" loop
+		[[code]]
+		&nbsp;
+		//put the names and values of the dog object's 
+		//properties into a string
+		var sNameValues = "";
+		for (property in dog) {
+			var sNameValue = property + ":" 
+						+ dog[property] + "  ";
+			sNameValues += sNameValue;
+		}
+		&nbsp;
+		//show the names/values
+		alert(sNameValues);
+	This is sometimes useful for debugging
+------------------------------------------
+Useful Links
+	[[www.w3schools.com/js/js_objects.asp!http://www.w3schools.com/js/js_objects.asp]]
+	[[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects!https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects]] (contains even more info than presented here)
+-----------------------------------------------------------
+	
+	

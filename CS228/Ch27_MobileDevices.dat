@@ -1,0 +1,105 @@
+------------------------------------------
+Ch 27 - Mobile Devices (smartphones & tablets) 
+	Overview
+	Screen Technology
+	User Interface
+	Applications
+	Expandability
+	Networking
+	Synchronization
+	Security
+
+------------------------------------------
+Overview
+	Categories
+		Smartphones
+		Tablets
+	Operating Systems
+		iOS (all apple products)
+		Android (almost all non-apple products)
+		Windows RT ("Windows" tablets)
+	Single/Multi user
+		iOS devices are "single user"
+		Latest Android devices (and Windows RT) are "muli user"
+			Apps are tied to user account, not shared
+----------------------------------------------
+Screen Technology
+	LCD screen
+		with a capactive touchscreen over it
+			Uses electrical charge on your body to determine touch location
+			Won't work with stylus or gloved hand
+			Current technology
+		with resistive touchscreens 
+			Responded to pressure; stylus was required
+			Older, less common technology
+------------------------------------------
+User Interface
+	Touch interface - recognizes a single touch
+		tap (or doubletap)
+		swipe
+	Multitouch interface - recognizes two or more simultaneous touches
+		pinch or zoom
+	Accelerometers allow screen to always be displayed upright regardless of orientation of device
+	Gyroscopes allow additional detection of device position (leaning forward or backward)
+	On-screen keyboards are displayed when required
+	Physical Keyboards can sometimes be added (bluetooth)
+	Mice are not an option
+------------------------------------------
+Applications
+	Applications are called "Apps"
+	Downloaded from an "App store"
+	All apps for iOS must come from Apple's app store
+		Closed/Single source
+		Apple controls what apps can be run
+		Limits choice, but also improves quality and eliminates malware
+	Apps for android can come from several stores
+		Open source
+		Android, Amazon, Google, YAMM, many others
+		More choices, but possibly not better...
+------------------------------------------
+Expandabilty
+	Hardware is typically not upgradable
+	Very limited connectivity 
+	iOS devices have one proprietary connector for
+		charger
+		cameras (with special adapter)
+		video mirroring (with special adapter)
+	Android devices are similar
+		Although they may also have microSD slots for added storage
+	Bluetooth is common (for external kaeyboards)
+------------------------------------------
+Networking
+	Network connectivity would be accomplished via
+		802.11 (wireless LAN)
+		Cellular (3g/4g)
+			Typically requires additional account/charges via cell service provider (verizon/ATT/etc)
+	Cloud backup/storage services are typically provided
+------------------------------------------
+Synchronization
+	Mobile devices can sync with either
+		local machines
+		cloud based servers
+	iOS devices sync with iTunes software (or iCloud)
+		Music, Videos, Apps, and OS can all be backed up
+	Android devices sync over internet
+		Only some data is synced (calender, email, etc..)
+		Device can also be treated as thumb drive and files moves with drag and drop
+------------------------------------------
+Security
+	Mobile devices can easily be lost or stolen (they're mobile!)
+	All can be protected with passcode (password) lock screen
+	Mobile Devices can be remotely located and/or remotely wiped 
+		iOS devices have this built in, works great
+		Android devices have this as an optional app/feature to be installed
+---------------------------------------------
+Summary
+	Overview
+	Screen Technology
+	User Interface
+	Applications
+	Expandability
+	Networking
+	Synchronization
+	Security
+
+--------------------------------------------

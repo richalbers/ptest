@@ -1,0 +1,119 @@
+-----------------------------------------------------------
+Returning database data in JSON format
+	Based on the previous presentations, you should already know
+		What JSON is and the JSON formatting rules
+		How to use the jQuery.getJSON() function to fetch a JSON file and work with the returned data
+	At the end of this presentation you should be able to:
+		Use a PHP script that reads a DB table, formats the results as JSON, and returns the data to your webpage.
+		Use the jQuery.getJSON() function to fetch JSON formatted data (via PHP) and work with the returned data
+-----------------------------------------------------------------
+PHP and JSON
+	PHP
+		is a common server-side language used in dynamic websites
+		can use SQL to access a database, read a row or rows, and return the data to the client 
+		data can be formatted as JSON using the the json_encode() function
+	PHP is beyond the scope of this class, but if you already know PHP and how to read and process a database using SQL, json_encode() is the only additional function you'll need
+	PHP can be obtain DB data as an associative array (key->value pairs)	
+	json_encode() takes an associated array, and builds a json formatted string
+		keys become property names
+		values become property values
+----------------------------------------------------------------
+Example 1
+	Returning a JSON_encoded row of data from DB
+	[[code]]
+		<?php
+		//connect to database
+		$con = mysqli_connect("hostName", "userName", "userPwd", "dbName") [[desc Connects to server/database<br> hostName need to be a value host (localhost)<br>userName and userPwd need to be valid user credentials for the database<br>dbName needs to be a valid database name]]
+		or die("Error occurred during connection " . mysqli_error($con));  
+		
+		//run query, return results as JSON
+		$query = "SELECT * FROM country WHERE Name = 'Cuba'"; [[desc query to get info for Cuba]]
+		$results = mysqli_query($con, $query);		[[desc fetches one row (record) from the database]]
+		$countryInfo = mysqli_fetch_assoc($results); [[desc $countryInfo is an associative array<br>field names became keys<br>field values became values]]
+		echo json_encode($countryInfo); [[desc json_encode() creates a JSON formatted text string from the given array<br>field names become property names<br>values become property values]]		
+		
+		//finish up
+		mysqli_close($con); [[desc Close database]]
+		?>
+	Note: mouse over lines for explanations
+-----------------------------------------------------------------
+Example 1 output
+	Output from the previous script will be the following:
+	[[code]]
+		{
+			"Code":"CUB",
+			"Name":"Cuba",
+			"Continent":"North America",
+			"Region":"Caribbean",
+			"SurfaceArea":"110861.00",
+			"IndepYear":"1902",
+			"Population":"11201000",
+			"LifeExpectancy":"76.2",
+			"GNP":"17843.00",
+			"GNPOld":"18862.00",
+			"LocalName":"Cuba",
+			"GovernmentForm":"Socialistic Republic",
+			"HeadOfState":"Fidel Castro Ruz",
+			"Capital":"2413",
+			"Code2":"CU"
+		}
+	Note: Carriage returns added to improve human readability
+	
+-----------------------------------------------------------------
+Example 2 
+	Returning a JSON-encoded list of strings from DB (one string per row)
+	[[code]]
+		<?php
+		//connect to database
+		$con = mysqli_connect("hostName", "userName", "userPwd", "dbName") [[desc Connects to server/database<br> hostName need to be a value host (localhost)<br>userName and userPwd need to be valid user credentials for the database<br>dbName needs to be a valid database name]]
+		or die("Error occurred during connection " . mysqli_error($con));  
+		
+		//run query, return results as JSON
+		$query = "SELECT * FROM country WHERE Name LIKE 'a%' ORDER BY name" [[desc query to get all countries that start with 'A']]
+		$results = mysqli_query($con, $query);		[[desc fetches one row (record) from the database]]
+		
+		$countryList = array(); 	[[desc Create array to hold country names (array will be an array of strings)]] 
+		while($row = mysqli_fetch_array($results))
+		{
+			$countryList[] = $row['Name']; [[desc Add country name to array]]
+		}
+		
+		echo json_encode($countryList); [[desc json_encode() creates a JSON formatted text string from the given array<br>It will be a simple array of strings]]		
+			
+		//finish up
+		mysqli_close($con); [[desc Close database]]
+		?>
+-----------------------------------------------------------------
+Example 2 output
+	Output from the previous script will be the following:
+	[[code]]
+		["Afghanistan","Albania","Algeria","American Samoa",
+		"Andorra","Angola","Anguilla","Antarctica",
+		"Antigua and Barbuda","Argentina","Armenia",
+		"Aruba","Australia","Austria","Azerbaijan"]
+	Note: Carriage returns added to improve human readability
+
+-----------------------------------------------------------------
+Practice
+	Upload the two examples to the webDev server and get them to work.
+		The DB connection credentials will need to be changed to something valid
+		To test them enter a URL with appropriate arguments in a browser
+
+-----------------------------------------------------------------
+Useful Links
+	[[PHP Arrays!http://www.php.net/manual/en/language.types.array.php]]
+	[[PHP mysqli_fetch_assoc!http://www.php.net/manual/en/mysqli-result.fetch-assoc.php]]
+	[[PHP json_encode!http://www.php.net/manual/en/function.json-encode.php]]
+-----------------------------------------------------------
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

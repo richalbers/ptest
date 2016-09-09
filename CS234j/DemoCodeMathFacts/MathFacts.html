@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="Math Facts Practice Quiz">
+	<meta name="author" content="Rich Albers">
+
+	<title>MathFacts</title>
+	<link rel="stylesheet" type="text/css" href="MathFacts.css"/>
+
+	<script src="https://code.jquery.com/jquery-2.0.0.js" type="text/javascript"></script>
+	<script src="Clock.js" type="text/javascript"></script>
+	<script src="MessageBox.js" type="text/javascript"></script>
+	<script src="MathFacts.js" type="text/javascript"></script>
+</head>
+<!-- ================================================================================= -->
+<body>
+<div id="wrapper">
+
+	<header>
+		<h1>Math Facts!</h1>
+	</header>
+	
+	<section id="infoArea" class="layout">
+		<div id="gameClock" class="clock">0:00</div>
+		<div id="numberCorrect" class="score">0</div>
+		<div id="numberIncorrect" class="score">0</div>
+	</section>
+	
+	<section id="equationArea" class="layout">
+		<div id="equation">
+		</div>
+	</section>
+	
+	<section id="answerArea" class="layout">
+		<table id="answerPad">
+		</table>
+	</section>
+
+</div>
+
+</body>
+</html>

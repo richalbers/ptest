@@ -1,0 +1,215 @@
+------------------------------------------
+Ch 15 - Wireless Networking
+	Introduction
+	Radio Transmission basics
+	Frequency Spectrum
+	2.4 & 5 GHz Bands
+	Spread Spectrum
+	Wireless Modes
+	802.11 standards
+	Wireless Security
+	Misc
+------------------------------------------
+Introduction
+	Wireless LANs allow computers to connect wirelessly to wireless access points
+	Used to supplement wired networking
+	Compared to wired, wireless is
+		Not as fast
+		Less reliable
+		Less secure
+	802.11g achieved widespread adoption
+	802.11n is common
+	802.11ac is the newest standard (not in book)
+
+-------------------------------------------
+Radio Transmission basics
+	Radio waves are measured in Hz (cycles per second)
+	Propagation Problems
+		rapid inverse square law attenuation
+		absorption
+		multipath interference
+		EMI
+		Shadow zones (dead spots)
+	Absorption attenuation and shadow zone problems increase with frequencies
+
+-------------------------------------------
+Frequency Spectrum
+	Frequency spectum goes from zero Hz to infinity [[img http://www.ceessentials.net/images/rbpt6/image004.jpg ]]
+	Spectrum has been divided into service bands allocated to different uses [[img http://donsnotes.com/tech/images/rf-spectrum.gif]]
+		AM radio
+		FM radio
+		Televsion
+		etc..
+	Commercial Services operate between 800 MHz and 6 GHz [[img http://media.defenseindustrydaily.com/images/MISC_US_Frequency_Allocations_Chart_lg.jpg]]
+	Most bands require a license to transmit on 
+	WLANs use two "unlicensed" bands 
+		2.4GHZ band 
+		5 GHz band
+-------------------------------------------
+2.4 & 5 GHz bands
+	2.4 GHz band
+		Defined the same in all countries
+		11-14 channels [[img http://upload.wikimedia.org/wikipedia/commons/8/8c/2.4_GHz_Wi-Fi_channels_%28802.11b%2Cg_WLAN%29.svg]]
+		Only 3 are non-overlapping in US [[img http://upload.wikimedia.org/wikipedia/commons/8/84/NonOverlappingChannels2.4GHzWLAN-en.svg]]
+		Popularity of 2.4 GHz band means potential interference with other devices (microwaves, cordless phones, etc.)
+	5 GHz band
+		Higher frequencies allow more bandwidth
+		[[Frequencies!http://en.wikipedia.org/wiki/List_of_WLAN_channels ]] are non-standard worldwide
+		14 possible channels, not all availabe in US, and channel width affects available channels
+		Was more difficult to get good range 
+
+--------------------------------------------
+Spread Spectrum Transmission
+	Spread Spectrum broadcasts data in small discrete chunks over differetn frequencies within a certain range
+	Spread Spectrum Types
+		Frequency Hopping (FHSS)
+		Direct Sequence (DSSS)
+		Orthogonal Frequency Division Multiplexing (OFDM)
+
+------------------------------------------
+Wireless Modes
+	Infrastructure [[img http://static.commentcamarche.net/en.kioskea.net/pictures/wifi-images-infrastructure.gif]]
+		Most common mode
+		Utilizes Wireless Access Point (WAP) [[img http://images.wikia.com/infodepot/images/8/8a/Linksys_WAP54G.jpg]]
+		Uses a Basic Service Set (BSS)
+		Multiple WAPs can be used
+			Extended Service Set
+	Ad Hoc [[img http://www.wireless-router-net.com/wp-content/uploads/2010/06/ad-hoc-mode.gif]]
+		Peer to Peer (no WAP)
+		Uses IBSS (Independent BSS)
+
+--------------------------------------------
+802.11 standards
+	802.11 (gone)
+	802.11a
+	802.11b
+	802.11g
+	802.11n
+	802.11ac (new!  not in book)
+
+--------------------------------------------
+802.11a
+	Utilizes DSSS in 5 GHz band
+	Good throughput	
+		rated: 54 Mpbs
+		actual: well under 20 Mbps
+	Poor range
+	Products:
+		shipped late (after 802.11b!)
+		had poor performance
+		were expensive
+	Little market acceptance
+
+-------------------------------------------
+802.11b
+	Utilizes DSSS in 2.4 GHz band
+	Fair throughput 
+		rated: 11 Mbps
+		actual: 6 Mbps
+	Decent range
+	Products
+		Shipped the same time as 802.11a
+		Worked well
+		had adequate performance
+	Gained fairly broad acceptance
+
+--------------------------------------------
+802.11g
+	Utilizes OFDM in 2.4 GHz band
+	Good througput
+		rated: 54 Mbps
+		actual: 25 Mpbs @ 30m
+	Products
+		shipped on time
+		worked well
+		had good performance
+	Widely adopted, still in wide use
+	[[802.11g WAP Configuration Interface Example!http://ui.linksys.com/files/WAP54G/v3/3.01/Setup.htm]]
+
+-------------------------------------------
+802.11n
+	Utilizes OFDM + MIMO
+		MIMO - Multiple I/O (antennas)
+	Uses both 2.4 and 5 GHz for backwards compatibilty
+	Great throughput
+		rated: 100-200 Mbps
+	Products
+		shipped before draft was finalized
+		Widely adopted, market is still growing
+	[[802.11n WAP Configuration Interface Example!http://ui.linksys.com/files/WAP610N/1.0.00/ap/wireless_basic.html]]
+-------------------------------------------
+802.11ac
+	Operates in the 5gz band only
+	Not mentioned in textbook, 
+		[[wikipedia has info!http://en.wikipedia.org/wiki/IEEE_802.11ac]]
+		[[As does this article!http://www.zdnet.com/the-five-things-you-need-to-know-about-gigabit-wi-fi-802-11ac-7000017112/]]
+---------------------------------------------
+Wireless Security
+	Authentication
+		Is the computer/person allowed to connect?
+		Handled either via 
+			authentiation Server (Radius Server)
+			or pre-shared key (common key for everyone)
+	Encryption
+		Scrambling the data so intercepted messages can't be read
+		When encryption methods are cracked, new ones are devised
+	Additional measure:
+		Mac Address Filtering
+			Limits who can connect by MAC address
+
+---------------------------------------------
+Data Encryption
+	WEP - Wired Equivalent Privacy
+		40-128 bit key entered on clients and WAP
+		Introduced in 1999, can now easily be cracked
+	WPA - Wi-Fi Protected Access
+		Enterprise
+			Requires an authentication server, which distributes keys to each user
+			Utilizes TKIP (Temporal Key Integrity Protocol)
+		Personal (PSK) - Pre-Shared Key version
+			Designed for home and small offices
+			No authentication server required
+			All users given same key
+			Key is derived from passphrase	
+				20+ random chars is best
+	[[Security Configuration Interface Example!http://ui.linksys.com/files/WAP54G/v3/3.01/Setup.htm]] (After page loads, look at Wireless Security Tab)
+---------------------------------------------		
+Data Encryption (continued)
+	WPA2 (802.11i)
+		Enterprise
+			Implements all mandatory elements of 802.11i
+			Requires an authentication server, which distributes keys to each user
+			Utilizes AES (Advanced Encryption Standard) in place of TKIP
+			Considered fully secure (when using AES)
+		Personal (PSK)
+			Designed for home and small offices
+			No authentication server required
+			All users given same key
+			Key is derived from passphrase
+				20+ random chars is best
+	[[Security Configuration Interface Example 2!http://ui.linksys.com/files/WAP610N/1.0.00/ap/wireless_basic.html]] (After page loads, look at Wireless Security Tab)
+
+------------------------------------------
+Misc
+	Wireless Uses CSMA/CA 	[[img http://www.advancedtubularstore.com/catalog/WiFi%20Antenna.jpg]]
+		Carrier Sense  		[[img http://www.caworldwifi.com/images/pattern_hg2406u.gif]]
+		Multiple Access 	[[img http://pimages.solidsignal.com/TL-ANT2414A_medlrg.jpg]]
+		Collision Avoidance 
+	WAPs need power 
+		most conveniently provided via POE (Power over Ethernet)
+	Antenna types
+		Omni-directional[[directional!https://www.google.com/search?q=directional+WIFI+antenna&hl=en&prmd=imvns&source=lnms&tbm=isch&ei=DgNVT9WfG47JiQKlvdm]]
+	Scanner
+		InSSIDer
+------------------------------------------
+Summary
+	Introduction
+	Radio Transmission basics
+	Frequency Spectrum
+	2.4 & 5 GHz Bands
+	Spread Spectrum
+	Wireless Modes
+	802.11 standards
+	Wireless Security
+	Misc
+--------------------------------

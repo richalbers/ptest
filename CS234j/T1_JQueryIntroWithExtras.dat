@@ -1,0 +1,208 @@
+-----------------------------------------------------------
+JQuery Overview
+	At the end of this presentation you should
+		know what jQuery is for
+		understand the basic jQuery syntax
+		know all the different types of selectors that can be used
+		be able to use a few simple jQuery functions
+		understand what event handlers are
+		be able to attach event handers to elements
+------------------------------------------
+What is jQuery?
+	JQuery is a library of javascript functions
+	It simplifies
+		element attribute and style manipulation
+		event handling
+		animations
+		ajax
+		handling browser differences
+		completely separating your javascript from your html
+	We'll look at each of those in order
+-------------------------------------------
+Overview
+	jQuery is object oriented. 
+		There's a jQuery object and it builds objects representing elements in the DOM.  
+	jQuery function calls have the following syntax
+		[[code]]
+		jQuery(selector).jQ_function(arguments);
+			or more simply
+		$(selector).jQ_function(arguments);
+		// $ is short for jQuery!
+	Selectors are most standard css selectors and more!
+	There are numerous functions
+	Some simple examples:
+		[[code]]
+		$('p').html("censored"); //replaces paragraph text 
+		$('p').css("color", "red"); //makes paragraphs red
+-------------------------------------------
+ - - - -
+	This page intentionally left blank.
+	There is nothing to see here.  Please move on.
+-------------------------------------------
+Selectors
+	JQuery selectors can be most CSS selectors + many many more! 
+	A concise list is on w3schools
+		[[http://www.w3schools.com/jquery/jquery_ref_selectors.asp!http://www.w3schools.com/jquery/jquery_ref_selectors.asp]]
+	All the details are on JQuery.com
+		[[http://api.jquery.com/category/selectors/!http://api.jquery.com/category/selectors/]]
+		
+------------------------------------------------
+Figure it out!
+	What selector would match
+		all h1 elements
+		the element who's id is #bob?
+		all elements whose class is .zoo
+		all h1, h2, and h3 elements
+		all header elements (h1-h6)
+		all elements who's class is .zoo or .boo
+		all paragraph elements who's class is .boo
+		the h1 elements inside an element who's id is #s1
+		all the even li elements
+		all the even li elements in an element who's id is #s2
+		all empty elements
+------------------------------------------------
+Test it
+	Use [[jsFiddle!jsfiddle.net]] to try out all the previous selectors
+		Tell it to use jQuery 1.11
+		In the html section, enter the html as it would be in the body
+			An h1 element
+			two sections, with id's of s1 and s2
+			in each section:
+				An h2 element
+				two paragraphs 
+				an ordered list 
+			put a few items in the classes .zoo or .boo
+			give one paragraph the id #bob
+		In the javascript section put the jQuery code to select all the items on the previous page and turn each some color
+			$( selector ).css("color", "red"); 
+-------------------------------------------
+ - - - -
+	This page intentionally left blank.
+	There is nothing to see here.  Please move on.
+------------------------------------------------
+Functions
+	There are hundreds of functions
+		If you can think of something you might want to do to an element, there's a function for it!
+		There are functions to
+			get/change an elements contents
+			get/change an elements attributes
+			get/change an elements style or class
+			insert/delete elements
+			animate elements
+			and more!
+	Most useful is learning how to use the documentation to find and use new-to-you functions
+		That skill will allow your knowledge bank to grow continually
+
+---------------------------------------------
+Some Simple Functions
+	Use the JQuery documentation to figure out how to:
+		Change the contents of an element (.html)
+		Changing styles (.css)
+		Putting/removing an element from a class
+	And use [[jsFiddle!jsfiddle.net]] to try out all the previous functions
+		You'll need to enter some small amout of code in the javascript, css, and javascript sections
+
+-------------------------------------------
+ - - - -
+	This page intentionally left blank.
+	There is nothing to see here.  Please move on.
+---------------------------------------------
+Event Handlers
+	Things that happen on the page, or to elements on the page, are called events
+	Event Examples
+		Page is loaded
+		Button is clicked
+		Mouse rolls over an element
+		many others...
+	Code can be run when events occur.  
+		This programming model is called "event driven". It's very common.  All applications with a GUI (Graphical User Interface) use it. 
+------------------------------------------------
+jQuery Events
+	jQuery can easily attach/detach event handlers to the page or elements on page 
+		This has the benifit of removing ALL javascript from the html file, completely separating page functionality from content
+	Ideally
+		.html contains only structure and content
+		.css file contains ALL style information
+		.js contains all functionality
+	jQuery had many functions related to events
+---------------------------------------------
+Attaching event handlers
+	The syntax for attaching event handlers is identical to running other jQuery functions
+	For example, to attache a "click" event handler to a button, you could do this:
+		[[code]]
+		$('#someButton').click( ... );
+	But the click function will need an agument, and that argument will be a function.
+	So we'll replace the ... with the following function:
+	[[code]]
+		function() {
+			alert("Blastoff!!!");
+		}
+	Which will give is this code:
+		[[code]]
+		$('#someButton').click(function(){
+			alert("You clicked the button!");
+		});
+	That may look complex, but it's typical jQuery, and the individual parts are fairly simple
+---------------------------------------------
+Test it
+	Use [[jsFiddle!jsfiddle.net]] to attach a .click event handler to a button so when the button is pressed a message pops up.
+	Then make another button that when pressed changes a different element turn green.
+	You'll need to enter some small amout of code in the javascript, css, and javascript sections
+
+---------------------------------------------
+Getting jQuery library
+	To use jQuery you need to include the jQuery library in your code
+		You can [[download your own copy or link to a version hosted on-line!http://docs.jquery.com/Downloading_jQuery]]
+	Based on that info, you should know:
+		What's the purpose of jQuery?
+		What's the difference between:
+				jquery-1.11.0.min.js
+				jquery-1.11.0.js
+			And why would I use one over the other?
+		What's the difference between jQuery 1.x and 2.x?
+		What's the jQuery migrate plugin for?
+		What's a CDN?
+			And what are the advantages of using a CDN?
+
+-------------------------------------------
+Getting Started
+	You can't start using JQuery functions to interact with the document until the DOM has been completely built.
+	The JQuery object has a ready() event associated with the document that is triggered when we're ready for liftoff
+		[[code]]
+		$(document).ready(function(){
+			alert("Blastoff!!!");
+		});
+	That syntax, while possibly confusing at first glance, is typical JQuery.
+	It actually contains a selector & function
+		[[code]]
+		$(document).ready( ... );
+	and the argument is another (anonymous) function
+		[[code]]
+		function() {
+			alert("Blastoff!!!");
+		}		
+-----------------------------------------------------------------
+Useful Links
+	JQuery Tutorials
+		[[http://www.w3schools.com/jquery/default.asp!http://www.w3schools.com/jquery/default.asp]]
+		[[http://docs.jquery.com/Tutorials!http://docs.jquery.com/Tutorials]]
+	Complete JQuery Documentation
+		[[http://docs.jquery.com/Main_Page!http://docs.jquery.com/Main_Page]]
+		
+-----------------------------------------------------------
+Class Exercise
+	Create drop down menu system
+		content (html), presentation (css), and functionality (javascipt) will be completely separate.
+	
+-----------------------------------------------------------------
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

@@ -1,0 +1,186 @@
+-----------------------------------------------------------
+Using PHP and a DB
+	PHP overview
+	Generating text from PHP
+	Generating HTML from PHP
+	Generating XML from PHP
+	Getting data from a Database
+	Selecting a subset of data
+	Passing arguments to PHP
+	Class Exercise
+------------------------------------------
+PHP
+	PHP is a commonly-used server-side programming language
+	The output it generates is returned to the client
+	It typically outputs text, which can be formatted any way you wish
+		text
+		html
+		xml
+	PHP typically reads data from a database, formats the output apropriately, and returns it to the browser
+
+-------------------------------------------
+Text Example
+	The following simple php script outputs text, which is sent back to the browser.
+		[[code]]
+		&lt;?php
+			echo "Hello World";
+			echo "This message was brought to you by PHP, ";
+			echo "the PHP Hypertext Preprocessor, ";
+			echo "formerly known as Personal Home Page. ";
+		?&gt;
+
+-------------------------------------------
+HTML Example
+	To send back html, simply output html code
+		[[code]]
+		&lt;?php
+			echo "&lt;!DOCTYPE html&gt;\n"
+			echo "&lt;html&gt;\n";
+			&nbsp;
+			echo "&lt;head&gt;&lt;title&gt;PHP HTML Example&lt;/title&gt;&lt;/head&gt;\n";
+			&nbsp;
+			echo "&lt;body&gt;";
+			echo "&lt;p&gt;This message was brought to you by PHP.";
+			echo "The PHP Hypertext Preprocessor";
+			echo "formerly known as Personal Home Page";
+			echo "&lt;/p&gt;";
+			echo "&lt;/body&gt;;
+			&nbsp;
+			echo "&lt;/html&gt;;
+		?&gt;
+------------------------------------------------
+XML headers
+	To send back an XML file, you need to set the output file header to be XML BEFORE doing any output.
+	This is done as follows:
+		[[code]]
+		// Configure the output header
+		header('Content-type: text/xml');
+		header("Cache-Control: no-cache, must-revalidate");
+		header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); //date in the past
+	That must be done BEFORE any other output.  
+	If other output is sent first, ordinary headers will be sent before the first output and the file will not be identified by the browser as XML
+-------------------------------------------------------
+XML Data as text
+	After sending the XML headers, the XML data can be sent
+	That can be done using text as follows:
+		[[code]]
+		echo "&lt?xml version=\"1.0\" encoding=\"utf-8\"?&gt;";
+		echo '&lt;xml&gt;';
+
+		echo '
+			&lt;region&gt;
+				&lt;state&gt;
+					&lt;name big="no"&gt;Oregon&lt;/name&gt;
+					&lt;capital&gt;Salem&lt;/capital&gt;
+				&lt;/state&gt;
+				&lt;state&gt;
+					&lt;name big="yes"&gt;California&lt;/name&gt;
+					&lt;capital&gt;Sacremento&lt;/capital&gt;
+				&lt;/state&gt;
+			&lt;/region&gt;'
+		echo '&lt;/xml&gt;';
+
+-----------------------------------------------------------------
+XML Data as DOM object
+	You can also work with an XML DOM object
+		[[code]]
+		/* create a DOM document with encoding utf8 */
+		$dom = new DOMDocument('1.0', 'UTF-8');
+		&nbsp; 
+		/* Create the root element of the xml DOM tree */
+		$rootElement = $dom->createElement("region");
+		$root = $dom->appendChild($rootElement);
+		&nbsp; 
+		// Create state element with name and capital child elements
+		$state = $rootElement->appendChild($dom->createElement("state"));
+		&nbsp; 		
+		$state->appendChild($dom->createElement('name','Oregon'));
+		$state->appendChild($dom->createElement('capital','Salem'));
+		&nbsp; 
+		// Create state element with name/capital elements and attribute on name	
+		$state = $rootElement->appendChild($dom->createElement("state"));
+		&nbsp; 		
+		$name = $dom->createElement('name','California');
+		$nameAttr = $dom->createAttribute('big');
+		$nameAttr->value = 'yes';
+		$name->appendChild($nameAttr);
+		&nbsp; 		
+		$state->appendChild($name);
+		$state->appendChild($dom->createElement('capital','Sacremento'));
+		&nbsp; 
+		// send XML data (headers need to be setup first!!)
+		echo $dom->saveXML();
+------------------------------------------------------------------------
+Getting Data from database		
+	[[code]]
+		//connect to database
+		$con = mysql_connect("localhost", "cs234", "cs234");
+		if (!$con){
+			die('Could not connect: ' . mysql_error()); 
+		}
+		mysql_select_db("world", $con);
+		&nbsp;
+		//fetch desired countries
+		$query = "SELECT * FROM country";
+		$result = mysql_query("$query");
+		&nbsp;
+		//output all names and continents (as text)
+		while($row = mysql_fetch_array($result))
+		{
+			$name=$row['Name'];
+			$continent=$row['Continent'];
+			&nbsp;
+			echo "$name &nbsp; &nbsp; $continent";
+		}
+		&nbsp;
+		//close connection
+		mysql_close($con);
+-----------------------------------------------------------
+Selecting Data
+	To get only a subset of data, use WHERE in the SQL statement
+		[[code]]
+		//get all countries whose names begin with S
+		$query = "SELECT * FROM country WHERE Name LIKE '$S%'";
+		&nbsp;
+	Variables can be used to create the SQL Query	
+		[[code]]
+		$prefix = "S";
+		$query = "SELECT * FROM country WHERE Name LIKE '$prefix%'";
+		&nbsp;
+	Other examples of selection criteria can be found at
+		http://www.w3schools.com/sql/sql_where.asp
+
+	
+-----------------------------------------------------------------
+PHP Script Arguments
+	You typically want to send your script arguments from the webpage to control what data is returned.
+	Data is sent using GET by appending it to the URL as follows:
+		[[code]]
+		http://someplace.com/getcountries.php?prefix=z
+	To get the parameter in PHP use the following:
+		[[code]]
+		//get argument if provided
+		if(isset($_GET['prefix']))
+			$country = $_GET['prefix'];
+		else
+			$prefix = "";
+-----------------------------------------------------------
+Class Exercise
+	Discuss design and implementation details for an ajax app that does the following:
+		Displays a text box for the user to enter a country name into
+		When the user starts typing a name, all the country names that match that will be displayed in a list below the text box. The list constantly changes as the user types. 
+		When the user presses enter or selects a country from the list, details about the country are displayed somewhere else on the screen
+	Discuss in detail (or do) the part the majority wants help on
+	
+-----------------------------------------------------------------
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

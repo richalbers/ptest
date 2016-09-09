@@ -1,0 +1,146 @@
+------------------------------------------
+Ch 17 - Windows Maintenance and Optimization
+	Patches / Updates
+	Disk Mainenance
+	Task Scheduler
+	System Configuration and Information
+	Installing and Removing Software
+	Device and Driver Maintenance
+	Performance Options
+	Backups
+	System Restore Utilites
+------------------------------------------
+Patches / Updates
+	Code (including Windows) has bugs
+		bugs may cause computer to crash unexpectedly
+		bugs may allow malicious people to use your computer for nefarious purposes
+	Microsoft fixes the bugs and releases the new code as a patch
+	People neglect to install patches so problems persist....
+	So, Microsoft created an automatic update process to eliminate as much user interaction as possible
+	Configuration is done at:
+		XP
+			Control Panel | Security Center | Automatic Updates
+		7 (new locations, more options)
+			Start | All Programs | Windows Update
+			Control Panel | Windows Update
+
+------------------------------------------
+Disk Maintenance
+	Disk Cleanup
+		Removes temporary files
+		Available on general tab of disk properties page
+	Error Checking
+		Identifies lost/bad clusters
+		Available on tools tab of disk properties page
+	Defragmentation
+		rearranges data so each file is stored on contiguous clusters
+		Available on tools tab of disk properties page
+
+------------------------------------------
+Task Scheduler
+	Allows you to schedule tasks to automatically run at certain times
+	Vista/7 version is significantly updated
+		XP version called Scheduled Tasks
+		Vista/7 version called Task Scheduler
+	Ran from
+		Start | Programs | Accessories | System Tools
+		and/or Admin tools menu in Vista/7
+
+------------------------------------------
+System Configuration and Information
+	System Configuration Utility
+		Allows you to edit and troubleshoot OS and program startup processes
+		Executable: msconfig
+		Ran by typing executable name in Run/Search box
+	System Information
+		Executable: msinfo32
+		Displays System information on current or remote computers
+		Start | Programs | Accessorites | System Tools
+		(or type executable name in Run/Search box)
+------------------------------------------
+Installing and Removing Software
+	Control panel Applet for software admin 
+		XP: Add or Remove Programs
+		Vista/7: Programs and Features
+	Methods to install App software
+		Application supplied installer
+			Windows Autorun process reads autorun.inf file and does actions specified within
+		Or, on XP, Use Control Panel applet 
+	Methods to Remove App Software
+		Use Application-installed unintstaller if available (on app menu)
+		Otherwise, use control panel applet
+	Adding or removing windows features
+		Use Control panel Applet
+	
+------------------------------------------
+Device and Driver Maintenance
+	2K/XP/Vista/7 all support PnP
+		Install Device
+		Boot up
+		Install driver
+	Windows updates many include new drivers
+	If driver update goes bad, you can "roll back" driver 
+	Driver Signing 
+		MS verify's drivers are good by "signing" them
+		On XP, you can configure signing options
+			Block, Warn, Ignore
+		On Vista/7
+			It's Warn on 32 bit versions
+			It's Block on 64 bit versions (!)
+
+------------------------------------------
+Performance Options
+	Allows you to configure CPU, RAM, and Virtual Memory Settings
+	Available via Advanced Tab/Link of Computer Properties
+		Click on Performance Settings Button
+	Visual Effects
+		Disable eye candy on slow machines
+	Processor Scheduling Priority
+		Foreground vs Background
+	Virtual Memory
+		Size & Location of paging file
+--------------------------------
+Backups
+	Backup types
+		Full
+		Incremental
+		Differential
+		Daily
+		Copy
+	XP - NTBackup
+		Can backup and restore data files and/or system state
+		Was designed for use with tape drive; cannot write to a CD or DVD
+	Vista/7 - Backup and Restore
+		Simpler (less flexible) interface
+		Writes to flash, optical, or network drive (no tape!)
+
+--------------------------------
+System Restore Utilities
+	System Restore (restore points)
+		Saves critical files & settings
+		Allows restoring to those
+		Backup happens automatically at certain times
+			Can also be done manually
+				Computer Properties | System Protection
+		VERY useful
+	XP's ASR (Automated System Recovery)
+		Backs up boot & system partitions
+		Very long restore process
+			formats boot drive
+			reinstalls OS off XP CD
+			applies ASR backup on top of that
+		Not useful, replaced with image backup/restore on 7
+
+--------------------------------------------
+Summary
+	Patches / Updates
+	Disk Mainenance
+	Task Scheduler
+	System Configuration and Information
+	Installing and Removing Software
+	Device and Driver Maintenance
+	Performance Options
+	Backups
+	System Restore Utilites
+
+--------------------------------------------

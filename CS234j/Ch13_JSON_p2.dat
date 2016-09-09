@@ -1,0 +1,104 @@
+-----------------------------------------------------------
+JSON - part 2
+	Based on the previous presentation, you should already know
+		What JSON is and what it is used for
+		The JSON formatting rules
+		How an object built from JSON text is structured and how to access it's properties
+	At the end of this presentation you should be able to:
+		Create a JSON file that defines a specified object or array of objects
+		Use the jQuery.getJSON() function to fetch a JSON file and work with the returned data 
+-----------------------------------------------------------------
+JSON files
+	JSON files end in .json
+	Media type is application/json
+	The contents always begin and end with { } or [ ]
+	Some examples can be found here:
+		[[en.wikipedia.org/wiki/JSON!http://en.wikipedia.org/wiki/JSON]]
+		[[www.json.org/example.html!http://www.json.org/example.html]]
+		[[www.jquery4u.com/json/10-example-json-files/!http://www.jquery4u.com/json/10-example-json-files]]
+	Typically, you won't have a JSON file, but will be generating JSON data dynamically from a Database using PHP
+-----------------------------------------------------------------
+Practice
+	Create a JSON file containing book info for a single book
+		File should be named book.json
+		Information should consist of title, author, ISBN, and if the book is in print
+	Create a JSON file containing book info for several books
+		File should be named books.json
+		Information for each book should consist of title, author, ISBN, and if the book is in print	
+-----------------------------------------------------------
+.getJSON()
+	The jQuery.getJSON() method 
+		gets the requested JSON-formatted page 
+		parses it, automatically creating a javascript object or array from it
+	The general format is as follows:
+		[[code]]
+		$.getJSON( "myDataFile.json", function( results ) {
+				// results will be an object or array built from
+				//   the JSON formatted text that was returned.
+				// That object will be processed here, typically
+				//   displaying the data on the page in some form
+			});
+	In place of the JSON file (myDataFile.json in the above example), it's more likely you'll run a PHP script on the server that formats the restulting data as JSON.
+
+------------------------------------------------------------------------
+Example 1
+	Given Dog.json is a file containing this
+		[[code]]
+		{
+			"name": "Fido",
+			"weightLbs": 56.4,
+			"isCool": false
+		}
+	The following code would fetch that data and display it in an alert box
+		[[code]]
+		$.getJSON( "dog.json", function( dog ) {
+			alert(dog.name + " " + dog.weightLbs + " " + dog.isCool);
+		});
+----------------------------------------------------------------------------
+Example 2
+	Given dogs.json is a file containing this
+	[[code]]
+		[
+			{ "name":"Fido", 	"weightLbs":56.4, 	"isCool":false },
+			{ "name":"Spot", 	"weightLbs":20, 	"isCool":false },
+			{ "name":"Snoopy", 	"weightLbs":32, 	"isCool":true }
+		]
+	The following code would fetch that data and display the names in an alert box
+		[[code]]
+		$.getJSON( "dogs.json", function( dogs ) {
+			alert(dogs[0].name + " " + dogs[1].name);
+		});
+------------------------------------------------------------------------
+Error Handling
+	Just as with other jQuery AJAX functions, you can handle the errors by chaining the .fail() method to the end of the original call
+	Example:
+		[[code]]
+		$.getJSON( "myDataFile.json", function( results ) {
+			// process data here
+			// ....
+		})
+		.fail( function () {
+			alert( "Error - page could not be loaded" );
+		});
+-----------------------------------------------------------------
+Practice
+	Create a webpage that uses getJSON to load data from the .json files you created previously into a div.
+-----------------------------------------------------------------
+Useful Links
+	[[en.wikipedia.org/wiki/JSON!http://en.wikipedia.org/wiki/JSON]]
+	[[www.json.org!http://www.json.org]]
+	[[www.json.org/example.html!http://www.json.org/example.html]]
+	[[www.jquery4u.com/json/10-example-json-files/!http://www.jquery4u.com/json/10-example-json-files]]
+-----------------------------------------------------------
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

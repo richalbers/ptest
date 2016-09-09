@@ -1,0 +1,144 @@
+-----------------------------------------------------------
+AJAX with jQuery Introduction
+	At the end of this presentation you should be able to
+		List the three categories of jQuery AJAX functions
+		Use the shorthand methods load, get, and post
+		Use arguments with those methods
+		Handle errors that occur when using those methods
+
+-----------------------------------------------------------
+AJAX jQuery interface 
+	JQuery Ajax interface consists of numerous functions which provide a simple interface to the XMLHttpRequest object 
+	The functions fall into three categories
+		Low Level Interface
+			provides all the available functionality
+			Easier than using XMLHttpRequest directly, but not as easy as could be for most commonly-done actions
+		Shorthand
+			Provide a simpler interface for common usage
+			Works for most desired operations
+		Global Event Handlers
+			Respond to all Ajax requests
+
+------------------------------------------
+Functions at a glance
+	Low Level
+		ajaxSetup()
+		ajax()
+	Shorthand (workhorses)
+		load()
+		get()
+		post()
+		getJSON()
+		getScript()
+	Global Event Handlers
+		ajaxComplete()
+		ajaxError()
+		ajaxSend()
+		ajaxStart()
+		ajaxStop()
+
+-------------------------------------------
+.load()
+	The simplest, most all-encompasing function available
+	Fetches data, and places the results directly into an element
+		data fetched can be html (i.e. contain html tags), but shouldn't be a complete page as it's	being put into an element in an existing page
+	Examples:
+		[[code]]
+		//load data into element
+		$('#someID').load("test.html");
+				
+		//load data into element, then display message
+		$('#someID').load("test.html" function() {
+			alert("Data was loaded!");
+		});
+	jQuery Documention page: [[https://api.jquery.com/load/!https://api.jquery.com/load/]]
+-------------------------------------------
+Sending Arguments
+	Arguments can be sent with your asyncronous request
+		arguments in the form of an object (name=value pairs)
+	Examples
+		[[code]]
+		//building args object inline
+		$('#someID').load("ShowGetPost.php", { name: "Snoopy", cool: "yes" });
+			
+		//Building arg object variable, then sending
+		var args = {
+				name: "Pluto";
+				cool: false
+			};
+		$('#someID').load("ShowGetPost.php", { name: "Snoopy", cool: "yes" });
+
+-------------------------------------------
+.get()
+	Shorthand method to send request using "GET" method
+		Get is a jQuery function but doesn't work with an element on the page, so it's not prefaced with a selector.
+	Examples
+	[[code]]
+		//Sending request (and ignoring results)
+		$.get("test.php");
+			
+		//Send request, display results in alert box
+		//  data returned from the ajax call is sent to 
+		//  the function as the first parameter
+		$.get('test.html', function(data) {
+			alert(data);
+		});
+			
+		//Send request, display results in element
+		$.get('test.html', function(data) {
+			$("#somediv").html(data);
+		});
+	jQuery Documention page: [[https://api.jquery.com/jQuery.get/!https://api.jquery.com/jQuery.get/]]
+-------------------------------------------
+Sending Arguments
+	Just as with .load, arguments are sent in an object 
+	Example
+		[[code]]
+		//building arg object inline
+		$.get("ShowGetPost.php", { name: "Snoopy", cool: "yes" }, function (data) {
+			$("#somediv").html(data);
+		});
+			
+		//building arg object variable
+		var args = {
+			name: "Pluto";
+			cool: false
+		};
+		$.get("ShowGetPost.php", args, function(data) {
+			$("#div2").html(data);
+		});
+
+-------------------------------------------------------------------------------
+.post
+	.post is just like .get, except arguments are sent using POST method
+	Example
+		[[code]]
+		$.post("ShowGetPost.php", { name: "Goofy", cool: "no" }, function (data) {
+			$("#div2").html(data);
+		});
+	jQuery Documention page: [[https://api.jquery.com/jQuery.post/!https://api.jquery.com/jQuery.post/]]
+
+-------------------------------------------
+Error Handling
+	If the AJAX call fails, you can handle the error by chaining the .fail() method to the end of the original call
+	Example:
+		[[code]]
+		$.get( "example.php", function (data) {
+			alert( data );
+		})
+		.fail( function () {
+			alert( "Error - page could not be loaded" );
+		});
+--------------------------------------------
+ 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

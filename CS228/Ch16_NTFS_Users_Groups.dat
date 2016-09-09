@@ -1,0 +1,201 @@
+------------------------------------------
+Ch 16 - NTFS, Users, and Groups
+	User Accounts
+	Authentication vs Authorization
+	Passwords
+	Groups
+	Managing Users
+	Login Options
+	UAC
+	Parental Controls
+	NTFS
+	Sharing
+	Encryption
+	UAC Details
+
+--------------------------------
+User Accounts
+	Users Accounts are the foundation up which security is built
+	User Accounts:
+		are given permissions to files
+		are given rights to do things
+	User Account types
+		Local - Managed by clients (i.e. XP/Vista/7)	
+		Domain - Managed by domain controller
+	Default accounts
+		Administrator
+		Guest
+
+--------------------------------
+Authentication vs Authorization
+	Authentication - determining the user is who they say they are
+		Username
+		Password
+	Authorization - What a user can access and do
+		NTFS permissions
+		User Rights
+
+--------------------------------------
+Passwords
+	Passwords are the key to protecting your computer
+		Good passwords are essential
+		Never give your password to anyone, even the admin
+		Password is case sensitive
+		Users should create their own
+	Admins cannot see or retrieve user passwords, but can reset them
+			If reset, the user will no longer be able to access previously encrypted files
+	Many places force users to change passwords periodically
+	User can create "forgotten password disk"
+		Keep in safe place, use when password is forgotten
+		Windows 7 also lets you set a password hint
+
+--------------------------------
+Groups
+	Groups make administration easier
+	User Accounts should be put into groups
+	Groups are given rights and permissions
+	Default XP groups
+		Administrators
+		Power Users (pro)
+		Users (Limited Users)
+		Everyone
+		Guests
+	Vista/7 Pro groups
+		Those plus more....
+--------------------------
+Managing Users
+	There are two tools available for managing users
+		User Applet on Control Panel
+			Simple, appears designed for home use
+		Local Users and Groups tool (from computer managment console)
+			More complex with more features/controls
+-----------------------------
+Login Options
+	Welcome Screen (introduced with XP)
+		Default
+		List of users is displayed
+		Administrator is not displayed (by default)
+		Supports fast user switching
+	Logon Window
+		Most Secure
+		Press cntrl-alt-delete
+		Enter username and password
+	Selected via User Applet on Control panel
+--------------------------------
+User Account Control
+	Historically, Windows users needed to be admins to install software
+	This allowed them to easily accidently install malware
+	UAC solves this
+		When admin rights are to be used, system prompts for admin credentials
+		Introduced (poorly) with Vista
+		Made usable in 7
+--------------------------------------------
+Parental Controls
+	Vista/7 have parental controls
+	These allow you to monitor and limit activities of any standard user
+		Block websites type or URL, or only allow certain websites
+		Limit times and length of login
+		Block games with certain ESRB ratings
+
+--------------------------------------------
+NTFS
+	A secure, robust file system introduced with Windows NT
+	NTFS features:
+		Redundancy
+			Has backup copy of MFT
+		Recoverability
+			Uses transaction logging
+		Security
+			Each file is owned by a specific user
+			User access to files and folders is configurable via permissions
+
+------------------------------------------
+File Ownership
+	Each file is owned by the person that created it
+	The owner can do whatever he wants with a file, including changing permissions
+	There is a take ownership permission that, when given to someone, allows them to take ownership of the file
+	Administrators have take ownership permission
+	By default Files inherit the permissions from the folder they're in
+
+------------------------------------------
+Basic NTFS Permissions
+	Full Control
+	Modify
+	Read & Execute
+	List Folder Contents (folders only)
+	Read
+	Write
+
+----------------------------------------
+Moving and Copying files
+	Rule 1 - New files always inherit their permissions from the folder into which they're placed.
+	Copying a file creates a new file, see Rule 1
+	Moving a file to a new volume creates a new file (and deletes the original), see Rule 1
+	Moving files within the same volume doesn't create a new file, and doesn't change permissions
+	Permissions only apply on NTFS volumes (not FAT)
+
+----------------------------------------
+Sharing
+	Sharing can mean two things
+		Local Sharing - Making a folder available to other users on the local machine
+			Actually just done with NTFS permissions
+			Public folders are done this way
+		Network Sharing - Making a folder available on the network
+			Involves both NTFS and Sharing permissions
+	Local sharing his handled with NTFS permissions
+		Public folders are configured to allow sharing with everyone
+
+------------------------------------------
+Simple File Sharing
+	NTFS is complicated, so with XP, Microsoft created Simple File Sharing for home/small office use
+	Simple File Sharing, when enabled, hides all the NTFS permissions
+	Public Folder has permissions set so all users can write to it
+	It's enabled via Windows Explorer
+		Tools->Folder Options, View Tab, last checkbox.
+	Note: it is disabled if the computer is a part of a domain
+
+--------------------------------------------
+Sharing in Vista/Windows 7
+	With Vista/7 there's a new simple User Interface for sharing files/folders with specific users
+		Right-click on a folder/file and select "Share With" from the context menu
+		Select the user you want to share the file with
+		Choose the following "share" level
+			reader - user can read the file
+			contributor (folder) - read and write
+			co-owner - full control
+	Note: this simple interface utilizes NTFS permissions behind the scenes to actually implement the funtionality
+
+--------------------------------------------
+Encryption
+	Encrypted File System (EFS)
+		Allows encrypting folder contents
+		User encrypting data and Admin can get access
+	Bitlocker
+		Allows encrypting entire hard drive
+		Supported by Vista/7
+		Requires hardware support (TPM)
+		Control Panel -> System and Security -> Bitlocker
+--------------------------------------------
+UAC Details (7)
+	UAC level can be set via Control Panel applet (User Accounts)
+		Always notify me 
+		Notify me when programs make changes (but not when I do)
+		Same as above but in normal dialog box
+		Never Notify me (UAC is off)	
+
+--------------------------------------------
+Summary
+	User Accounts
+	Authentication vs Authorization
+	Passwords
+	Groups
+	Managing Users
+	Login Options
+	UAC
+	Parental Controls
+	NTFS
+	Sharing
+	Encryption
+	UAC Details
+
+--------------------------------------------

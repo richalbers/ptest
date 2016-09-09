@@ -1,0 +1,43 @@
+---------------------------------------------------------------------
+Visual Effects with jQuery
+	At the end of this presentation you should be able to
+		describe kinds of visual effects that are most common on web pages (and therefore made the easiest to accomplish)
+		make elements slide and fade into and out of sight
+		make other css styles progress from one value to another
+		chain animation effects together
+		have a function execute after an animation has completed 
+		interrupt an animation in progress
+
+---------------------------------------------------------------------
+Overview
+	jQuery allows you to add nice visual efffects to your page via several animation functions
+		sliding and fading are common so very-easy-to-use routines are provided for those
+		animate() allows you to create a custom effects that transitions one or more styles (size, position, opacity, etc..) to a specified value
+	Animations can be chained together so one runs after the other.
+	A routine can be configured to run when the animation is complete
+---------------------------------------------------------------------
+Visual Effects Functions
+	Simple (fading/sliding)
+		hide/show/toggle - hides/shows elements (fading/sliding is optional)
+		slideDown/Up/Toggle - slides elements up/down
+		fadeIn/Out/To/Toggle - fades elements in/out
+	More complex 
+		animate - transitions specified styles to specified values
+			Doesn't automatically hide elements when animiation is complete
+	Effects control
+		stop - stops the currently running animations
+		finish - instantly completes currently running and queued animations
+		delay - delays execution of subsequent functions in chain
+	[[w3schools tutorial!http://www.w3schools.com/jquery/jquery_hide_show.asp]] and [[jQuery Documenation!https://api.jquery.com/category/effects/]]
+---------------------------------------------------------------------
+Practice
+	Use [[jsFiddle!http://http://jsfiddle.net/]] to write code that demonstrates
+		fadeIn/Out/Toggle
+			fading an element out when a button is pressed
+			fading the element in when another button is pressed
+			alternatively hiding/showing a paragraph when a button is pressed
+		slideIn/Out/Toggle (just as with fade)
+		delay, stop, finish
+		custom effects using animate
+
+		

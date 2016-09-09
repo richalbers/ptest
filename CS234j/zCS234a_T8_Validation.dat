@@ -1,0 +1,95 @@
+-----------------------------------------------------------
+Form Validation
+	Overview
+	When/Where/How
+	HTML5
+	Custom Javascript
+	Using a JQuery Plugin
+-----------------------------------------------------------
+Overview
+	Data validation is the process of ensuring that a program operates on clean, correct and useful data
+	All data coming from the user must be validated
+	Why?
+		Operation typically depends on data
+			Bad data can result in unexpected operation
+		Making sure data is valid up-front makes for easier coding when dealing with the data (less error handling code needed througout program)
+		Putting bad data into a database can have lots of unintended consequences later on
+			ALWAYS VALIDATE DATA GOING INTO A DATABASE
+
+-----------------------------------------------------------
+When/Where/How
+	When?
+		Two possibilities
+			When user leaves field
+			When submit is pressed
+	Where?
+		Client side
+			faster response time
+			less network traffic
+		Server side
+			Can't be bypassed
+		I'd recommend both for data going into database
+	How? (on client)
+		HTML5
+		Custom Javascript
+		Using a JQuery plugin
+
+-----------------------------------------------------------
+HTML5
+	HTML5 provides built in validation
+	Implemented using [[new input field types/attributes!http://www.w3schools.com/html/html5_form_input_types.asp]]
+	Pros
+		Very simple to implement
+		Covers common things
+	Cons
+		Not universally supported 
+		Can't validate based on data from server
+		Difficult to combine with custom validation and achieve same look and feel
+	
+-----------------------------------------------------------
+Custom Javascript
+	You can write javascript to validate
+		fields when you leave them
+			onblur event (.blur() in JQuery)
+		or the entire form when you push submit 
+			set form onsubmit attribute to validation function
+				if it returns false, action is NOT done
+				if it returns true, action is done
+	Pros
+		Is entirely under your control
+		All things are possible
+	Cons
+		Requires a fair amount of code (relative to the other solutions)
+			You need to write validation routines
+			You need to create way to display/clear error messages
+-----------------------------------------------------------
+Using a JQuery Plugin
+	There have been numerous jQuery plugins written to provide validation
+	In their simplest form, you just put input elements into classes based on the type of validation you want done on each
+	More flexible ones allow you to specify "rules" to apply to different fields
+	Pros
+		Relatively Easy to use
+		Customizable (usually)
+	Cons
+		documentation might be lacking 
+	The most popular example:	
+		[[http://bassistance.de/jquery-plugins/jquery-plugin-validation/!http://bassistance.de/jquery-plugins/jquery-plugin-validation/]]
+-----------------------------------------------------------
+Summary
+	Overview
+	When/Where/How
+	HTML5
+	Custom Javascript
+	Using a JQuery Plugin
+-------------------------------------------
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

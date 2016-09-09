@@ -1,0 +1,94 @@
+-----------------------------------------------------------
+JQuery
+	Intro
+	Basics
+	Getting Started
+	Selectors
+	Functions
+	Useful Links
+	Class Exercise
+	
+------------------------------------------
+Intro
+	JQuery is a library of javascript functions
+	It simplifies
+		element attribute and style manipulation
+		event handling
+		animations
+		ajax
+		handling browser differences
+		completely separating your javascript from your html
+	To use it you need to include the jquery library in your code
+		You can [[download your own copy or link to a version hosted on-line!http://docs.jquery.com/Downloading_jQuery]]
+	Documentation and tutorials can be found at [[jquery.com!http://jquery.com]]
+-------------------------------------------
+Basics
+	JQuery is object oriented. 
+		There's a jquery object and it builds objects representing elements in the DOM.  
+	JQuery function calls have the following syntax
+			[[code]]
+			JQuery(selector).JQ_function(arguments);
+		or more simply
+			[[code]]
+			$(selector).JQ_function(arguments);
+	Selectors are most standard css selectors and more!
+	There are numerous functions
+	Some simple examples:
+		[[code]]
+		$('p').html("censored"); //replaces paragraph text 
+		$('p').css("color", "red"); //makes paragraphs red
+-------------------------------------------
+Getting Started
+	You can't start using JQuery functions to interact with the document until the DOM has been completely built.
+	The JQuery object has a ready() event associated with the document that is triggered when we're ready for liftoff
+		[[code]]
+		$(document).ready(function(){
+			alert("Blastoff!!!");
+		});
+	That syntax, while possibly confusing at first glance, is typical JQuery.
+-------------------------------------------
+Selectors
+	JQuery selectors can be most CSS selectors + many many more! 
+	A concise list is on w3schools
+		[[http://www.w3schools.com/jquery/jquery_ref_selectors.asp!http://www.w3schools.com/jquery/jquery_ref_selectors.asp]]
+	All the details are on JQuery.com
+		[[http://api.jquery.com/category/selectors/!http://api.jquery.com/category/selectors/]]
+		
+------------------------------------------------
+Functions
+	There are hundreds of functions
+	Most useful is learning how to use the documentation to find and use new-to-you functions
+		That skill will allow your knowlege bank to grow continually
+	We'll practice that skill by implementing the following (using JQuery documention for guidance)
+		DOM manipulation
+			Getting & Changing HTML code
+			Getting & Changing styles
+		Adding event handlers
+		Animation
+		Chaining things together
+	
+-----------------------------------------------------------------
+Useful Links
+	JQuery Tutorials
+		[[http://www.w3schools.com/jquery/default.asp!http://www.w3schools.com/jquery/default.asp]]
+		[[http://docs.jquery.com/Tutorials!http://docs.jquery.com/Tutorials]]
+	Complete JQuery Documentation
+		[[http://docs.jquery.com/Main_Page!http://docs.jquery.com/Main_Page]]
+		
+-----------------------------------------------------------
+Class Exercise
+	Create drop down menu system
+		content (html), presentation (css), and functionality (javascipt) will be completely separate.
+	
+-----------------------------------------------------------------
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

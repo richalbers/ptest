@@ -1,0 +1,89 @@
+------------------------------------------
+Ch 14 - Installing & Upgrading Windows
+	Installation Preparation
+	Installation Process
+	Installation Methods
+	Post-Installation Tasks
+	Migrating
+	
+--------------------------------------------
+Installation Preparation
+	Identfify Hardware Requirements
+	Verify Hardware and Software Compatibilty
+	Decide on Clean Install or Upgrade
+	Determine Data Backup/Restore process
+	Select an installation method
+	Determine Partition Scheme (for clean installs)
+	Determine Network settings (for clean installs)
+	Plan for post-installation tasks 
+
+------------------------------------------------
+Verify Hardware and Software Compatibilty
+	Since Win95, Microsoft has produced a list of "compatible" hardware/software
+		Up to XP - Hardware Compatibilty list
+		XP - HCL or Windows Catalog
+		Vista - Windows Logo'd Products list
+		Win 7 - Compatibilty Center (website)
+	Upgrade Advisor will analyze system to see if it will run 7
+		Located on Win 7 CD and/or downloadable
+	Just because MS doesn't think a piece of hardware is compatible, it still may be
+		Check Hardware manufacturers site for latest drivers.
+
+----------------------------------------------
+Installation Types
+	NT/2K/XP/Vista/7 installs are all very similar
+	Install types
+		Clean
+			Wipes out all existing config info and software
+		Upgrade
+			Existing info & software carries forward
+			In theory faster, in practice, often not
+			Not all upgrade paths are valid
+	Multiboot install - clean on separate partition
+		With XP, you could specify the folder (and therefore install two OSs on the same partition)
+	Activation - required by XP/Vista/7
+
+--------------------------------------------
+Installation Methods
+	Attended
+		You sit there and answer all the prompts
+	Unattended
+		You create an answer-file that is then used during the install
+		In theory, you can simply start the install, and come back later to an up-and-running system
+		On XP, Setup Manager is used to create the answer file
+		On Vista/7, a new process: WAIK (windows automated Install Kit) is used
+	Installs can be done off media or over the network from a shared folder
+--------------------------------------------
+Install Methods Continued...
+	Image Deployment (cloning)
+		Most common for large deployments
+		Allows cloning OS and all Applications
+		Sysprep is used to prepare disk for cloning
+		Ghost is commonly used for the cloning.  WAIK (Vista/7) includes imageing tools.
+		
+--------------------------------------------
+Post-Install Tasks
+	Apply latest Windows Updates
+	Upgrade drivers
+	Restore User Data (if applicable)
+
+-------------------------------------------------------
+Migrating
+	Migrating is moving from an old computer to a new computer
+		Files, User accounts & settings, application settings, etc.. 
+	Migration Tools
+		Small number of users
+			File and Settings Transfer Wizard (to XP)
+			Windows Easy Transfer (to Win 7)
+		Large Number of users (Domains)
+			User State Migration Tool
+
+---------------------------------
+Summary
+	Installation Prep
+	Installation Process
+	Installation Methods
+	Post-Installation Tasks
+	Migrating
+
+-----------------------------------------

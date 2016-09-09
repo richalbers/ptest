@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!-- 
+	HTML presentation of interactive quiz 
+	Quiz questions are passed in via args  
+	Should be called as follows:
+		iQuizDisplay.html?QuizID=SomeID&Questions=Some_long_properly_formatted_set_of_questions
+	Data file must be formatted properly
+-->
+<html> 
+<head>
+  <link rel="stylesheet" type="text/css" href="PresentationResources/Presentation.css" />
+  <script type="text/javascript" src="PresentationResources/jquery-1.8.2.min.js"></script>
+  <script type="text/javascript" src="PresentationResources/PageStyle.js"></script>
+  <script type="text/javascript" src="PresentationResources/iQuizAnswerPad.js"></script>
+<style>
+body {
+	text-align:center;
+	font-size: 30px;
+}
+	
+#Content {
+	width:140px;			/*if changed, also change margin-left*/
+	height: 300px;
+	position: absolute;		/*so we can position controls at the bottom*/
+	top: 100px;
+	left: 50%;				/*centers horizontally*/
+	margin-left: -70px;		/*centers horizontally - half the width*/
+	padding: 10px;
+	border:1px dashed white;
+	zbackground-color:#eee;
+}	
+
+section { 
+	zborder: 1px solid red;
+	margin: 0px;
+	padding: 0px;
+	padding: 15px;
+}
+
+#answers {
+	text-align: center;
+}
+
+.buttonABCD {
+	width: 100px;
+	font-size: 24px;
+}
+
+#controls {
+	text-align: center;
+	zheight: 80px;
+	width: 100%;			
+	zposition: absolute;
+	zbottom: 10px;
+}
+
+#controls {
+	display: table;
+	padding: 10px;
+	font-size: 24px;
+}
+
+#buttonClose {
+	position: absolute;
+	top: -15px;
+	right: -15px;
+	font-size: 25px;
+	font-weight: bold;
+	background-color: red;
+	color: white;
+	border-radius: 15px;
+}
+
+#buttonClose:hover {
+	font-size: 30px;
+	top: -20px;
+	right: -20
+	px;
+}
+
+
+</style>
+ </head>
+
+<body>
+	<div id="Content">
+		<button id="buttonClose">X</button>
+		
+		<section id="controls">
+			<p>Answer Pad # <span id="padID"></span></p>
+		</section>
+		
+		<section id="answers">
+			<button id="buttonA" class="buttonABCD"> A </button>
+			<button id="buttonB" class="buttonABCD"> B </button>
+			<button id="buttonC" class="buttonABCD"> C </button>
+			<button id="buttonD" class="buttonABCD"> D </button>
+		</section>
+
+		</section>
+
+	</div>
+</body>
+</html>

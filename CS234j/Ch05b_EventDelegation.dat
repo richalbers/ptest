@@ -1,0 +1,97 @@
+---------------------------------------------------------------------
+Event Propagation and Delegation
+	Based on previous presentations you should already
+		be able to use jQuery to make modify the DOM after the page is ready 
+		be able to attach event handlers to elements on the page
+	At the end of this presentation you should
+		understand what event propagation/bubbling is
+		be able to stop propagation from occuring when you don't want it to occur
+		understand the difference between direct and delegated event handling
+		explain the benefits of delegated event handling
+		be able to use delegated event handling in an application
+
+---------------------------------------------------------------------
+Event propagation
+	Most events propagate (or bubble) from innermost elements, where the event occurred, all the way to the body.
+	So if you have this page
+	[[code]]
+		<body>
+			<div>
+				<p>This is a paragraph </p>
+			</div>
+		</body>
+	A click on the innermost paragraph could be handled by an event handler
+		on the paragraph
+		on the div
+		on the body
+		or on all of them
+---------------------------------------------------------------------
+Practice
+	Create a web page with nested elements (body, div, p)
+	Use jQuery to attach event handlers to each of those items (three separate handlers) which uses an alert to print out the contents of the element (.html()).
+	Load the page and click on the paragraph to see how that single event propagates (or bubbles) up through the elements.
+---------------------------------------------------------------------
+Stopping propagation
+	Propagation (bubbling) can be stopped by
+		using stopPropagation()
+			stopPropagation() is an event object method
+			an event object is passed to jQuery event handlers as a argument (we've been ignoring it, but today we'll not!)
+		return false from an event handler
+			this automatically calls stopPropagation()
+	Examples
+		[[code]]
+		$("#someElement").click( function ( event) {
+			...
+			event.stopPropagation();
+		});
+			
+		$("#anotherElement").click( function ( event) {
+			...
+			return false;
+		});
+----------------------------------------------------------------------
+Practice		
+	Add code to the previous practice code to stop the event propatation after the paragraph or div event occurs
+	Test both methods:
+		calling stopPropagation() directly
+		returning false
+
+---------------------------------------------------------------------
+Event handler delegation
+	Event handlers can only be bound to elements that exist at binding time (when .on() or one of the shorthand functions are called).
+	So, if you have dynamically added elements that you want to handle events for, you need to either 
+		add the handlers AFTER the elements are added
+			attaching handlers directly to the element is referred to as direct 
+		use delegated event handling (i.e. let a parent or other ancestor handle it)
+	Delegated event handling
+		avoids the need to frequently attach and remove event handlers on dynamic content
+		has less overhead when many elements need to be handled (like 1000 rows of a table)
+---------------------------------------------------------------------
+Examples
+	Direct attachment Example
+	[[code]]
+		//Handle click events on all existing #dataTable tr elements
+		$( "#dataTable tbody tr" ).on( "click", function() {
+			alert( $( this ).text() );
+		});	
+	Delegated attachment Example
+	[[code]]
+		//Handle click events on all #dataTable tr elements,
+		// including those added in the future
+		$( "#dataTable tbody" ).on( "click", "tr", function() {
+			alert( $( this ).text() );
+		});
+	Note: the jQuery selector "this" will refer to the element the event originated from, not the element delegated to handle it 
+---------------------------------------------------------------------
+Practice
+	Create a webpage that contains an empty unordered list
+	Use jQuery to dynamically add a bunch of list items to the list from an array
+	Try the different scenarios (after each test it to see if it works)
+		Note: for each scenario, the event handler should print out the contents of the element using $(this).html();
+		Attach an event handler directly to the list items before they're added
+			Does it work?
+		Attach an event handler directly to the list items after they're added 
+			Does it work?
+		Attach a delegated event handler to the list to handle events that occur on decendent list items, before the items are added
+			Does it work?
+---------------------------------------------------------------------

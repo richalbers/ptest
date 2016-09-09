@@ -1,0 +1,61 @@
+--------------------------------
+Ethernet Basics
+	This presentation covers the following topics:
+		History of Ethernet
+		Ethernet Frame
+		Early Ethernet Networks
+		Equipment
+
+--------------------------------
+History
+	Created by Xerox in 1973 to replace sneakernet
+	Competed against Token Ring for awhile
+	Worked on with DEC and Intel
+	Control given IEEE, who standardized it as 802.3
+
+--------------------------------
+Ethernet Frame
+	preamble - 64 bits [[img http://www.doc.ic.ac.uk/~nd/surprise_97/journal/vol4/mhl/ether01.gif]]
+		0101010101...11
+	Destination MAC - 6 bytes
+	Sending MAC - 6 bytes
+	Length (of data field) - 2 bytes
+	Data / Padding 46-1500 bytes
+	Frame Check Seq (CRC) - 4 bytes 
+
+---------------------------------
+Early Ethernet Networks
+	10Base2 & 5 [[img http://learn-networking.com/wp-content/uploads/2008/01/thicknet-thinnet.jpg]]
+		Coax
+	10BaseT [[img http://img.tfd.com/cde/10BASE2.GIF]]
+		Cat3 UTP
+		100 meter segments
+		10 Mbps
+	10BaseFL [[img http://www.cpcstech.com/images/enet_fiber.gif]]
+		MM Fiber with ST or SC connectors
+		2000 meters
+		10 Mpbs
+	All of these are obsolete
+
+---------------------------------
+Equipment
+	Hubs (now obsolete) [[img http://res1.windows.microsoft.com/resbox/en/Windows%207/main/efd35800-4af8-4cba-b656-8bfe100150ae_48.jpg]]
+		CSMA/CD
+		Collision Domains
+		Uplink ports
+		Use of straight-though vs cross over cables
+	Bridge
+	Switches
+		"smart" hubs
+		Make point-to-point connections
+		collision domains become broadcast domains
+		Considered "layer 2" devices because they operate at layer 2 (reading MAC addresses)
+		[[switch examples!http://www.newegg.com/Store/SubCategory.aspx?SubCategory=30&Tpk=ethernet%20switch]]
+
+--------------------------------
+Summary
+	History
+	Ethernet Frame
+	Early Ethernet Networks
+	Equipment
+--------------------------------

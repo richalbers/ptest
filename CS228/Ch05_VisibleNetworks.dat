@@ -1,0 +1,103 @@
+------------------------------------------
+Ch 5 - Visible Networks
+	Terms
+	Topology
+	Early Networks
+	Modern Wired Ethernet
+	Network Cards
+	LANs and WANs
+	IP
+	Network Organization
+
+------------------------------------------
+Terms
+	Client
+	Server
+	NIC (Network Interface Card)
+	Frames/Packets
+	Protocols
+
+------------------------------------------
+Topology
+	Types
+		Bus
+		Ring
+		Star
+		Mesh
+	Modern Wired Ethernet LANs use Unshielded Twisted Pair (UTP) wired in a physical star topology
+	Signalling (logical) Method is bus
+
+------------------------------------------
+Early Networks
+	Early LANs were built using one of two competing technologies
+		Token Ring 
+		Ethernet
+	Ethernet became the dominate technology, and is now ubiquitous
+	Early etherenet used coax in a bus topology
+
+------------------------------------------
+Modern Wired Ethernet
+	Ethernet Standards
+		10BaseT
+		100BaseT
+		1000BaseT
+	UTP Categories
+		CAT 3 - 16Mbps
+		CAT 5 - 100Mbps
+		CAT 5e - 1000Mbps (1Gbps)
+		CAT 6 - 10Gbps
+
+-------------------------------------------
+NICs
+	Modern cards are full duplex
+	Cables connect via RJ45 jacks/connectors
+	RJ-45 Wiring standards
+		TIA/EIA 568A
+		TIA/EIA 568B
+	Status lights
+		Link 
+		Activity
+-----------------------------------------------
+LANs and WANs
+	LAN - Local Area Network
+		A group of networking devices that are physically close
+		All can reach each other directly (i.e. if one broadcasts, they all hear it)
+		Typically one IP subnet
+	WAN - Wide Area Network
+		A geographically dispersed collection of LANs
+		Spans a large area
+		LANs are connected to a WAN using a router
+			Router has both a LAN address and WAN address
+-------------------------------------------------
+TCP/IP
+	Network/Transport layer protocol used on the Internet
+	Key Properties
+		IP address
+		Subnet Mask
+		Gateway
+		DNS Server
+-----------------------------------------------
+Network Organization
+	Workgroup
+		Group of computers sharing a common "workgroup" name
+		Each manages it's own security (each has it's own list of users)
+	Domain
+		Group of computers that share a central security database
+		Database is called Active Directory on Windows
+		Requires use of Windows Server to manage the database
+	HomeGroup
+		Group of computers that can more easily share files
+		Single password is used to allow all computers access to data
+		Simpler to manage security in than workgroups
+		Available in Windows 7
+-------------------------------------------------
+Summary
+	Terms
+	Topology
+	Early Networks
+	Modern Wired Ethernet
+	Network Cards
+	LANs and WANs
+	IP
+	Network Organization
+--------------------------------------------

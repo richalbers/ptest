@@ -1,0 +1,150 @@
+------------------------------------------
+Ch 18 - Windows Command Line
+	Why a command line?
+	Windows Command Shells
+	Filename Rules
+	Command Syntax
+	Help Text
+	Fundamental Commands
+	Wildcards
+	Batch Files
+	Path
+	Additional Commands
+------------------------------------------
+Why a command line?
+	It's faster for many operations
+	Scripts (batch files) can be written that automate tasks
+	Sometimes necessary for troubleshooting when you can't get to a GUI
+		XP recovery console provides only a command line
+		Advanced Boot Options Menu provides abilty to boot directly to Command line
+		Many 3rd party boot disks provide only a command line
+	Windows Server now lets you install without the GUI; all admin is done remotely or via cmd line
+--------------------------------------------
+Windows Command Shells
+	command.com is the old 16-bit DOS cmd line.
+		Still installed and easily available in XP	
+		Don't ever use this.  It's for backwards compatibility with old programs.
+		Note: typing "Command" in the run/search box on Vista/7 will run cmd.exe
+	cmd.exe is the 32-bit Windows command line.
+		Supports long filenames
+		Supports history
+		To run:
+			start | all programs | accessories | Command Prompt
+			start | run/search, type cmd, press enter
+	Powershell
+		More powerful (linux-like) command line interface
+		Includes better scripting language
+		Available in 7; installable in XP/Vista
+------------------------------------------
+Filename rules
+	Filenames are typically  composed of letters, numbers, and spaces, but may contain many other characters.
+	Disallowed characters
+		[[code]]
+		* " / \ [ ] : ; ! =
+	These charactes have special meaning to the shell
+
+------------------------------------------
+Command Syntax
+	Basic Syntax
+		[[code]]
+		command /switch argument
+	switches affect the way the command behaves
+	argument(s) are what the command operates on (typcially a file or folder name)
+	Examples
+		[[code]]
+		dir
+		dir /A
+		dir /A afolder
+------------------------------------------
+Help text
+	Each command provides terse help text describing all the command's switches and arguments
+	Type the command name followed by /? to see help text
+		Optional switches/arguments are shown in [ ]
+		Those not in [ ] are mandatory
+		Mutually excluse switches are separated with |
+		If a switch has an argument, it's separated by a :
+	Look at the help text of the following
+		dir
+		copy
+------------------------------------------
+Fundamental Commands
+	dir - directory listing
+	cd - change directory	
+		note: doesn't change drives (use d: for that)
+	md - make directory
+	rd - remove directory
+	ren - rename a file
+	del - delete a file
+	copy - copy a file
+	xcopy - copies directory trees
+	attrib - changing file attributes
+-------------------------------------------
+Wildcards
+	Wildcards can be used in file and folder names
+		[[code]]
+		* - matches multple characters
+		? - matches a single character
+	Examples
+		[[code]]
+		dir *.txt
+		dir xyz.*
+		copy * somefolder
+-------------------------------------------
+Batch Files
+	Batch files allow you to run a sequence of commands
+	Batch files 
+		end in .bat
+		Should contain only cmd line commands
+		comment lines begin with a # or rem
+	echo is a common batch file command. 
+		It can be used to print text to the screen
+			[[code]]
+			echo "Hello"
+		And it can be used to control if the commands being executed are displayed
+			[[code]]
+			echo off
+			echo on
+-------------------------------------------
+path
+	path contains a ; delimited list of directories that specify where the system will look for commands
+	Commands are files that end in .exe, .com. or .bat (and others)
+	When a command is typed, the system looks in the current directory, then those specfied by the path from left to right
+	If the command is not found in any of those locations, you'll get an error message.
+	To see your path, type
+		[[code]]
+		path
+	To change your path,type
+		[[code]]
+		path="c:\windows;c:\windows\system32"
+-------------------------------------------
+Additional Commands
+	chkdsk - checks disk/volume for errors
+	xcopy - more powerful copy (deprecated)
+	[[robocopy!http://www.techrepublic.com/blog/window-on-windows/use-robocopys-multi-threaded-feature-to-quickly-back-up-your-data-in-windows-7/3280]] - Robust copy (more effecient and feature laden)
+	format - puts file system on partition/volume
+	hostname - shows hostname
+	sfc - checks/restores system files
+	shutdown -
+	compact - compresses files/folders
+	cipher - encrypts files/folders
+-------------------------------------------
+Closing Remarks   
+	The command line is NOT DOS
+		DOS is an OS
+		The command line is a user interface
+	The command line should never be referred to as DOS
+	The command line should never be referred to as DOS
+	The command line should never be referred to as DOS
+--------------------------------------------
+Summary
+	Why a command line?
+	Windows Command Shells
+	Filename Rules
+	Command Syntax
+	Help Text
+	Fundamental Commands
+	Wildcards
+	Batch Files
+	Path
+	Additonal Commands
+--------------------------------------------

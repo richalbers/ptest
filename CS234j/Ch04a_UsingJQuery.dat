@@ -1,0 +1,47 @@
+-----------------------------------------------------------
+Using jQuery on a Webpage
+	At the end of this presentation you should 
+		know the differences in the major jQuery versions
+		know where and how to obtain a jQuery library
+		know the advantages and disadvantages of using a local copy vs one in the cloud 
+		be able to use jQuery properly on a webpage
+---------------------------------------------
+Getting jQuery library
+	To use jQuery you need to include the jQuery library in your code
+		You can [[download your own copy or link to a version hosted on-line!http://docs.jquery.com/Downloading_jQuery]]
+	Based on that info, you should know:
+		What's the purpose of jQuery?
+		What's the difference between:
+				jquery-1.11.0.min.js
+				jquery-1.11.0.js
+			And why would you use one over the other?
+		What's the difference between jQuery 1.x and 2.x?
+		What's the jQuery migrate plugin for?
+		What's a CDN?
+			And what are the advantages of using a CDN?
+-------------------------------------------
+Document.ready Event
+	You can't start using JQuery functions to interact with the document until the DOM has been completely built.
+	The JQuery object has a ready() event associated with the document that is triggered when we're ready for liftoff
+		[[code]]
+		$(document).ready(function(){
+			alert("Blastoff!!!");
+			// or lots of other code...
+		});
+	There should be NO jQuery code ran until the document is ready
+	The $(document).ready() event handler can contain lots of other code and/or call other functions
+-----------------------------------------------------------------
+Practice
+	Create the following files
+		demo.html
+		demo.css
+		demo.js
+	In the demo.html 
+		link to a version of jQuery from a CDN
+		link to demo.js 
+		Add a body with some buttons, headers, and paragraphs
+	In the demo.js file
+		When the document is ready, print an alert message
+		When that works, replace the alert message with code that
+			attaches event handlers to the buttons so when they're clicked other elements change in some way (style and/or content)
+---------------------------------------------------------------------

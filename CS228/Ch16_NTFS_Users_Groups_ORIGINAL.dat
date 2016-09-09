@@ -1,0 +1,170 @@
+------------------------------------------
+Ch 16 - NTFS, Users, and Groups
+	User Accounts
+	Authentication vs Authorization
+	Login Options
+	User Account Control
+	Password Details
+	Groups
+	NTFS
+	Sharing
+	Encryption
+
+--------------------------------
+User Accounts
+	Users Accounts are the foundation up which security is built
+	User Accounts:
+		are given permissions to files
+		are given rights to do things
+	User Account types
+		Local - Managed by clients (i.e. XP)	
+		Domain - Managed by domain controller
+	Default accounts
+		Administrator
+		Guest
+
+--------------------------------
+Authentication vs Authorization
+	Authentication - determining the user is who they say they are
+		Username
+		Password
+	Authorization - What a user can access and do
+		NTFS permissions
+		User Rights
+		
+
+
+--------------------------------
+Login Options
+	Welcome Screen (introduced with XP)
+		Default
+		List of users is displayed
+		Administrator is not displayed (by default)
+		Supports fast user switching
+	Logon Window
+		Most Secure
+		Press cntrl-alt-delete
+		Enter username and password
+	Automatic Login
+		Can be configured via registry modifications
+		Useful for publicly accessible computers
+		Unsecure, therefore to be used with caution and care
+
+--------------------------------
+User Account Control
+	Historically, Windows users needed to be admins to install software
+	This allowed them to easily accidently install malware
+	UAC solves this
+		Users don't need to be admins
+		When admin rights are needed, system prompts for admin credentials
+		Introduced (poorly) with Vista
+		Made usable in 7
+
+--------------------------------
+Password Details
+	Password is case sensitive
+	Users should create their own
+	Admin cannot see or retrieve user passwords
+	Admin CAN reset a password
+		User will no longer be able to access previously encrypted files
+	User can create "forgotten password disk"
+		Keep in safe place
+		Use when password is forgotten
+		
+--------------------------------
+Groups
+	Groups make administration easier
+	User Accounts should be put into groups
+	Groups are given rights and permissions
+	Default groups
+		Administrators
+		Power Users
+		Users (Limited Users)
+		Guests
+		Backup Operators
+
+--------------------------------------------
+NTFS
+	A secure, robust file system introduced with Windows NT
+	NTFS features:
+		Redundancy
+			Has backup copy of MFT
+		Recoverability
+			Uses transaction logging
+		Security
+			Each file is owned by a specific user
+			User access to files and folders is configurable via permissions
+
+------------------------------------------
+File Ownership
+	Each file is owned by the person that created it
+	The owner can do whatever he wants with a file, including changing permissions
+	There is a take ownership permission that, when given to someone, allows them to take ownership of the file
+	Administrators have take ownership permission
+	By default Files inherit the permissions from the folder they're in
+
+------------------------------------------
+Basic NTFS Permissions
+	Full Control
+	Modify
+	Read & Execute
+	List Folder Contents (folders only)
+	Read
+	Write
+
+----------------------------------------
+Moving and Copying files
+	Rule 1 - New files always inherit their permissions from the folder into which they're placed.
+	Copying a file creates a new file, see Rule 1
+	Moving a file to a new volume creates a new file (and deletes the original), see Rule 1
+	Moving files within the same volume doesn't create a new file, and doesn't change permissions
+	Permissions only apply on NTFS volumes (not FAT)
+
+----------------------------------------
+Sharing
+	Local Sharing - Making a folder available to other users on the local machine
+		Actually just done with NTFS permissions
+		Public folders are done this way
+	Network Sharing - Making a folder available on the network
+		Folder is given a "share" name
+		Accessed using UNC path name
+			\\Server\share
+		Involves share permissions as well as NTFS permissions
+		Every folder has a share tab
+		Shared Folders tool in Computer Managment shows network shares
+		Hidden shares share names end in a $
+
+------------------------------------------
+Simple File Sharing
+	NTFS is complicated, so with XP, Microsoft created Simple File Sharing for home/small office use
+	Simple File Sharing, when enabled, hides all the NTFS permissions
+	Public Folder has permissions set so all users can write to it
+	It's enabled via Windows Explorer
+		Tools->Folder Options, View Tab, last checkbox.
+	Note: it is disabled if the computer is a part of a domain
+
+--------------------------------------------
+Encryption
+	Encrypted File System (EFS)
+		Allows encrypting folder contents
+		User encrypting data and Admin can get access
+	Bitlocker
+		Allows encrypting entire hard drive
+		Supported by Vista/7
+		Requires hardware support (TPM)
+		Control Panel -> System and Security -> Bitlocker
+
+
+--------------------------------------------
+Summary
+	User Accounts
+	Authentication vs Authorization
+	Login Options
+	User Account Control
+	Password Details
+	Groups
+	NTFS
+	Sharing
+	Encryption
+
+--------------------------------------------

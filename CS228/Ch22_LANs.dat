@@ -1,0 +1,81 @@
+-------------------------------------------
+Ch 22 - LANs
+	Fiber Optic Cable
+	Network Devices
+	Cabling
+	Protocols
+	TCP/IP Parameters
+	TCP/IP Tools & Services
+	Misc
+-------------------------------------------
+Fiber Optic Cable
+	UTP is limited to 100 meters per leg
+	Fiber Optic Cable designed for LANs can go much further (2000 meters)
+	Fiber is more expensive to install then UTP so it's typically limited to backbones
+	General Cable Types
+		single mode - Used for long distances (miles)
+		multi mode - Used in LANs
+	There are numerous connector types
+		SC, ST, MT-RJ	
+-------------------------------------------
+Network Devices
+	Hubs 
+		Simple Repeaters; all devices share available bandwidth
+	Switches
+		Smarter than hubs; each computer-to-computer connection gets full bandwidth
+	Bridges
+		Connect different types of mediums (wireless to wired)
+	Routers
+		Connect LANs, route packets based on IP addresses
+	NAS - Network Attached Storage devices
+		"headless computer" (no mouse/keyboard/monitor) that manages and makes available disk drives to networked computers
+		Configured via a web browser
+--------------------------------------------
+Cabling
+	Telecom Room
+		Equipment racks
+			Patch panel / 110 block / punchdown tool
+	Horizontal Cabling
+	
+
+-------------------------------------------
+TCP/IP Parameters
+	Parameters
+		IP Address
+		Subnet Mask
+		Gateway
+		DNS Server Addresses
+	They can be configured
+		statically
+		vIA DHCP
+		via APIPA
+--------------------------------------------
+TCP/IP Tools & Services
+	Tools
+		IPConfig
+		Ping
+		NSLookup
+		TraceRoute
+		Net
+	Services
+		DNS
+		WINS
+		DHCP
+------------------------------------------
+Misc
+	Resource Sharing
+		Folders
+		Printers
+	UNC Path name
+		Universal Naming Convention
+		Format: \\ServerName\ShareName
+------------------------------------------
+Summary
+	Fiber Optic Cable
+	Network Devices
+	Cabling
+	Protocols
+	TCP/IP Parameters
+	TCP/IP Tools & Services
+	Misc
+--------------------------------------------

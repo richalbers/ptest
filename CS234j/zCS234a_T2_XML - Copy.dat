@@ -1,0 +1,157 @@
+------------------------------------------
+XML Basics
+	Introduction
+	Well Formed XML File
+	Embedded DocType
+	XML DOM
+		Overview	
+		Node types
+		Properties and Methods
+	Processing XML DOM in Javascript
+	Class Exercise
+-----------------------------------------------------------
+Introduction
+	XML
+		stands for eXtensible Markup Language
+		is a markup langauge to encode data
+		has no pre-defined tags
+		is designed to be self-descriptive
+		is both human and machine readable
+		is the X in AJAX
+
+------------------------------------------------------------
+Well Formed XML File
+	[[code]]
+	&lt;?xml version="1.0"?&gt;
+	&lt;region&gt;
+		&lt;state&gt;
+			&lt;name big="no"&gt;Oregon&lt;/name&gt;
+			&lt;capital&gt;Salem&lt;/capital&gt;
+		&lt;/state&gt;
+		&lt;state&gt;
+			&lt;name big="yes"&gt;California&lt;/name&gt;
+			&lt;capital&gt;Sacremento&lt;/capital&gt;
+		&lt;/state&gt;
+	&lt;/region&gt;
+
+-----------------------------------------------------------------
+Embedded DocType
+	XML file can reference a DocType that defines the structure 
+		It's not essential
+		It can be embedded at the top of the document
+	Example
+	[[code]]
+		&lt;!DOCTYPE region [
+			&lt;!ELEMENT region (state)+>
+			&lt;!ELEMENT state (name, capital)>
+			&lt;!ELEMENT name (#PCDATA)>
+			&lt;!ELEMENT capital (#PCDATA)>
+			&lt;!ATTLIST name big CDATA #REQUIRED>
+		]>
+---------------------------------------------------------------
+XML DOM overview
+	The XMLHttpRequest object recognizes XML data and builds an XML object
+	This object stores the XML data in a tree
+	Each element in the XML file is represented by multiple nodes
+	Each node is an object that can be accessed by javascript
+
+---------------------------------------------------------------
+XML DOM Node Types
+	XML DOM consists of many different types of nodes
+	The ones we're most concerned with are
+		Element (representes an element)
+		Text (contains value of node), first childnode of Element Node
+		Attribute (obtained with getAttribute() function)
+	Complete list is at http://www.w3schools.com/dom/dom_nodetype.asp
+---------------------------------------------------------------
+XML DOM Node Properties and Methods
+	Important XML DOM node properties:
+		nodeName - node name (tag name)
+		nodeValue - node value (contents)
+		parentNode - the parent node 
+		childNodes - the child nodes 
+		attributes - the attributes nodes of x
+	Note: not all nodes have all properties!
+	Note2: nodes first childNode contains nodeValue!
+	Methods
+		getElementsByTagName(name) - get all elements with a specified tag name
+		getAttribute("attribute_name"); - get specified attribute value
+------------------------------------------------------------------
+Getting Element values and attributes 
+	The function getElementsByTagName(Element_Name) returns an array of nodes with the sepecified name
+	It can be called
+		on the XML document (to search document)
+			[[code]]
+			states = xmlDoc.getElementsByTagName("state");
+		on a node (to search tree below node)
+			[[code]]
+			names = states[0].getElementsByTagName("name");
+	To get the node value, look at it's first child node's nodeValue property
+		[[code]]
+			sStateName = names[0].childNodes[0].nodeValue;
+	To get an attribute, use getAttribute("attribute_name")
+		[[code]]
+			sAttrBig = names[0].getAttribute("big");
+		
+------------------------------------------------------------------
+Example: Processing XML in Javascript
+	[[code]]
+		//Format States XML file as HTML table
+		var xmlDoc = xmlhttp.responseXML;
+		var states = xmlDoc.getElementsByTagName("state");
+		
+		&nbsp;
+		var sTableHtml = "&lt;table&gt;\n";
+		for (var x=0;x&lt;states.length; x++) {
+			node=states[x].getElementsByTagName("name")[0];
+			
+			&nbsp;
+			sStateName = node.childNodes[0].nodeValue; //childnodes[0] is text node
+			sAttrBig = node.getAttribute("big");
+			
+			&nbsp;
+			node=states[x].getElementsByTagName("capital")[0];
+			sStateCapital = node.childNodes[0].nodeValue;
+			
+			&nbsp;
+			var sHtml= "&lt;tr&gt;" 
+				+ "&lt;td&gt;" + sStateName + "&lt;/td&gt;" 
+				+ "&lt;td&gt;" + sAttrBig + "&lt;/td&gt;"
+				+ "&lt;td&gt;" + sStateCapital + "&lt;/td&gt;"
+				+ "&lt;/tr&gt;\n";
+			sTableHtml+=sHtml;
+		}
+		sTableHtml+="&lt;/table&gt;";
+-----------------------------------------------------------------
+Summary
+	Introduction
+	Well Formed XML File
+	Embedded DocType
+	XML DOM
+		Overview	
+		Node types
+		Properties and Methods
+	Processing XML DOM in Javascript
+-----------------------------------------------------------
+Class Exercise
+	Design
+		an XML format to store quiz questions
+		an html page to display a quiz question
+		Pseudocode to
+			load the data from specified xml file
+			display each question (sequentially)
+			grade each question, provide feedback
+	Homework assignment will build on this
+	
+-----------------------------------------------------------------
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

@@ -1,0 +1,211 @@
+------------------------------------------
+Ch 23 - Wireless Networking
+	Wireless Network Types
+	802.11 standards
+		802.11a
+		802.11b
+		802.11g
+		802.11n
+		802.11ac
+	WiFi Security
+		Data Encryption
+	WiFi Modes
+	WiFi Misc
+	Bluetooth
+	Cellular
+-------------------------------------------
+Wireless Network Types
+	802.11 (WiFi)
+		Used in LANs in place of UTP
+		Slower, but cheaper to install
+	Cellular
+		Used for mobility
+		3G, 4G
+	Bluetooth
+		Used to connect peripherals to computer
+
+-------------------------------------------
+802.11 Frequencies 
+	2.4 GHz band
+		Defined the same in all countries
+		11-14 channels [[img http://upload.wikimedia.org/wikipedia/commons/8/8c/2.4_GHz_Wi-Fi_channels_%28802.11b%2Cg_WLAN%29.svg]]
+		Only 3 are non-overlapping in US [[img http://upload.wikimedia.org/wikipedia/commons/8/84/NonOverlappingChannels2.4GHzWLAN-en.svg]]
+		Popularity of 2.4 GHz band means potential interference with other devices (microwaves, cordless phones, etc.)
+	5 GHz band
+		Higher frequencies allow more bandwidth
+		[[Frequencies!http://en.wikipedia.org/wiki/List_of_WLAN_channels ]] are non-standard worldwide
+		14 possible channels, not all availabe in US, and channel width affects available channels
+		Was more difficult to get good range 
+
+--------------------------------------------
+802.11 Standards
+	Every few years a new 802.11 standard came out which improved either range, speed, or both
+		802.11 (1997, obsolete)
+		802.11a (1999, rare)
+		802.11b (1999)
+		802.11g (2003)
+		802.11n (2009)
+		802.11ac (2013)
+		
+--------------------------------------------
+802.11a
+	Utilizes OFDM in 5 GHz band
+	Good throughput	
+		rated: 54 Mpbs
+		actual: well under 20 Mbps
+	Poor range
+	Products:
+		shipped late
+		had poor performance
+		were expensive
+	Little market acceptance
+
+-------------------------------------------
+802.11b
+	Utilizes DSSS in 2.4 GHz band
+	Fair throughput 
+		rated: 11 Mbps
+		actual: 6 Mbps
+	Decent range
+	Products
+		Shipped the same time as 802.11a
+		Worked well
+		had adequate performance
+	Gained fairly broad acceptance
+
+--------------------------------------------
+802.11g
+	Utilizes OFDM in 2.4 GHz band
+	Good througput
+		rated: 54 Mbps
+		actual: 25 Mpbs @ 30m
+	Products
+		shipped on time
+		worked well
+		had good performance
+	Widely adopted
+
+-------------------------------------------
+802.11n
+	Utilizes OFDM + MIMO
+		MIMO - Multiple I/O (antennas)
+	Uses both 2.4 and 5 GHz for backwards compatibilty
+	Uses 5 GHz band in "pure" n network
+	Great throughput
+		rated: 100-200 Mbps
+	Products
+		shipped before draft was finalized
+		Now experiencing wide adoption
+-------------------------------------------
+802.11ac
+	Newest, not in book
+	[[overview (from www.extremetech.com)!http://www.extremetech.com/computing/160837-what-is-802-11ac-and-how-much-faster-than-802-11n-is-it]]
+	[[info from Wikipedia!https://en.wikipedia.org/wiki/IEEE_802.11ac]]
+---------------------------------------------
+WiFi Security
+	Authentication
+		Is the computer/person allowed to connect?
+		Handled either via 
+			authentiation Server (Radius Server)
+			or pre-shared key (common key for everyone)
+	Encryption
+		Scrambling the data so intercepted messages can't be read
+		When encryption methods are cracked, new ones are devised
+	Additional measure:
+		Mac Address Filtering
+			Limits who can connect by MAC address
+
+---------------------------------------------
+Data Encryption
+	WEP - Wired Equivalent Privacy
+		40-128 bit key entered on clients and WAP
+		Introduced in 1999, can now easily be cracked
+	WPA-Enterprise - Wi-Fi Protected Access
+		Requires an authentication server, which distributes keys to each user
+	WPA-Personal (PSK) - Pre-Shared Key version
+		Designed for home and small offices
+		All users given same key
+		Key is derived from passphrase	
+			20+ random chars is best
+
+---------------------------------------------		
+Data Encryption (continued)
+	WPA2-Enterprise (802.11i)
+		Implements all mandatory elements of 802.11i
+		Utilizes AES (Advanced Encryption Standard)
+		Considered fully secure (when using AES)
+	WPA2-Personal (PSK)
+		Designed for home and small offices
+		No authentication server required
+		All users given same key
+		Key is derived from passphrase
+			20+ random chars is best
+------------------------------------------
+WAP Configuration
+	Most Wireless Access Points support
+		multiple standards (802.11b, g, n, ac, etc.)
+		different encryption standards (WEP, WPA, WPA2)
+	Example:
+		[[CISCO WAP 300N Interface!http://ui.linksys.com/WAP300N/1.0.00.72/network/sta_network.html]] (click on link to see interface)
+			After page loads 
+				To see supported standards, click Wireless, than select Manual
+				To see supported encryptions, click Security 
+		[[Others LinkSys Equipment Interfaces!http://ui.linksys.com/]]
+------------------------------------------
+WiFi Modes
+	Infrastructure
+		Utilizes Wireless Access Point (WAP)
+		Uses BSS (Basic Service Set)
+		Multiple WAPs can be used (ESS)
+		Most common mode
+	Ad Hoc
+		Peer to Peer (no WAP)
+		Uses IBSS (Independent BSS)
+----------------------------------------------
+Misc
+	WiFi Uses CSMA/CA
+		Carrier Sense 
+		Multiple Access
+		Collision Avoidance
+	Antenna types
+		Omni-directional
+		directional
+	Scanner
+		InSSIDer
+--------------------------------------
+Bluetooth
+	Used primarly to connect peripherals to computers
+	Can be used to connect computers (PAN)
+	Range is a few meters
+	Versions
+		1.x - Around 1 Mbps
+		2.x - Around 3 Mbps
+------------------------------------------
+Cellular
+	Utilizes cellular network for internet connection
+		Smartphones
+		Cellular NICs
+	3G (3rd Generation) Standards
+		CDMA - Code Division Multiple Access
+			Used primarily in North America
+		GSM - Global System for Moble devices
+			Worldwide standard
+	4G (4th Generation) Standards
+		Mobile WiMax
+		LTE
+		
+------------------------------------------
+Summary
+	Wireless Network Types
+	WiFi Modes
+	WiFi Security
+		Data Encryption
+	802.11 standards
+		802.11a
+		802.11b
+		802.11g
+		802.11n
+	WiFi Misc
+	Bluetooth
+	Cellular
+--------------------------------------------

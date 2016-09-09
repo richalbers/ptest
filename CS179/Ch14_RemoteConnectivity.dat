@@ -1,0 +1,107 @@
+--------------------------------
+Remote Connectivity
+	POTS History
+	Leased Lines
+	Last Mile Options
+		Dialup
+		DSL
+		Cable
+		Satellite
+		Wireless
+		Fiber
+	VPNs
+	Remote Terminal
+	VOIP
+
+--------------------------------
+POTS History
+	All analog
+	Circuit switching was used
+	Subscriber connects to Central Office
+	At CO
+		Multiplexer combines multiple analog signals into trunk line using FDM
+	All but the "last mile" is now digital
+
+-------------------------------------------
+Leased Lines
+	T1 - 1.4 Mbps (2 pair data grade UTP)
+		Fractional T1 - 128-728 Kbps
+		Bonded T1s
+	T3 - 44 Mbps (fiber)
+	Europe uses E1s & E3s, which are similar to T1s & T3s
+	OC3 - 155 Mbps (fiber)
+		Comes in higher speeds as well, up to 40 Gbps (OC768)
+	All those listed above provide high QoS (with SLAs) at relatively high cost
+	DSL now provides much higher bandwidth, both up and down
+	Frame Relay and ATM are typically used on Tx lines.
+-------------------------------------------
+Connecting to Leased Lines
+	Subscriber needs Router and CSU/DSU
+	CSU
+		Channel Service Unit
+		Protects network from invalid signals
+	DSU
+		Data Service Unit
+		Performs data formatting/conversion
+-------------------------------------------
+Last Mile
+	Dialup (PSTN or POTS)
+	ISDN (obsolete)
+	DSL
+	Cable Modem
+	Satellite
+	Wireless (802.16)
+	Cellular (3g/4g)
+	Fiber
+-------------------------------------------
+Dialup
+	PSTN or POTS
+	baud vs bps
+	Modem and UART
+	V Standards
+
+-------------------------------------------
+Digital Subscriber Lines
+	Uses Single Voice Grade UTP
+	Cheaper but less reliable than T1s [[img http://www.buytelco.net/Assets/ContentGraphics/adsl.gif]]
+	Consumer Versions
+		ADSL - Asymmetric (3 Mbps down)
+	Business Versions
+		HDSL - High Rate (768 Kbps)
+		SHDSL - Super High Rate (2.3 Mbps)
+		Both are symmetric and offer better QoS then ADSL
+
+--------------------------------
+Other last mile options
+	ISDN (obsolete)
+	Cable 
+	Cellular (3g/4g)
+	Satellite [[img http://www.internet-via-satellite.info/usr/www_internet-via-satellite_info/images/one-way-satellite.jpg]]
+	Wireless (802.16) [[img http://engweb.info/courses/wdt/lecture04/wimax_network_topology.jpg]]
+	Fiber - expensive
+
+--------------------------------
+Misc
+	VPNs
+		Allows you to securely connect to a private LAN over public network
+	Remote terminal
+		Allows you to connect to and control a remote computer as if you were sitting in front of it
+	VOIP
+		Phone calls over the internet
+
+--------------------------------
+Summary
+	POTS History
+	Leased Lines
+	Last Mile Options
+		Dialup
+		ISDN
+		DSL
+		Cable
+		Satellite
+		Wireless
+		Fiber
+	VPNs
+	Remote Terminal
+	VOIP
+--------------------------------

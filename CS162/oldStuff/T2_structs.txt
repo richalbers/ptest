@@ -1,0 +1,68 @@
+
+records (structs)
+
+#include <iostream>
+
+using namespace std;
+
+struct tCar {
+	char make[25];
+	int miles;
+	};
+
+// build the following one step at a time in IDE
+
+//example of pass by reference
+void driveCarFar(tCar &car)
+{
+	car.miles += 100000;
+}
+
+//returning car from function
+tCar makeGreatCar()
+{
+	tCar car;
+	strcpy(car.make, "Tesla");
+	car.miles = 10;
+	return car;
+}
+
+void main()
+{
+	tCar car1, car2, car3;
+
+	//setting variables
+	strcpy(car1.make, "Honda");
+	car1.miles = 2;
+
+	//outputting
+	//cout << car1; //ILLEGAL
+	cout << car1.make << "\n";
+	cout << car1.miles << "\n";
+	cout << "\n";
+
+	//assignment
+	car2 = car1;
+	cout << car2.make << "\n";
+	cout << car2.miles << "\n";
+	cout << "\n";
+
+	//comparing
+	//if (car1 = car2) ILLEGAL
+	//if (compareCars(car1, car2)) //pass by value
+	//	cout << "cars are identical!\n";
+
+	//passing to function by reference
+	driveCarFar(car2);
+	cout << car2.make << "\n";
+	cout << car2.miles << "\n";
+	cout << "\n";
+
+	//return from funtion
+	car3 = makeGreatCar();
+	cout << car3.make << "\n";
+	cout << car3.miles << "\n";
+
+	cout << "\n";
+	system("pause");
+}
